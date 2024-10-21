@@ -1,0 +1,18 @@
+project:
+  type: book
+
+book:
+  title: "Book title"
+  author: "Book authoe"
+  date: "21/10/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  pdf:
+    documentclass: novel

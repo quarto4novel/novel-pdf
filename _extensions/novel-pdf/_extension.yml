@@ -5,6 +5,4 @@ quarto-required: ">=1.5.0"
 contributes:
   formats:
     pdf:
-      toc: true
-      include-in-header: header.tex
-
+      toc: false
