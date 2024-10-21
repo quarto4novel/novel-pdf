@@ -10,7 +10,11 @@ This will install the extension and create an example qmd file that you can use 
 
 ## Using
 
-*TODO*: Describe how to use your format.
+```bash
+quarto render
+```
+
+The resulting pdf should appear as a pdf (PDF-X file) in the `_book` directory.
 
 ## Format Options
 
@@ -20,3 +24,6 @@ This will install the extension and create an example qmd file that you can use 
 
 Here is the source code for a minimal sample document: [example.qmd](example.qmd).
 
+## Inspiration
+
+I took heavy inspiration from thos great post about [quarto extensions](https://www.cynthiahqy.com/posts/quarto-extensions-explainer/index.html).

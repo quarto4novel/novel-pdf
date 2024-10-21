@@ -12,9 +12,9 @@
 %   compile will fail at the point where files are written.
 
 \documentclass[v2,american]{novel} % v. 2.1.
-\SetTitle{Dark and Stormy}
+\SetTitle{$title$}
 \SetSubtitle{A Tale of Nights}
-\SetAuthor{Dirk Hardcase}
+\SetAuthor{$author$}
 \SetPDFX[CGATSTR001]{X-1a:2001}
 \begin{document}
 
@@ -22,10 +22,12 @@
 
 % i. Half-Title page:
 \thispagestyle{empty}
+$if(novel.front-matter.half-title)$
+$novel.front-matter.half-title$
+$else$
 \vspace*{6\nbs}
-\hfill\charscale[1.8]{\textbf{Dark and}}\par
-\vspace{\nbs}
-\hfill\charscale[2.4]{\textbf{\color{gray}Stormy}}\par
+\hfill\charscale[2.4]{\textbf{\theTitle}}\par
+$endif$
 \clearpage
 
 % ii. Blank page:
@@ -37,9 +39,14 @@
 \thispagestyle{empty}
 \vspace*{5\nbs}
 \begin{center}
-\charscale[3.6]{\textbf{Dark and}}\par
-\vspace{2\nbs}
-\charscale[4.8]{\textbf{\color{gray}Stormy}}\par
+% \charscale[3.6]{\textbf{Dark and}}\par
+% \vspace{2\nbs}
+% \charscale[4.8]{\textbf{\color{gray}Stormy}}\par
+$if(novel.front-matter.full-title)$
+$novel.front-matter.full-title$
+$else$
+\charscale[3.6]{\textbf{\theTitle}}\par
+$endif$
 \vspace{1.5\nbs}
 \charscale[1.6]{A Tale of Nights}\par
 \vspace{4\nbs}
@@ -60,7 +67,7 @@ Anytown • Anyplace • Anywhere}\par
 \itshape{
 \null
 \vfill
-\textsc{Dark and Stormy}\par
+\textsc{\theTitle}\par
 Copyright ©2017 Dirk Hardcase.\par % Whichever year, copyright holder.
 All Rights Reserved.\par % Usually no need to be elaborate.
 \null

@@ -11,9 +11,15 @@ install-texlive2024: install
 	popd
 	echo "Ajouter le chemin /usr/local/texlive/2024/bin/x86_64-linux à votre path si ce n'est pas déjà fait"
 
-clean:
-	rm -rf out
+clean-luatex:
+	rm -rf out _book .quarto
 
-book: clean
+book-luatex: clean-luatex
 	mkdir -p out
 	lualatex --output-directory=out quarto-novel.tex
+
+clean:
+	rm -rf _book .quarto
+
+book: clean
+	quarto render

@@ -2,17 +2,23 @@ project:
   type: book
 
 book:
-  title: "Book title"
-  author: "Book authoe"
+  title: "Light and Cloudy"
+  author: "Dirk Hardcase"
   date: "21/10/2024"
   chapters:
-    - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
-
-bibliography: references.bib
+    - index.qmd  # mandatory for a book
+    # - intro.qmd
+    # - summary.qmd
+    # - references.qmd
 
 format:
   pdf:
-    documentclass: novel
+    # TODO move this to _extensions/novel-pdf/_extension.yml
+    # Basic template config
+    template: novel-template.tex
+    pdf-engine: lualatex  # Madatory: novel class only works with LuaLaTeX
+    # Compilation options
+    # See: https://quarto.org/docs/output-formats/pdf-engine.html#pdf-compilation
+    latex-min-runs: 1
+    latex-max-runs: 1
+    latex-clean: true

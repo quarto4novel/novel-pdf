@@ -1,5 +1,6 @@
-## Project specific files and dirs
-out
+## quarto auxiliary files and dirs
+_book
+.quarto
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -307,3 +308,5 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+/.quarto/
