@@ -11,9 +11,9 @@
 %   have read/write permissions for any user. If they don't, then
 %   compile will fail at the point where files are written.
 
-\documentclass[v2,american]{novel} % v. 2.1.
+\documentclass[v2,$lang$]{novel} % v. 2.1.
 \SetTitle{$title$}
-\SetSubtitle{A Tale of Nights}
+\SetSubtitle{$subtitle$}
 \SetAuthor{$author$}
 \SetPDFX[CGATSTR001]{X-1a:2001}
 \begin{document}
@@ -48,14 +48,14 @@ $else$
 \charscale[3.6]{\textbf{\theTitle}}\par
 $endif$
 \vspace{1.5\nbs}
-\charscale[1.6]{A Tale of Nights}\par
+\charscale[1.6]{\theSubtitle}\par
 \vspace{4\nbs}
 \ChapterDeco[6]{\decoglyph{n9548}}
 \vspace{4\nbs}
 {\addfontfeature{Scale=3}\theAuthor}
 \vfill
-{\addfontfeature{Scale=1.25} Nonexistent Publications\\
-Anytown • Anyplace • Anywhere}\par
+{\addfontfeature{Scale=1.25} $publisher.name$\\
+$publisher.address$}\par
 
 \end{center}
 \clearpage
@@ -68,7 +68,7 @@ Anytown • Anyplace • Anywhere}\par
 \null
 \vfill
 \textsc{\theTitle}\par
-Copyright ©2017 Dirk Hardcase.\par % Whichever year, copyright holder.
+Copyright ©2017 \theAuthor.\par % Whichever year, copyright holder.
 All Rights Reserved.\par % Usually no need to be elaborate.
 \null
 This is a work of fiction.\\
@@ -80,7 +80,7 @@ living or dead, is coincidental.\par % Or similar language.
 ISBN 0-12345678-9\par % Whatever it is. No barcode, just number.
 \null
 
-Independently Published by Dirk Hardcase,\par % Publisher is you, not the print/distribution service.
+Independently Published by \theAuthor,\par % Publisher is you, not the print/distribution service.
 Anytown, Anystate USA\par % Publisher's location.
 www.example.com/dhardcase/publications/\par % Contact for publisher or author.
 \null

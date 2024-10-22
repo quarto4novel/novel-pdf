@@ -2,8 +2,6 @@ project:
   type: book
 
 book:
-  title: "Light and Cloudy"
-  author: "Dirk Hardcase"
   date: "21/10/2024"
   chapters:
     - index.qmd  # mandatory for a book
@@ -13,6 +11,8 @@ book:
 
 format:
   pdf:
+    # Generic options
+    lang: en-us
     # TODO move this to _extensions/novel-pdf/_extension.yml
     # Basic template config
     template: novel-template.tex
