@@ -14,13 +14,11 @@ copyright:
   rights: "All Rights Reserved."
 # Or similar language (default to "This is a work of fiction..." and so on boiler plate)
 fiction-mention: |
-  ```{=latex}
-  This is a work of fiction.\\
-  All persons and events are\\
-  from the author's imagination.\\
-  Resemblance to any real person,\\
-  living or dead, is coincidental.\par
-  ```
+  | This is a work of fiction.
+  | All persons and events are
+  | from the author's imagination.
+  | Resemblance to any real person,
+  | living or dead, is coincidental.
 novel:
   front-matter:
     # Optional half-title in LaTeX (if not provided we use the title)
