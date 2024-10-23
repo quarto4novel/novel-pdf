@@ -69,11 +69,15 @@ $publisher.address$}\par
 $if(copyright.mention)$$copyright.mention$\par$else$Copyright ©$year$ \theAuthor.\par$endif$
 $if(copyright.rights)$$copyright.rights$\par$else$All Rights Reserved.\par$endif$
 \null
+$if(fiction-mention)$
+$fiction-mention$
+$else$
 This is a work of fiction.\\
 All persons and events are\\
 from the author's imagination.\\
 Resemblance to any real person,\\
-living or dead, is coincidental.\par % Or similar language.
+living or dead, is coincidental.\par
+$endif$
 \null
 ISBN 0-12345678-9\par % Whatever it is. No barcode, just number.
 \null
