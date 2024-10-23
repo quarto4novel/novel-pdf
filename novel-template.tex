@@ -39,9 +39,6 @@ $endif$
 \thispagestyle{empty}
 \vspace*{5\nbs}
 \begin{center}
-% \charscale[3.6]{\textbf{Dark and}}\par
-% \vspace{2\nbs}
-% \charscale[4.8]{\textbf{\color{gray}Stormy}}\par
 $if(novel.front-matter.full-title)$
 $novel.front-matter.full-title$
 $else$
@@ -68,8 +65,9 @@ $publisher.address$}\par
 \null
 \vfill
 \textsc{\theTitle}\par
-Copyright ©2017 \theAuthor.\par % Whichever year, copyright holder.
-All Rights Reserved.\par % Usually no need to be elaborate.
+\par
+$if(copyright.mention)$$copyright.mention$\par$else$Copyright ©$year$ \theAuthor.\par$endif$
+$if(copyright.rights)$$copyright.rights$\par$else$All Rights Reserved.\par$endif$
 \null
 This is a work of fiction.\\
 All persons and events are\\
