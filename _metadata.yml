@@ -3,15 +3,18 @@ title: "Live Long and Die Hard"
 subtitle: "The name is Bond, Bond McLane"
 author: "Ian McTiernan"
 year: 2024  # copyright year
+
 # Config specific to novel
 publisher:
   name: "Whatever Publications"
   address: "Anytown • Anyplace • Anywhere"
+
 copyright:
   # Optional, whichever year, copyright holder (default to "Copyright ©$year$ $author$.")
-  mention: "Copyright ©2017 Ian McTierman."
+  mention: "Copyright ©{{< meta year >}} {{< meta author >}}."
   # Optional, usually no need to be elaborate (default to "All Rights Reserved.")
   rights: "All Rights Reserved."
+
 # Or similar language (default to "This is a work of fiction..." and so on boiler plate)
 fiction-mention: |
   | This is a work of fiction.
@@ -19,6 +22,7 @@ fiction-mention: |
   | from the author's imagination.
   | Resemblance to any real person,
   | living or dead, is coincidental.
+
 novel:
   front-matter:
     # Optional half-title in LaTeX (if not provided we use the title)

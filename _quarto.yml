@@ -13,6 +13,7 @@ format:
   pdf:
     # Generic options
     lang: en-us
+
     # TODO move this to _extensions/novel-pdf/_extension.yml
     # Basic template config
     template: novel-template.tex
