@@ -66,8 +66,8 @@ $publisher.location$}\par
 \vfill
 \textsc{\theTitle}\par
 \par
-$if(copyright.mention)$$copyright.mention$$else$Copyright ©$copyright.year$ \theAuthor.$endif$\par
-$if(copyright.rights)$$copyright.rights$$else$All Rights Reserved.$endif$\par
+
+$legal-rights$\par
 \null
 $if(fiction-mention)$
 $fiction-mention$\par
@@ -82,15 +82,7 @@ $endif$
 ISBN $isbn$\par % Whatever it is. No barcode, just number.
 \null
 
-$if(publisher.self-published)$Independently $endif$Published by $publisher.name$,\par
-$publisher.location$\par
-$if(publisher.online-contact)$
-$publisher.online-contact$\par
-$endif$
-$if(publisher.catalog-mention)$
-\null
-$publisher.catalog-mention$\par
-$endif$
+$publisher.full-mention$
 } % end itshape
 \end{center}
 \clearpage
