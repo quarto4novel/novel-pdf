@@ -1,3 +1,6 @@
+## SublimeText files and dirs
+*.sublime-workspace
+
 ## quarto auxiliary files and dirs
 _book
 .quarto
