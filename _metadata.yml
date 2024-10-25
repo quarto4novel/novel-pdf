@@ -1,19 +1,31 @@
+##############################################################################
 # Generic config
 title: "Live Long and Die Hard"
 subtitle: "The name is Bond, Bond McLane"
 author: "Ian McTiernan"
-year: 2024  # copyright year
 
+##############################################################################
 # Config specific to novel
+
+# Mandatory (you can provide an obviously fake one before having one)
+isbn: "0-12345678-9"
+
+# Publisher is you, not the print/distribution service if your are using a Print On Demand service
 publisher:
-  name: "Whatever Publications"
-  address: "Anytown • Anyplace • Anywhere"
+  # Mandatory informations
+  self-published: true  # If you don't have a publisher (even if you use a Print/Distribute On Demand service) then you are self-published
+  name: "Whatever Publications"  # Publisher is you, not the print/distribution service.
+  location: "Anytown • Anyplace • Anywhere"  # As precise as you want from country to exact address
+  # Optional informations
+  online-contact: "www.example.com/dhardcase/publications/"  # Contact for publisher or author, email or website
+  catalog-mention: |  # Fiction often does not need catalog data.
+    | Publisher's Cataloging-In-Publication Data
+    | available upon request.
 
 copyright:
-  # Optional, whichever year, copyright holder (default to "Copyright ©$year$ $author$.")
-  mention: "Copyright ©{{< meta year >}} {{< meta author >}}."
-  # Optional, usually no need to be elaborate (default to "All Rights Reserved.")
-  rights: "All Rights Reserved."
+  mention: "Copyright ©{{< meta copyright.year >}} {{< meta author >}}."  # Optional, whichever year, copyright holder (default to "Copyright ©$year$ $author$.")
+  rights: "All Rights Reserved."  # Optional, usually no need to be elaborate (default to "All Rights Reserved.")
+  year: 2024  # copyright year
 
 # Or similar language (default to "This is a work of fiction..." and so on boiler plate)
 fiction-mention: |

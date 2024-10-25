@@ -52,7 +52,7 @@ $endif$
 {\addfontfeature{Scale=3}\theAuthor}
 \vfill
 {\addfontfeature{Scale=1.25} $publisher.name$\\
-$publisher.address$}\par
+$publisher.location$}\par
 
 \end{center}
 \clearpage
@@ -66,8 +66,8 @@ $publisher.address$}\par
 \vfill
 \textsc{\theTitle}\par
 \par
-$if(copyright.mention)$$copyright.mention$\par$else$Copyright ©$year$ \theAuthor.\par$endif$
-$if(copyright.rights)$$copyright.rights$\par$else$All Rights Reserved.\par$endif$
+$if(copyright.mention)$$copyright.mention$$else$Copyright ©$copyright.year$ \theAuthor.$endif$\par
+$if(copyright.rights)$$copyright.rights$$else$All Rights Reserved.$endif$\par
 \null
 $if(fiction-mention)$
 $fiction-mention$\par
@@ -79,16 +79,18 @@ Resemblance to any real person,\\
 living or dead, is coincidental.\par
 $endif$
 \null
-ISBN 0-12345678-9\par % Whatever it is. No barcode, just number.
+ISBN $isbn$\par % Whatever it is. No barcode, just number.
 \null
 
-Independently Published by \theAuthor,\par % Publisher is you, not the print/distribution service.
-Anytown, Anystate USA\par % Publisher's location.
-www.example.com/dhardcase/publications/\par % Contact for publisher or author.
+$if(publisher.self-published)$Independently $endif$Published by $publisher.name$,\par
+$publisher.location$\par
+$if(publisher.online-contact)$
+$publisher.online-contact$\par
+$endif$
+$if(publisher.catalog-mention)$
 \null
-Publisher's Cataloging-In-Publication Data\\
-available upon request.\par
-% Fiction often does not need catalog data.
+$publisher.catalog-mention$\par
+$endif$
 } % end itshape
 \end{center}
 \clearpage
