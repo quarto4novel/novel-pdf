@@ -22,8 +22,8 @@
 
 % i. Half-Title page:
 \thispagestyle{empty}
-$if(novel.front-matter.half-title)$
-$novel.front-matter.half-title$
+$if(front-matter.half-title)$
+$front-matter.half-title$
 $else$
 \vspace*{6\nbs}
 \hfill\charscale[2.4]{\textbf{\theTitle}}\par
@@ -39,8 +39,8 @@ $endif$
 \thispagestyle{empty}
 \vspace*{5\nbs}
 \begin{center}
-$if(novel.front-matter.full-title)$
-$novel.front-matter.full-title$
+$if(front-matter.full-title)$
+$front-matter.full-title$
 $else$
 \charscale[3.6]{\textbf{\theTitle}}\par
 $endif$
@@ -88,15 +88,18 @@ $publisher.full-mention$
 \clearpage
 
 % v. Epigraph, Dedication, Table of Contents, or repeated Half-Title.
-% In this case, an Epigraph:
+
+% Epigraph:
+% See: # See: https://style.mla.org/styling-epigraphs/
+$if(front-matter.epigraph)$
 \thispagestyle{empty}
 \vspace*{7\nbs}
-\begin{adjustwidth}{5em}{5em}
-\noindent When the lone raccoon howls at dusk,\\
-And white birds cease their twitter,\\
-Then shall the rivers overflow with mead.\par
-\hfill---\textit{Prophecy of Claudius}\par
+\begin{adjustwidth}{4em}{4em}
+{\itshape \noindent $front-matter.epigraph.text$\par}
+\hfill--- $front-matter.epigraph.by$, ``$front-matter.epigraph.from$''\par
 \end{adjustwidth}
+$endif$
+
 \cleartorecto % here, inserts blank, so mainmatter begins recto
 
 % Now to begin your story:
