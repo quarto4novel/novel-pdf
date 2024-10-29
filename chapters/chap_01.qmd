@@ -1,0 +1,15 @@
+```{=latex}
+% Chapter One:
+\begin{ChapterStart}
+\vspace*{3\nbs}
+\ChapterTitle{Chapter One}
+\end{ChapterStart}
+```
+
+It was a dark and stormy night. Lord Withens rode his horse through the gloom, which was, as heretofore mentioned, dark. Most gloom is dark, eh wot?
+
+Moving right along, his horse arrived at the back door of Lady Wishintale's quarters. Sadly, Lord Withens was not on it, having slipped off his saddle along the way. That was because the weather was stormy.
+
+```{=latex}
+\foreignlanguage{latin}{\lipsum}
+```

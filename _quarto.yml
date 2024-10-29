@@ -1,13 +1,10 @@
-project:
-  type: book
+# keep-tex: true  # for debugging purpose
 
-book:
-  date: "21/10/2024"
-  chapters:
-    - index.qmd  # mandatory for a book
-    # - intro.qmd
-    # - summary.qmd
-    # - references.qmd
+project:
+  type: default
+  output-dir: _novel
+  render:
+    - index.qmd
 
 format:
   pdf:

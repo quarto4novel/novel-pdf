@@ -2,7 +2,7 @@
 *.sublime-workspace
 
 ## quarto auxiliary files and dirs
-_book
+_novel
 .quarto
 
 ## Core latex/pdflatex auxiliary files:
