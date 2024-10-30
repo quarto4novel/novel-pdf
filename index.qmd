@@ -2,6 +2,8 @@
 output-file: my_novel.pdf
 ---
 
+{{< mainmatter >}}
+
 {{< include chapters/chap_01.qmd >}}
 
 {{< include chapters/chap_02.qmd >}}

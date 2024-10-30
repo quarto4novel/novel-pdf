@@ -10,3 +10,4 @@ contributes:
   shortcodes:
     - chapter.lua
     - scenebreak.lua
+    - mainmatter.lua

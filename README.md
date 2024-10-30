@@ -120,6 +120,7 @@ where they are placed as specified in
         indent: false
         default: blank
     ```
+- [x] **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
 - [ ] **epigraph shortcode**
 - [ ] **toc shortcode**
 - [ ] **vspace shortcode**
