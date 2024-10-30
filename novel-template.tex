@@ -12,10 +12,22 @@
 %   compile will fail at the point where files are written.
 
 \documentclass[v2,$lang$]{novel} % v. 2.1.
+
+$-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/latex.template
+$if(strikeout)$
+$-- also used for underline
+\usepackage{luacolor}
+\usepackage[soul]{lua-ul}
+$endif$
+
+$-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/pandoc.tex
+$tightlist.tex()$
+
 \SetTitle{$title$}
 \SetSubtitle{$subtitle$}
 \SetAuthor{$author$}
 \SetPDFX[CGATSTR001]{X-1a:2001}
+
 \begin{document}
 
 \frontmatter

@@ -26,19 +26,13 @@ describe them.
 
 Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-basics.html).
 
-- [ ] *italics*, **bold**, ***bold italics***
-- [ ] superscript^2^ / subscript~2~
-- [ ] ~~strikethrough~~
-- [ ] `verbatim code`
-- [ ] Angle braket links <https://quarto.org>
-- [ ] Classic markdown links [Quarto](https://quarto.org)
-- [ ] unordered list
-- [ ] unordered list with continuation
-- [ ] ordered list
-- [ ] task list
-- [ ] list whose numbering continues after an interruption
-- [ ] A list followed by another list
-- [ ] definition list
+- [x] *italics*, **bold**, ***bold italics***
+- [x] superscript^2^ / subscript~2~
+- [x] ~~strikethrough~~
+- [x] `verbatim inline code`
+- [x] Angle bracket links <https://quarto.org>
+- [x] Classic markdown links [Quarto](https://quarto.org) ⚠️without link as
+footnote for the moment⚠️
 - [ ] simple footnote
 - [ ] inline footnote
 - [ ] blockquotes
@@ -63,13 +57,24 @@ to use them:
 
 - **headings** `# level one title`, `## level two title`, etc they are replaced
 by the `{{< chapter My chapter One >}}` shortcode.
+- **lists** are typeset using layout incompatible with the rest of novel as
+specified in the
+[novel class documentation about lists and tables](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h8)
+. This includes **ordered lists**, **unordered lists**, **definition lists** and
+***task lists**.
+- **tables** are typeset using layout incompatible with the rest of novel as
+specified in the [novel class documentation about lists and tables](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h8)
 - images `![Caption](elephant.png)` ???
-- tables
 - source code with file name
 - any advanced math
 - diagrams
 - videos (obviously !)
 - keyboard shortcuts
+
+## Supported Quarto specific feature
+
+- [x] [**lipsum shortcode**](https://quarto.org/docs/authoring/lipsum.html)
+`{{< lipsum >}}`
 
 ## Novel specific features
 

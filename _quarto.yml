@@ -11,6 +11,8 @@ format:
     # Generic options
     lang: en-us
 
+    links-as-notes: true
+
     # TODO move this to _extensions/novel-pdf/_extension.yml
     # Basic template config
     template: novel-template.tex

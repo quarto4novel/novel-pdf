@@ -1,5 +1,9 @@
 {{< chapter "Chapter Three" vspace_before="3">}}
 
-toto titi tutu
+You can use *italics*, **bold**, ***bold italics***, superscript^2^, subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org)
+
+And also some shortcodes:
+
+For example the `lipsum` shortcode:
 
 {{< lipsum >}}
