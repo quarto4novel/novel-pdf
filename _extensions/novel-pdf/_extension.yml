@@ -11,3 +11,4 @@ contributes:
     - chapter.lua
     - scenebreak.lua
     - mainmatter.lua
+    - vspace.lua

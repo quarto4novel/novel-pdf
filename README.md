@@ -121,9 +121,9 @@ where they are placed as specified in
         default: blank
     ```
 - [x] **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
-- [ ] **epigraph shortcode**
+- [ ] **epigraph shortcode**:
 - [ ] **toc shortcode**
-- [ ] **vspace shortcode**
+- [x] **vspace shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**
 
 

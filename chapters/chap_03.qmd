@@ -45,3 +45,9 @@ For example the `lipsum` shortcode separated by `scenebreak` shortcodes of diffe
 {{< scenebreak stars >}}
 
 {{< lipsum 1 >}}
+
+Now we jump 5 lines with `vspace` shortcode
+
+{{< vspace 5 >}}
+
+Jumped!
