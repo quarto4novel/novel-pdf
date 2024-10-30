@@ -13,11 +13,21 @@
 
 \documentclass[v2,$lang$]{novel} % v. 2.1.
 
+% Novel class config
+\SetMarkerStyle{number} % https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.4.1
+
+% Quarto/pandoc config
 $-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/latex.template
 $if(strikeout)$
 $-- also used for underline
 \usepackage{luacolor}
 \usepackage[soul]{lua-ul}
+$endif$
+
+$-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/template.tex
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
 $-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/pandoc.tex

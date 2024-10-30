@@ -33,8 +33,8 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 - [x] Angle bracket links <https://quarto.org>
 - [x] Classic markdown links [Quarto](https://quarto.org) ⚠️without link as
 footnote for the moment⚠️
-- [ ] simple footnote
-- [ ] inline footnote
+- [x] simple footnote
+- [x] inline footnote
 - [ ] blockquotes
 - [ ] line blocks
 - [ ] source code without language specification
@@ -75,6 +75,16 @@ specified in the [novel class documentation about lists and tables](https://ctan
 
 - [x] [**lipsum shortcode**](https://quarto.org/docs/authoring/lipsum.html)
 `{{< lipsum >}}`
+- [ ] `include-before-body` metadata
+- [ ] `include-after-body` metadata
+- [ ] `include-in-header` metadata
+- [ ] `metadata-files` metadata
+
+## Unsupported Quarto specific feature
+
+- `reference-location` metadata: Footnotes appear at the bottom of the page
+where they are placed as specified in
+[novel class documentation about footnotes](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h9.1).
 
 ## Novel specific features
 

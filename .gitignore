@@ -1,9 +1,13 @@
+## Project specific files
+/index.tex
+
 ## SublimeText files and dirs
 *.sublime-workspace
 
 ## quarto auxiliary files and dirs
 _novel
-.quarto
+/.quarto/
+/_*.local
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -311,7 +315,3 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
-
-/.quarto/
-
-/_*.local

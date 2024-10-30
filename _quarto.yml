@@ -10,7 +10,6 @@ format:
   pdf:
     # Generic options
     lang: en-us
-
     links-as-notes: true
 
     # TODO move this to _extensions/novel-pdf/_extension.yml
