@@ -2,6 +2,8 @@
 
 You can use *italics*, **bold**, ***bold italics***, superscript^2^, subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
 
+{{< scenebreak line >}}
+
 You can also have footnote reference,[^1] and another.[^longnote]. Here is an inline note.^[Inlines notes are easier to write,
 since you don't have to pick an identifier and move down to
 type the note.]
@@ -20,8 +22,26 @@ belong to the previous footnote.
 This paragraph won't be part of the note, because it
 isn't indented.
 
+{{< scenebreak line >}}
+
 And also some shortcodes:
 
-For example the `lipsum` shortcode:
+For example the `lipsum` shortcode separated by `scenebreak` shortcodes of different types:
 
-{{< lipsum >}}
+{{< lipsum 1 >}}
+
+{{< scenebreak >}}
+
+{{< lipsum 1 >}}
+
+{{< scenebreak blank >}}
+
+{{< lipsum 1 >}}
+
+{{< scenebreak line >}}
+
+{{< lipsum 1 >}}
+
+{{< scenebreak stars >}}
+
+{{< lipsum 1 >}}

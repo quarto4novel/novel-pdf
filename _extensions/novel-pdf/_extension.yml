@@ -9,3 +9,4 @@ contributes:
       toc: false
   shortcodes:
     - chapter.lua
+    - scenebreak.lua

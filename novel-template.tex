@@ -15,6 +15,9 @@
 
 % Novel class config
 \SetMarkerStyle{number} % https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.4.1
+$if(scenebreaks.indent)$
+\SetScenebreakIndent{true}
+$endif$
 
 % Quarto/pandoc config
 $-- taken from https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/pdf/pandoc/latex.template
