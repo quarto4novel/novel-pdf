@@ -313,3 +313,5 @@ TSWLatexianTemp*
 #*Notes.bib
 
 /.quarto/
+
+/_*.local

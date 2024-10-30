@@ -7,3 +7,5 @@ contributes:
     pdf:
       template: novel-template.tex
       toc: false
+  shortcodes:
+    - chapter.lua

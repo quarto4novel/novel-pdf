@@ -1,11 +1,4 @@
-```{=latex}
-% Chapter Three:
-\clearpage % next chapter may begin recto or verso
-\begin{ChapterStart}
-\vspace*{3\nbs}
-\ChapterTitle{Chapter Three}
-\end{ChapterStart}
-```
+{{< chapter "Chapter Three" vspace_before="3">}}
 
 toto titi tutu
 

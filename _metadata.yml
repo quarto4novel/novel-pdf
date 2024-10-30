@@ -70,3 +70,6 @@ front-matter:
       | Then shall the rivers overflow with mead.
     from: "Prophecy of Claudius"  # Optional
     by: "Claudius"  # Optional
+
+chapters:
+  vspace_before: 3

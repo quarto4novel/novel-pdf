@@ -1,10 +1,4 @@
-```{=latex}
-% Chapter One:
-\begin{ChapterStart}
-\vspace*{3\nbs}
-\ChapterTitle{Chapter One}
-\end{ChapterStart}
-```
+{{< chapter "Chapter One" vspace_before="3">}}
 
 It was a dark and stormy night. Lord Withens rode his horse through the gloom, which was, as heretofore mentioned, dark. Most gloom is dark, eh wot?
 

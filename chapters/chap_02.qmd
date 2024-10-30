@@ -1,11 +1,4 @@
-```{=latex}
-% Chapter Two:
-\clearpage % next chapter may begin recto or verso
-\begin{ChapterStart}
-\vspace*{3\nbs}
-\ChapterTitle{Chapter Two}
-\end{ChapterStart}
-```
+{{< chapter "Chapter Two" >}}
 
 The night was still dark and stormy. This should not be surprising, seeing as how only half an hour has elapsed since the first chapter. That information was necessary, in case you put the book down and haven't read any of it for the last two weeks.
 
