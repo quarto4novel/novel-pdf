@@ -133,7 +133,7 @@ where they are placed as specified in
 - [x] **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
 - [ ] **epigraph shortcode**:
 - [ ] **toc shortcode**
-- [x] **vspace shortcode**: add vertical space by a number of lines
+- [x] **emptylines shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**
 
 

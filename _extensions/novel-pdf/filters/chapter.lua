@@ -4,12 +4,12 @@ local raw_latex_open <const> = [[
 \begin{ChapterStart}]]
 
 if FORMAT:match 'latex' then
-	local vspace_before_title_from_meta
-	local vspace_before_subtitle_from_meta
+	local lines_before_title_from_meta
+	local lines_before_subtitle_from_meta
 
 	function get_vspaces_from_meta(meta)
-		vspace_before_title_from_meta = pandoc.utils.stringify(meta.chapters.vspace_before_title)
-		vspace_before_subtitle_from_meta = pandoc.utils.stringify(meta.chapters.vspace_before_subtitle)
+		lines_before_title_from_meta = pandoc.utils.stringify(meta.chapters.title.lines_before)
+		lines_before_subtitle_from_meta = pandoc.utils.stringify(meta.chapters.subtitle.lines_before)
 	end
 
 	function table_contains(table, value)
@@ -23,7 +23,7 @@ if FORMAT:match 'latex' then
 	local chapter_titles_from_header = {
 		Header = function(header)
 			if header.level == 1 then
-				local lines = vspace_before_title_from_meta
+				local lines = lines_before_title_from_meta
 				local title = pandoc.utils.stringify(header.content)
 
 				local raw_latex_vspace = string.format(
@@ -37,7 +37,7 @@ if FORMAT:match 'latex' then
 					pandoc.RawBlock('tex', raw_latex_title)
 				}
 			elseif header.level == 2 then
-				local lines = vspace_before_subtitle_from_meta
+				local lines = lines_before_subtitle_from_meta
 				local subtitle = pandoc.utils.stringify(header.content)
 
 				local raw_latex_vspace = string.format(

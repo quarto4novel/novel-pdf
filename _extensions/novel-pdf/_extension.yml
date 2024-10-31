@@ -11,6 +11,6 @@ contributes:
     - shortcodes/chapter.lua
     - shortcodes/scenebreak.lua
     - shortcodes/mainmatter.lua
-    - shortcodes/vspace.lua
+    - shortcodes/emptylines.lua
   filters:
     - filters/chapter.lua

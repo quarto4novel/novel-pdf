@@ -1,11 +1,11 @@
 function chapter(args, kwargs, meta)
     -- Retreive parameters
     local chapter_name = pandoc.utils.stringify(args[1])
-    local vspace_before = pandoc.utils.stringify(kwargs.vspace_before)
+    local lines_before = pandoc.utils.stringify(kwargs.lines_before)
 
     -- Set default value for parameters if needed
-    if vspace_before == "" then
-        vspace_before = pandoc.utils.stringify(meta.chapters.vspace_before_title)
+    if lines_before == "" then
+        lines_before = pandoc.utils.stringify(meta.chapters.title.lines_before)
     end
 
     -- This shortcode is only for pdf
@@ -20,7 +20,7 @@ function chapter(args, kwargs, meta)
         \vspace*{%s\nbs}
         \ChapterTitle{%s}
         \end{ChapterStart}]],
-        vspace_before, chapter_name)
+        lines_before, chapter_name)
 
     return pandoc.RawBlock('tex', raw_latex)
 end

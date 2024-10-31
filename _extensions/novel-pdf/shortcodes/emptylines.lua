@@ -1,10 +1,10 @@
-function vspace(args)
+function emptylines(args)
     -- Retreive parameters
     local lines
     if #args == 1 then
         lines = pandoc.utils.stringify(args[1])
     else
-        error(string.format("vspace shortcode has %s arguments but it can ony have one arguments.", #args))
+        error(string.format("emptylines shortcode has %s arguments but it can ony have one arguments.", #args))
     end
 
     -- This shortcode is only for pdf
