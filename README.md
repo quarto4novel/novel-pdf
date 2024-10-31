@@ -35,6 +35,14 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
+- [x] headings: only level 1 `# chapter tile` and level 2 `## chapter subtitle`
+    are allowed and only in chapter div:
+    ```qmd
+    :::{.chapter}
+    # chapter tile
+    ## chapter subtitle
+    :::
+    ```
 - [ ] blockquotes
 - [ ] line blocks
 - [ ] source code without language specification
@@ -55,8 +63,6 @@ footnote for the moment⚠️
 Some very common feature of markdown are not supported by pdf-novel, don't try
 to use them:
 
-- **headings** `# level one title`, `## level two title`, etc they are replaced
-by the `{{< chapter My chapter One >}}` shortcode.
 - **lists** are typeset using layout incompatible with the rest of novel as
 specified in the
 [novel class documentation about lists and tables](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h8)
