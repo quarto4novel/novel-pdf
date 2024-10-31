@@ -21,3 +21,6 @@ format:
     latex-min-runs: 1
     latex-max-runs: 1
     latex-clean: true
+
+filters:
+  - novel-pdf

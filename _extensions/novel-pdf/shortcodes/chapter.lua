@@ -5,7 +5,7 @@ function chapter(args, kwargs, meta)
 
     -- Set default value for parameters if needed
     if vspace_before == "" then
-        vspace_before = pandoc.utils.stringify(meta.chapters.vspace_before)
+        vspace_before = pandoc.utils.stringify(meta.chapters.vspace_before_title)
     end
 
     -- This shortcode is only for pdf

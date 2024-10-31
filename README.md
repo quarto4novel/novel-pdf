@@ -88,12 +88,22 @@ where they are placed as specified in
 
 ## Novel specific features
 
-- [x] **chapter shortcode**: fictional works have a very specific structure that
-    do not correspond to academic structure used by classical LaTeX document. In
-    particular the hierarchical `\part`, `\section`, `\chapter`, etc is not used
-    in novels (see: [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
+- [x] **chapter shortcode** and **chapter div**: fictional works have a very
+    specific structure that do not correspond to academic structure used by
+    classical LaTeX document. In particular the hierarchical `\part`,
+    `\section`, `\chapter`, etc is not used in novels (see:
+    [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
     ). That's why we provide a `{{< chapter "My chapter One" >}}` shortcode to
-    create a chapter easily
+    create a chapter easily and a div class that let you create advanced
+    chapters header with title, subtitle using level 1 and 2 headers and other
+    content:
+
+    ```qmd
+    :::{.chapter}
+    # My Super Chapter Title
+    ## And a wonderful subtitle to go with it
+    :::
+    ```
 - [x] **scenebreak shortcode**: mark a seperation in the text flow. Three
     different kind of scene breake are possible `{{< scenebreak blank >}}`,
     `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the

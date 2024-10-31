@@ -1,4 +1,7 @@
-{{< chapter "Chapter Three" vspace_before="3">}}
+:::{.chapter}
+# Chapter Three
+## Where we are going to present all the feature
+:::
 
 You can use *italics*, **bold**, ***bold italics***, superscript^2^, subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
 

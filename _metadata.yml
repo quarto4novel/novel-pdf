@@ -72,7 +72,8 @@ front-matter:
     by: "Claudius"  # Optional
 
 chapters:
-  vspace_before: 3
+  vspace_before_title: 3
+  vspace_before_subtitle: 1
 
 # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3
 scenebreaks:
