@@ -14,7 +14,8 @@
 \documentclass[v2,$lang$]{novel} % v. 2.1.
 
 % Novel class config
-\SetMarkerStyle{number} % https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.4.1
+\SetChapterStartHeight{$chapters.header_height$}  % https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.1.2.2
+\SetMarkerStyle{number}  % https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.4.1
 $if(scenebreaks.indent)$
 \SetScenebreakIndent{true}
 $endif$

@@ -72,6 +72,7 @@ front-matter:
     by: "Claudius"  # Optional
 
 chapters:
+  header_height: 10  # in number of lines
   title:
     lines_before: 3
   subtitle:

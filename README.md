@@ -110,6 +110,15 @@ where they are placed as specified in
     ## And a wonderful subtitle to go with it
     :::
     ```
+
+    And with height specified:
+
+    ```qmd
+    :::{.chapter height=20}
+    # My Super Chapter Title
+    ## And a wonderful subtitle to go with it
+    :::
+    ```
 - [x] **scenebreak shortcode**: mark a seperation in the text flow. Three
     different kind of scene breake are possible `{{< scenebreak blank >}}`,
     `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the

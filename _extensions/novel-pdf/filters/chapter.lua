@@ -1,7 +1,7 @@
 -- LaTeX multiline string declared here so that it does not have useless indentation
-local raw_latex_open <const> = [[
+local raw_latex_open_fmt <const> = [[
 \clearpage %% next chapter may begin recto or verso
-\begin{ChapterStart}]]
+\begin{ChapterStart}%s]]
 
 if FORMAT:match 'latex' then
 	local lines_before_title_from_meta
@@ -59,13 +59,22 @@ if FORMAT:match 'latex' then
 
 	function chapter_start_from_div(div)
 		if table_contains(div.classes, "chapter") then
-		    content = div:walk(chapter_titles_from_header)
+			-- Retreive the height of the chapter header in the attribute of the div if provided
+			local nb_lines_config
+			if div.attributes.height then
+				nb_lines_config = string.format("[%s]", pandoc.utils.stringify(div.attributes.height))
+			else
+				nb_lines_config = ""
+			end
+
+			local raw_latex_open = string.format(raw_latex_open_fmt, nb_lines_config)
+
+		    local content = div:walk(chapter_titles_from_header)
 
 			local raw_latex_close = [[\end{ChapterStart}]]
 
 			return {
 				pandoc.RawBlock('tex', raw_latex_open),
-				-- pandoc.RawBlock('tex', raw_latex_content),
 				content,
 				pandoc.RawBlock('tex', raw_latex_close),
 			}
