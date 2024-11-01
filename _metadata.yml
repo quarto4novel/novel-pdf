@@ -14,44 +14,44 @@ isbn: "0-12345678-9"
 publisher:
   name: "Independantly published by {{< meta author >}}"  # Publisher is you, not the print/distribution service.
   location: "Anytown • Anyplace • Anywhere"  # As precise as you want from country to exact address
-  online-contact: "www.example.com/dhardcase/publications/"  # Contact for publisher or author, email or website
-  catalog-mention: |  # Fiction often does not need catalog data. (Optional)
+  online_contact: "www.example.com/dhardcase/publications/"  # Contact for publisher or author, email or website
+  catalog_mention: |  # Fiction often does not need catalog data. (Optional)
     | Publisher's Cataloging-In-Publication Data
     | available upon request.
-  full-mention: |
+  full_mention: |
     {{< meta publisher.name >}},\
     {{< meta publisher.location >}}
 
-    {{< meta publisher.online-contact >}}
+    {{< meta publisher.online_contact >}}
 
     `\null`{=latex}
-    {{< meta publisher.catalog-mention >}}
+    {{< meta publisher.catalog_mention >}}
 
 # Can be copyrights, copyleft, licence
-legal-rights: |
+legal_rights: |
   Copyright ©2024 {{< meta author >}}.
 
   All Rights Reserved.
 
 # Or similar language (default to "This is a work of fiction..." and so on boiler plate)
-fiction-mention: |
+fiction_mention: |
   | This is a work of fiction.
   | All persons and events are
   | from the author's imagination.
   | Resemblance to any real person,
   | living or dead, is coincidental.
 
-front-matter:
-  # Optional half-title in LaTeX (if not provided we use the title)
-  half-title: |
+front_matter:
+  # Optional half_title in LaTeX (if not provided we use the title)
+  half_title: |
     ```{=latex}
     \vspace*{6\nbs}
     \hfill\charscale[1.8]{\textbf{Live Long and}}\par
     \vspace{\nbs}
     \hfill\charscale[2.4]{\textbf{\color{gray}Die Hard}}\par
     ```
-  # Optional full-title in LaTeX (if not provided we use the title)
-  full-title: |
+  # Optional full_title in LaTeX (if not provided we use the title)
+  full_title: |
     ```{=latex}
     \charscale[3.6]{\textbf{Live long and}}\par
     \vspace{2\nbs}

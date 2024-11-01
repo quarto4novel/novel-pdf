@@ -46,10 +46,10 @@ $tightlist.tex()$
 
 \frontmatter
 
-% i. Half-Title page:
+% i. half_title page:
 \thispagestyle{empty}
-$if(front-matter.half-title)$
-$front-matter.half-title$
+$if(front_matter.half_title)$
+$front_matter.half_title$
 $else$
 \vspace*{6\nbs}
 \hfill\charscale[2.4]{\textbf{\theTitle}}\par
@@ -65,8 +65,8 @@ $endif$
 \thispagestyle{empty}
 \vspace*{5\nbs}
 \begin{center}
-$if(front-matter.full-title)$
-$front-matter.full-title$
+$if(front_matter.full_title)$
+$front_matter.full_title$
 $else$
 \charscale[3.6]{\textbf{\theTitle}}\par
 $endif$
@@ -93,10 +93,10 @@ $publisher.location$}\par
 \textsc{\theTitle}\par
 \par
 
-$legal-rights$\par
+$legal_rights$\par
 \null
-$if(fiction-mention)$
-$fiction-mention$\par
+$if(fiction_mention)$
+$fiction_mention$\par
 $else$
 This is a work of fiction.\\
 All persons and events are\\
@@ -108,21 +108,21 @@ $endif$
 ISBN $isbn$\par % Whatever it is. No barcode, just number.
 \null
 
-$publisher.full-mention$
+$publisher.full_mention$
 } % end itshape
 \end{center}
 \clearpage
 
-% v. Epigraph, Dedication, Table of Contents, or repeated Half-Title.
+% v. Epigraph, Dedication, Table of Contents, or repeated half_title.
 
 % Epigraph:
 % See: # See: https://style.mla.org/styling-epigraphs/
-$if(front-matter.epigraph)$
+$if(front_matter.epigraph)$
 \thispagestyle{empty}
 \vspace*{7\nbs}
 \begin{adjustwidth}{4em}{4em}
-{\itshape \noindent $front-matter.epigraph.text$\par}
-\hfill--- $front-matter.epigraph.by$, ``$front-matter.epigraph.from$''\par
+{\itshape \noindent $front_matter.epigraph.text$\par}
+\hfill--- $front_matter.epigraph.by$, ``$front_matter.epigraph.from$''\par
 \end{adjustwidth}
 $endif$
 
