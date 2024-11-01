@@ -7,6 +7,36 @@ author: "Ian McTiernan"
 ##############################################################################
 ## Config specific to novel
 
+# Different rendering mode (you can set only one of them to true !):
+# - printready: final PDF-X file ready to be printed even for professionnal.
+# - cropmarks: display cuting marks (do not use unless required).
+# - draft: Faster rendering time, can cause overflull hbox warning while
+#   compiling, ideal fro quick and dirty rendering, the word DRAFT will appear
+#   at the upper left of each page.
+# - shademargins: Helps to visualize and detect possible layout problems by
+#   applying dark gray shade to unsafe areas. This is always a DRAFT rendering.
+# - cropview: a narrower view of the document (ignored if Trim Size is same as
+#   Media Size). This is always a DRAFT rendering.
+# - closecrop: very close view of the document (minimize all possible whitespace
+#   around your doc). It's useful to proofread your documents on a portable
+#   device (phone, tablet, e-reader). This is NOT an e-book. It does not meet
+#   e-book standards, and cannot be changed to meet e-book standards.
+# - sandbox: Specific mode designed to produce pages otherwise impossible to
+#   render due to LaTeX packages incompatibilities. Doc produced are limited to
+#   4 pages. Use this only to produce pages impossible to produce otherwise:
+#   with graphics, tables, etc.
+#
+# It is also possible to set this option just for one render via command line:
+#
+# quarto render -M special_rendering:draft
+#
+# Some of these option (cropmarks, cropview) makes only a difference for certain
+# trimsize or mediasize.
+#
+# Those correspond to options of the novel class
+# See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h2
+special_rendering: printready
+
 # Mandatory (you can provide an obviously fake one before having one)
 isbn: "0-12345678-9"
 

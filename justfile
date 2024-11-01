@@ -21,5 +21,14 @@ book-luatex: clean-luatex
 clean:
 	rm -rf .quarto _novel
 
-book: clean
-	quarto render && evince $(find _novel/*.pdf -maxdepth 0 -type f)
+view:
+	evince $(find _novel/*.pdf -maxdepth 0 -type f)
+
+book: clean && view
+	quarto render
+
+draft: clean && view
+	quarto render -M special_rendering:draft
+
+fakeebook: clean && view
+	quarto render -M special_rendering:closecrop

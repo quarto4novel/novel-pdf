@@ -13,4 +13,5 @@ contributes:
     - shortcodes/mainmatter.lua
     - shortcodes/emptylines.lua
   filters:
+    - filters/novel_class_options.lua
     - filters/chapter.lua

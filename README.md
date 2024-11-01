@@ -150,6 +150,9 @@ where they are placed as specified in
 - [ ] **toc shortcode**
 - [x] **emptylines shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**
+- [x] Different **rendering mode** adapted to different stage of writing or
+    reviewing: printready, cropmarks, shademargins, cropview, closecrop and
+    sandbox. They are detailed and documented in `_metadata.yml`.
 
 
 ## Example
