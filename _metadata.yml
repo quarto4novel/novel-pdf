@@ -114,3 +114,13 @@ scenebreaks:
   indent: false
   # blank or line or stars
   default: blank
+
+epigraphs:
+  # aditional margins for the epigraphs (you must provide a number with a LaTeX compatible length unit)
+  lmargin: 4em
+  rmargin: 4em
+  # blank lines to put before and after each epigraph
+  lines_before: 1
+  lines_after: 1
+  # Set to true if you want paragraphs inside the epigraph to have indent just like any other paragraphs in the document
+  keepindent: false

@@ -54,3 +54,37 @@ Now we jump 5 lines with `emptylines` shortcode
 {{< emptylines 5 >}}
 
 Jumped!
+
+You can use an epigraph with an `epigraph` div:
+
+:::{.epigraph by="John Lennon" from="An interview"}
+When I was 5 years old, my mother always told me that happiness was the key
+to life. When I went to school, they asked me what I wanted to be when I
+grew up. I wrote down ‘happy’. They told me I didn’t understand the
+assignment, and I told them they didn’t understand life.
+:::
+
+You can even use an epigraph with multiple paragraphs:
+
+:::{.epigraph by="John Lennon" from="An interview"}
+When I was 5 years old, my mother always told me that happiness was the key
+to life. When I went to school, they asked me what I wanted to be when I
+grew up. I wrote down ‘happy’. They told me I didn’t understand the
+assignment, and I told them they didn’t understand life.
+
+When I was 5 years old, my mother always told me that happiness was the key
+to life. When I went to school, they asked me what I wanted to be when I
+grew up. I wrote down ‘happy’. They told me I didn’t understand the
+assignment, and I told them they didn’t understand life.
+:::
+
+...or with line block:
+
+:::{.epigraph by="Robert Frost" from="Nothing Gold Can Stay"}
+| Nature's first green is gold,
+| Her hardest hue to hold.
+| Her early leaf's a flower;
+| But only so an hour.
+:::
+
+{{< lipsum 1 >}}

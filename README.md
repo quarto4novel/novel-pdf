@@ -145,8 +145,47 @@ where they are placed as specified in
         indent: false
         default: blank
     ```
-- [x] **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
-- [ ] **epigraph shortcode**:
+- [x] **mainmatter shortcode**: mark the begining of your story
+    `{{< mainmatter >}}`
+- [ ] **epigraph filter**: include an epigraph (poem or citation) with author
+    and source:
+
+    ```qmd
+    :::{.epigraph by="John Lennon" from="An interview"}
+    When I was 5 years old, my mother always told me that happiness was the key
+    to life. When I went to school, they asked me what I wanted to be when I
+    grew up. I wrote down ‘happy’. They told me I didn’t understand the
+    assignment, and I told them they didn’t understand life.
+    :::
+    ```
+
+    or
+
+    ```
+    :::{.epigraph by="Robert Frost" from="Nothing Gold Can Stay"}
+    | Nature's first green is gold,
+    | Her hardest hue to hold.
+    | Her early leaf's a flower;
+    | But only so an hour.
+    :::
+    ```
+    Available attributes:
+
+    - `lmargin` and `rmargin` to control the left and right margins
+    - `lines_before` and `lines_after` to jump a certain amount of lines before
+      and after the epigraph
+    - `keepindend` to let the paragraphs inside the epigraph have an indend like
+      any other paragraphs
+
+    Available metadata:
+
+    - `epigraphs.lmargin` and `epigraphs.rmargin` default values for `lmargin`
+      and `rmargin` attributes for the whole document
+    - `epigraphs.lines_before` and `epigraphs.lines_after` default values for
+      `lines_before` and `lines_after`for the whole document
+    - `epigraphs.keepindend` default value for `keepindent` attribute for the
+      whole document
+
 - [ ] **toc shortcode**
 - [x] **emptylines shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**

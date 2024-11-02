@@ -15,3 +15,4 @@ contributes:
   filters:
     - filters/novel_class_options.lua
     - filters/chapter.lua
+    - filters/epigraph.lua
