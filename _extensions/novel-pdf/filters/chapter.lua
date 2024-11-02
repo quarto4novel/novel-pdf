@@ -1,7 +1,9 @@
+local utils = require "utils"
+
 -- LaTeX multiline string declared here so that it does not have useless indentation
 local raw_latex_open_fmt <const> = [[
 \clearpage %% next chapter may begin recto or verso
-\begin{ChapterStart}%s]]
+\begin{ChapterStart}%{options}s]]
 
 if FORMAT:match 'latex' then
 	local lines_before_title_from_meta
@@ -12,13 +14,6 @@ if FORMAT:match 'latex' then
 		lines_before_subtitle_from_meta = pandoc.utils.stringify(meta.chapters.subtitle.lines_before)
 	end
 
-	function table_contains(table, value)
-	  for _, v in ipairs(table) do
-	    if v == value then return true end
-	  end
-	  return false
-	end
-
 	-- Used localy inside chapter div
 	local chapter_titles_from_header = {
 		Header = function(header)
@@ -26,11 +21,8 @@ if FORMAT:match 'latex' then
 				local lines = lines_before_title_from_meta
 				local title = pandoc.utils.stringify(header.content)
 
-				local raw_latex_vspace = string.format(
-			        [[\vspace*{%s\nbs}]], lines)
-
-				local raw_latex_title = string.format(
-			        [[\ChapterTitle{%s}]], title)
+				local raw_latex_vspace = [[\vspace*{%(lines)s\nbs}]] % {lines=lines}
+				local raw_latex_title = [[\ChapterTitle{%(title)s}]] % {title=title}
 
 				return {
 					pandoc.RawBlock('tex', raw_latex_vspace),
@@ -40,11 +32,8 @@ if FORMAT:match 'latex' then
 				local lines = lines_before_subtitle_from_meta
 				local subtitle = pandoc.utils.stringify(header.content)
 
-				local raw_latex_vspace = string.format(
-			        [[\vspace*{%s\nbs}]], lines)
-
-				local raw_latex_subtitle = string.format(
-			        [[\ChapterSubtitle{%s}]], subtitle)
+				local raw_latex_vspace = [[\vspace*{%(lines)s\nbs}]] % {lines=lines}
+				local raw_latex_subtitle = [[\ChapterSubtitle{%(subtitle)s}]] % {subtitle=subtitle}
 
 				return {
 					pandoc.RawBlock('tex', raw_latex_vspace),
@@ -58,16 +47,16 @@ if FORMAT:match 'latex' then
 	}
 
 	function chapter_start_from_div(div)
-		if table_contains(div.classes, "chapter") then
+		if utils.table_contains(div.classes, "chapter") then
 			-- Retreive the height of the chapter header in the attribute of the div if provided
 			local nb_lines_config
 			if div.attributes.height then
-				nb_lines_config = string.format("[%s]", pandoc.utils.stringify(div.attributes.height))
+				nb_lines_config = "[%(height)s]" % {height=pandoc.utils.stringify(div.attributes.height)}
 			else
 				nb_lines_config = ""
 			end
 
-			local raw_latex_open = string.format(raw_latex_open_fmt, nb_lines_config)
+			local raw_latex_open = raw_latex_open_fmt % {options=nb_lines_config}
 
 		    local content = div:walk(chapter_titles_from_header)
 

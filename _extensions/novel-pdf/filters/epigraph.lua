@@ -1,43 +1,30 @@
+local utils = require "utils"
+
 -- LaTeX multiline strings declared here so that it does not have useless indentation
 local raw_latex_open_format <const> = [[
-\vspace*{%s\nbs}
-\begin{adjustwidth}{%s}{%s}
+\vspace*{%(lines_before)s\nbs}
+\begin{adjustwidth}{%(lmargin)s}{%(rmargin)s}
 {\itshape]]
 
 local raw_latex_close_format <const> = [[
 \par}
-\hfill--- %s, ``%s''\par
+\hfill--- %(by)s, ``%(from)s''\par
 \end{adjustwidth}
-\vspace*{%s\nbs}]]
+\vspace*{%(lines_after)s\nbs}]]
 
 if FORMAT:match 'latex' then
 	local from_meta = {}
 
 	function get_margins_from_meta(meta)
-		from_meta.lmargin = pandoc.utils.stringify(meta.epigraphs.lmargin)
-		from_meta.rmargin = pandoc.utils.stringify(meta.epigraphs.rmargin)
-		from_meta.lines_before = pandoc.utils.stringify(meta.epigraphs.lines_before)
-		assert(
-			tonumber(from_meta.lines_before),
-			"invalid epigraphs.lines_before metadata: " .. from_meta.lines_before .. " is not a number"
-		)
-		from_meta.lines_after = pandoc.utils.stringify(meta.epigraphs.lines_after)
-		assert(
-			tonumber(from_meta.lines_after),
-			"invalid epigraphs.lines_after metadata: " .. from_meta.lines_after .. " is not a number"
-		)
+		from_meta.lmargin = meta.epigraphs.lmargin
+		from_meta.rmargin = meta.epigraphs.rmargin
+		from_meta.lines_before = meta.epigraphs.lines_before
+		from_meta.lines_after = meta.epigraphs.lines_after
 		from_meta.keepindent = meta.epigraphs.keepindent
 		assert(
 			pandoc.utils.type(from_meta.keepindent) == 'boolean',
-			"invalid epigraphs.keepindent metadata: " .. tostring(from_meta.keepindent) .. " is not a boolean"
+			"invalid epigraphs.keepindent metadata: $(actual)s is not a boolean" % {actual=from_meta.keepindent}
 		)
-	end
-
-	function table_contains(table, value)
-	  for _, v in ipairs(table) do
-	    if v == value then return true end
-	  end
-	  return false
 	end
 
 	-- Used localy inside epigraph div
@@ -48,57 +35,27 @@ if FORMAT:match 'latex' then
 	}
 
 	function epigraph_from_div(div)
-		if table_contains(div.classes, "epigraph") then
+		if utils.table_contains(div.classes, "epigraph") then
 			-- Retreive the relevant attributes of the div if provided
 			-- Eventualy defaulting to value provided in meta
-			local lmargin
-			if div.attributes.lmargin then
-				lmargin = pandoc.utils.stringify(div.attributes.lmargin)
-			else
-				lmargin = from_meta.lmargin
-			end
+			local lmargin = pandoc.utils.stringify(div.attributes.lmargin or from_meta.lmargin)
+			local rmargin = pandoc.utils.stringify(div.attributes.rmargin or from_meta.rmargin)
+			local lines_before = pandoc.utils.stringify(div.attributes.lines_before or from_meta.lines_before)
+			assert(tonumber(lines_before),
+				"invalid lines_before attribute or meta: %(actual) is not a number" % {actual=lines_before})
+			local lines_after = pandoc.utils.stringify(div.attributes.lines_after or from_meta.lines_after)
+			assert(tonumber(lines_after),
+				"invalid lines_after attribute or meta: %(actual) is not a number" % {actual=lines_after})
+			local keepindent = (div.attributes.keepindent ~= nil or from_meta.keepindent)
+			assert(pandoc.utils.type(from_meta.keepindent) == 'boolean',
+				"invalid epigraphs.keepindent attr or metadata: $(actual)s is not a boolean" % {actual=from_meta.keepindent})
 
-			local rmargin
-			if div.attributes.rmargin then
-				rmargin = pandoc.utils.stringify(div.attributes.rmargin)
-			else
-				rmargin = from_meta.rmargin
-			end
+			-- local attributes (with no meta default value)
+			local by = div.attributes.by and pandoc.utils.stringify(div.attributes.by)
+			local from = div.attributes.from and pandoc.utils.stringify(div.attributes.from)
 
-			local lines_before
-			if div.attributes.lines_before then
-				lines_before = pandoc.utils.stringify(div.attributes.lines_before)
-			else
-				lines_before = from_meta.lines_before
-			end
-			assert(tonumber(lines_before), "invalid lines_before attribute: " .. lines_before .. " is not a number")
-
-			local lines_after
-			if div.attributes.lines_after then
-				lines_after = pandoc.utils.stringify(div.attributes.lines_after)
-			else
-				lines_after = from_meta.lines_after
-			end
-			assert(tonumber(lines_after), "invalid lines_after attribute: " .. lines_after .. " is not a number")
-
-			local keepindent
-			if div.attributes.keepindent then
-				keepindent = true
-			else
-				keepindent = from_meta.keepindent
-			end
-
-			local by
-			if div.attributes.by then
-				by = pandoc.utils.stringify(div.attributes.by)
-			end
-
-			local from
-			if div.attributes.from then
-				from = pandoc.utils.stringify(div.attributes.from)
-			end
-
-			local raw_latex_open = string.format(raw_latex_open_format, lines_before, lmargin, rmargin)
+			-- Now we generate the LaTeX code for the div
+			local raw_latex_open = raw_latex_open_format % {lines_before=lines_before, lmargin=lmargin, rmargin=rmargin}
 
 			local content
 			if keepindent then
@@ -107,7 +64,7 @@ if FORMAT:match 'latex' then
 		    	content = div:walk(make_para_noindent)
 		    end
 
-			local raw_latex_close = string.format(raw_latex_close_format, by, from, lines_after)
+			local raw_latex_close = raw_latex_close_format % {by=by, from=from, lines_after=lines_after}
 
 			return {
 				pandoc.RawBlock('tex', raw_latex_open),

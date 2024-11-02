@@ -1,13 +1,6 @@
+local utils = require "utils"
 
 if FORMAT:match 'latex' then
-
-	function table_contains(table, value)
-	  for _, v in ipairs(table) do
-	    if v == value then return true end
-	  end
-	  return false
-	end
-
 	-- Create a valid set of options for the novel class according to the metadata provided
 	-- The resulting options are stored in an array in the class_options metadata
 	-- See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h2
@@ -32,10 +25,15 @@ if FORMAT:match 'latex' then
 		elseif spcl_rendering == "sandbox" then
 			meta.class_options = {"v2", lang, "sandbox"}
 		else
-			error(string.format("special_rendering metadata has value '%s' but the only possible values are: printready, cropmarks, draft, shademargins, cropview, closecrop and sandbox", spcl_rendering))
+			error(
+				"special_rendering metadata has value '%(actual)s' but \z
+				the only possible values are: \z
+				printready, cropmarks, draft, \z
+				shademargins, cropview, closecrop and sandbox" % {actual=spcl_rendering}
+			)
 		end
 
-		if table_contains(meta.class_options, "draft") then
+		if utils.table_contains(meta.class_options, "draft") then
 			meta.draft_watermark = true
 		end
 
