@@ -2,6 +2,23 @@
 output-file: my_novel.pdf
 ---
 
+<!-- Page v: Epigraph, Dedication, Table of Contents, or repeated half_title. -->
+
+```{=latex}
+\thispagestyle{empty}
+```
+
+<!-- Epigraph: -->
+<!-- Note that since epigraphs are ornamental in nature, they are usually not -->
+<!-- considered fair use. Publishers often require writers to seek permission -->
+<!-- to quote material for epigraphs, especially lyrics and modern poetry. -->
+<!-- See: https://style.mla.org/styling-epigraphs/ -->
+:::{.epigraph from="Prophecy of Claudius" by="Claudius" lines_before=7}
+| When the lone raccoon howls at dusk,
+| And white birds cease their twitter,
+| Then shall the rivers overflow with mead.
+:::
+
 {{< mainmatter >}}
 
 {{< include chapters/chap_01.qmd >}}

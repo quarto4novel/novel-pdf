@@ -88,19 +88,6 @@ front_matter:
     \charscale[4.8]{\textbf{\color{gray}Die Hard}}\par
     ```
 
-  # Note that since epigraphs are ornamental in nature, they are usually not
-  # considered fair use. Publishers often require writers to seek permission
-  # to quote material for epigraphs, especially lyrics and modern poetry.
-  # See: https://style.mla.org/styling-epigraphs/
-  # Optional
-  epigraph:
-    text: |
-      | When the lone raccoon howls at dusk,
-      | And white birds cease their twitter,
-      | Then shall the rivers overflow with mead.
-    from: "Prophecy of Claudius"  # Optional
-    by: "Claudius"  # Optional
-
 chapters:
   header_height: 10  # in number of lines
   title:

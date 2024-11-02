@@ -125,19 +125,6 @@ $publisher.full_mention$
 \end{center}
 \clearpage
 
-% v. Epigraph, Dedication, Table of Contents, or repeated half_title.
-
-% Epigraph:
-% See: # See: https://style.mla.org/styling-epigraphs/
-$if(front_matter.epigraph)$
-\thispagestyle{empty}
-\vspace*{7\nbs}
-\begin{adjustwidth}{4em}{4em}
-{\itshape \noindent $front_matter.epigraph.text$\par}
-\hfill--- $front_matter.epigraph.by$, ``$front_matter.epigraph.from$''\par
-\end{adjustwidth}
-$endif$
-
 $body$
 
 \end{document}
