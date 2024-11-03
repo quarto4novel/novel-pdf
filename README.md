@@ -44,19 +44,22 @@ footnote for the moment⚠️
     :::
     ```
 - [ ] blockquotes
-- [ ] line blocks
+- [x] line blocks
 - [ ] source code without language specification
 - [ ] source code with language specification
-- [ ] raw content block
-- [ ] raw content inline
+- [x] raw content block
+- [x] raw content inline
 - [ ] inline math
 - [ ] display math
+- [ ] images `![Caption](elephant.png)`
 - [ ] callout blocks
-- [ ] div attributes
+- [x] div attributes
 - [ ] span attributes
 - [ ] endash `--`
 - [ ] emdash `---`
 - [ ] elipsis `...`
+- [ ] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
+    white dedicated font
 
 ## Unsupported markdown feature
 
@@ -70,7 +73,6 @@ specified in the
 ***task lists**.
 - **tables** are typeset using layout incompatible with the rest of novel as
 specified in the [novel class documentation about lists and tables](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h8)
-- images `![Caption](elephant.png)` ???
 - source code with file name
 - any advanced math
 - diagrams
@@ -147,6 +149,8 @@ where they are placed as specified in
     ```
 - [x] **mainmatter shortcode**: mark the begining of your story
     `{{< mainmatter >}}`
+- [ ] **page header** and **page footer** control
+- [ ] **newpage shortcode** with `torecto` attribute support
 - [ ] **epigraph filter**: include an epigraph (poem or citation) with author
     and source:
 
@@ -185,6 +189,52 @@ where they are placed as specified in
       `lines_before` and `lines_after`for the whole document
     - `epigraphs.keepindend` default value for `keepindent` attribute for the
       whole document
+
+- [ ] **raw div formating** and **raw span formating**: classes that can be
+    applied to any div or span. ⚠️ ***markdown favors meaning over presentation
+    so those classes should not be used directly in your document, prefer the
+    semantic classes (see below) that are more suited for clean, meaning centered,
+    wrinting.*** ⚠️
+
+    Here are the available classes:
+
+    - [ ] **bold**
+    - [ ] *italic*
+    - [ ] ~~strikethrough~~
+    - [ ] smallcaps
+    - [ ] noindent (div only)
+    - [ ] font=???
+    - [ ] scale=???
+    - [ ] lang=???
+    - [ ] lmargin=??? (div only): left margin
+    - [ ] rmargin=??? (div only): right margin
+    - [ ] bmargin=??? (div only): equal margins (left and right with the same
+        value)
+    - [ ] align=left/right/centered
+
+- [ ] **semantic div formating** and **semantic span formating**: you can define
+    specific classes in the `semantic_classes` metadata and specify which
+    **raw formating classes** you want to apply to that class (see this as a
+    very simple CSS system). Here is a typical config `_metadata.yml`:
+
+    ```yaml
+    semantic_classes:
+        greek_lang: [italic, lang=greek]
+        robot_speech: [bold, font=sf_futuristic_font]
+        shout: [scale=1.5, smallcaps]
+        whisper: [scale=0.8]
+        hand_written: [scale=1.2, font=my_cursive_font]
+    ```
+
+    And here is how to use it in you document:
+
+    ```qml
+    The young boy was afraid but he needed to communicate with his friend so he
+    whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was not
+    the kind of person to hide when confronted to danger. [« Don't worry dude,
+    this monstruous teddy bear is nothing like the pirate I crushed last week !
+    »]{.shout}.
+    ```
 
 - [ ] **toc shortcode**
 - [x] **emptylines shortcode**: add vertical space by a number of lines
