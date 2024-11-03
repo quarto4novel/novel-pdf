@@ -35,7 +35,7 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
-- [x] headings: only level 1 `# chapter tile` and level 2 `## chapter subtitle`
+- [x] headings (inside `.chapter` divs): only level 1 `# chapter tile` and level 2 `## chapter subtitle`
     are allowed and only in chapter div:
     ```qmd
     :::{.chapter}
@@ -43,6 +43,9 @@ footnote for the moment⚠️
     ## chapter subtitle
     :::
     ```
+- [ ] headings (outside `.chapter` divs):
+    - level 1: structural parts (front matter, body matter, back matter)
+    - level 2 (in front/back matter): subpart of **front/back matter**
 - [ ] blockquotes
 - [x] line blocks
 - [ ] source code without language specification
@@ -154,11 +157,11 @@ where they are placed as specified in
     recto, without skipping a page.
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if
     necessary inserting a blank verso.
-- [ ] **null shortcode**
-- [ ] **emptypage shortcode**
+- [x] **emptypage shortcode**
+- [x] **null shortcode**
 - [ ] **vertical_fill shortcode**
 - [ ] **horizontal_fill shortcode**
-- [ ] **epigraph filter**: include an epigraph (poem or citation) with author
+- [x] **epigraph filter**: include an epigraph (poem or citation) with author
     and source:
 
     ```qmd

@@ -98,3 +98,11 @@ And you can even ask for for a new page  that force the next page to be recto wi
 {{< cleartorecto >}}
 
 This should appear on a new recto page.
+
+And you can also simply put an empty page using `emptypage` and `clearpage` shortcode:
+
+{{< clearpage >}}
+{{< emptypage >}}
+{{< clearpage >}}
+
+And here is the followup after an empty page.

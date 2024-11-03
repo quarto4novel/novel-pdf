@@ -8,7 +8,7 @@ contributes:
       template: novel-template.tex
       toc: false
   shortcodes:
-    - shortcodes/newpage.lua
+    - shortcodes/pages.lua
     - shortcodes/chapter.lua
     - shortcodes/scenebreak.lua
     - shortcodes/mainmatter.lua
