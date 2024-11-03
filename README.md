@@ -264,5 +264,10 @@ Here are the source code for a three sample chapters:
 
 ## Inspiration
 
-I took heavy inspiration from thos great post about
+I took heavy inspiration from the great post about
 [quarto extensions](https://www.cynthiahqy.com/posts/quarto-extensions-explainer/index.html).
+
+And for book structure:
+
+- [Wikipedia - Book design](https://en.wikipedia.org/wiki/Book_design)
+- [Les différentes parties d’un livre : de la page de titre à la postface](https://www.commentecrire.fr/blog/les-differentes-parties-dun-livre-de-la-page-de-titre-a-la-postface/)
