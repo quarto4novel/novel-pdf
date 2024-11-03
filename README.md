@@ -154,6 +154,7 @@ where they are placed as specified in
     recto, without skipping a page.
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if
     necessary inserting a blank verso.
+- [ ] **null shortcode**
 - [ ] **emptypage shortcode**
 - [ ] **vertical_fill shortcode**
 - [ ] **horizontal_fill shortcode**
