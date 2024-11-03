@@ -150,7 +150,13 @@ where they are placed as specified in
 - [x] **mainmatter shortcode**: mark the begining of your story
     `{{< mainmatter >}}`
 - [ ] **page header** and **page footer** control
-- [ ] **newpage shortcode** with `torecto` attribute support
+- [x] **clearpage shortcode**: provides a new page, which will be verso or
+    recto, without skipping a page.
+- [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if
+    necessary inserting a blank verso.
+- [ ] **emptypage shortcode**
+- [ ] **vertical_fill shortcode**
+- [ ] **horizontal_fill shortcode**
 - [ ] **epigraph filter**: include an epigraph (poem or citation) with author
     and source:
 
@@ -203,6 +209,8 @@ where they are placed as specified in
     - [ ] ~~strikethrough~~
     - [ ] smallcaps
     - [ ] noindent (div only)
+    - [ ] hfill=before/after/both (span only)
+    - [ ] vfill=before/after/both (div only)
     - [ ] font=???
     - [ ] scale=???
     - [ ] lang=???
@@ -210,7 +218,8 @@ where they are placed as specified in
     - [ ] rmargin=??? (div only): right margin
     - [ ] bmargin=??? (div only): equal margins (left and right with the same
         value)
-    - [ ] align=left/right/centered
+    - [ ] align=left/right/centered (div only)
+    - [ ] first_words/last_words=??? (span only)
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
     specific classes in the `semantic_classes` metadata and specify which

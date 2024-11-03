@@ -87,4 +87,14 @@ assignment, and I told them they didn’t understand life.
 | But only so an hour.
 :::
 
-{{< lipsum 1 >}}
+It's also possible to ask for a new page with the `clearpage` shortcode:
+
+{{< clearpage >}}
+
+This should appear on a new page.
+
+And you can even ask for for a new page  that force the next page to be recto with the `cleartorecto` shortcode:
+
+{{< cleartorecto >}}
+
+This should appear on a new recto page.
