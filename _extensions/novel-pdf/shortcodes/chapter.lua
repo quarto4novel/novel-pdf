@@ -1,3 +1,12 @@
+-- LaTeX multiline strings declared here so that it does not have useless indentation
+local raw_latex_format <const> = [[
+\clearpage %% next chapter may begin recto or verso
+\begin{ChapterStart}
+\vspace*{%s\nbs}
+\ChapterTitle{%s}
+\end{ChapterStart}
+]]
+
 function chapter(args, kwargs, meta)
     -- Retreive parameters
     local chapter_name = pandoc.utils.stringify(args[1])
@@ -15,11 +24,7 @@ function chapter(args, kwargs, meta)
     end
 
     local raw_latex = string.format(
-        [[\clearpage %% next chapter may begin recto or verso
-        \begin{ChapterStart}
-        \vspace*{%s\nbs}
-        \ChapterTitle{%s}
-        \end{ChapterStart}]],
+        raw_latex_format,
         lines_before, chapter_name)
 
     return pandoc.RawBlock('tex', raw_latex)
