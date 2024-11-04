@@ -208,22 +208,31 @@ where they are placed as specified in
 
     Here are the available classes:
 
-    - [x] **.bold**
-    - [x] *.italic*
-    - [ ] ~~.strikethrough~~
-    - [ ] .smallcaps
-    - [ ] .noindent (div only)
-    - [ ] hfill=before/after/both (span only)
-    - [ ] vfill=before/after/both (div only)
-    - [ ] font=???
-    - [ ] scale=???
-    - [ ] lang=???
-    - [ ] lmargin=??? (div only): left margin
-    - [ ] rmargin=??? (div only): right margin
-    - [ ] bmargin=??? (div only): equal margins (left and right with the same
-        value)
-    - [ ] align=left/right/centered (div only)
-    - [ ] first_words/last_words=??? (span only)
+    - for divs:
+        - [x] **.bold**
+        - [x] *.italic*
+        - [ ] ~~.strikethrough~~
+        - [ ] .smallcaps
+        - [ ] .noindent
+        - [ ] vfill=before/after/both
+        - [ ] font=???
+        - [ ] scale=???
+        - [ ] lang=???
+        - [ ] lmargin=???: left margin
+        - [ ] rmargin=???: right margin
+        - [ ] bmargin=???: equal margins (left and right with the same
+            value)
+        - [ ] align=left/right/centered (div only)
+    - for spans:
+        - [x] **.bold**
+        - [x] *.italic*
+        - [ ] ~~.strikethrough~~
+        - [ ] .smallcaps
+        - [ ] hfill=before/after/both
+        - [ ] font=???
+        - [ ] scale=???
+        - [ ] lang=???
+        - [ ] first_words/last_words=???
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
     specific classes in the `semantic_classes` metadata and specify which

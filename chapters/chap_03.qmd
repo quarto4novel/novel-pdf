@@ -120,3 +120,5 @@ Now let's try to format multiple paragraps at once using a div with formating at
 :::{.bold .italic}
 {{< lipsum 2 >}}
 :::
+
+And the same thing with spans [this is bold]{.bold} and [this is italic]{.italic} and [this is both]{.bold .italic}, that's it.
