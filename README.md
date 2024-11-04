@@ -208,11 +208,11 @@ where they are placed as specified in
 
     Here are the available classes:
 
-    - [ ] **bold**
-    - [ ] *italic*
-    - [ ] ~~strikethrough~~
-    - [ ] smallcaps
-    - [ ] noindent (div only)
+    - [x] **.bold**
+    - [x] *.italic*
+    - [ ] ~~.strikethrough~~
+    - [ ] .smallcaps
+    - [ ] .noindent (div only)
     - [ ] hfill=before/after/both (span only)
     - [ ] vfill=before/after/both (div only)
     - [ ] font=???

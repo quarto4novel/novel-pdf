@@ -47,8 +47,8 @@ if FORMAT:match 'latex' then
 			assert(tonumber(lines_after),
 				"invalid lines_after attribute or meta: %(actual) is not a number" % {actual=lines_after})
 			local keepindent = (div.attributes.keepindent ~= nil or from_meta.keepindent)
-			assert(pandoc.utils.type(from_meta.keepindent) == 'boolean',
-				"invalid epigraphs.keepindent attr or metadata: $(actual)s is not a boolean" % {actual=from_meta.keepindent})
+			assert(pandoc.utils.type(keepindent) == 'boolean',
+				"invalid keepindent attribute or meta: $(actual)s is not a boolean" % {actual=keepindent})
 
 			-- local attributes (with no meta default value)
 			local by = div.attributes.by and pandoc.utils.stringify(div.attributes.by)

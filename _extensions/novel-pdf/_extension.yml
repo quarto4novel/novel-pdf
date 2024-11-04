@@ -15,5 +15,6 @@ contributes:
     - shortcodes/emptylines.lua
   filters:
     - filters/novel_class_options.lua
-    - filters/chapter.lua
+    - filters/chapter.lua  # TODO make the formating simply set the right format class for later processing
+    - filters/div_formating.lua
     - filters/epigraph.lua
