@@ -1,0 +1,30 @@
+:::{.chapter}
+# Chapter 3: DIVs and SPANs
+## Test of many combinations of formating classes
+:::
+
+:::{.bold}
+Three paragraphs formated as bold.
+
+{{< lipsum 2 >}}
+:::
+
+:::{.italic}
+Three paragraphs formated as italic.
+
+{{< lipsum 2 >}}
+:::
+
+:::{.strikethrough}
+Three paragraphs formated as strikethrough.
+
+{{< lipsum 2 >}}
+:::
+
+:::{.bold .italic .strikethrough}
+Three paragraphs formated with combinations of previous formating classes.
+
+{{< lipsum 2 >}}
+:::
+
+And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough} and [this is both]{.bold .italic}, that's it.

@@ -26,3 +26,5 @@ output-file: my_novel.pdf
 {{< include chapters/chap_02.qmd >}}
 
 {{< include chapters/chap_03.qmd >}}
+
+{{< include chapters/chap_04_divs_and_spans.qmd >}}

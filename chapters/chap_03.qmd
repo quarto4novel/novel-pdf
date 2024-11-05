@@ -106,23 +106,3 @@ And you can also simply put an empty page using `emptypage` and `clearpage` shor
 {{< clearpage >}}
 
 And here is the followup after an empty page.
-
-Now let's try to format multiple paragraps at once using a div with formating attributes:
-
-:::{.bold}
-{{< lipsum 2 >}}
-:::
-
-:::{.italic}
-{{< lipsum 2 >}}
-:::
-
-:::{.strikethrough}
-{{< lipsum 2 >}}
-:::
-
-:::{.bold .italic}
-{{< lipsum 2 >}}
-:::
-
-And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough} and [this is both]{.bold .italic}, that's it.
