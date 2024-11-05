@@ -20,6 +20,9 @@ if FORMAT:match 'latex' then
 			elseif class_name == "italic" then
 				table.insert(latex_before, [[\begin{itshape}]])
 				table.insert(latex_after, 1, [[\end{itshape}]])
+			elseif class_name == "strikethrough" then
+				table.insert(latex_before, [[\st{]])
+				table.insert(latex_after, 1, "}")
 			end
 		end
 
@@ -43,6 +46,9 @@ if FORMAT:match 'latex' then
 				table.insert(latex_after, 1, "}")
 			elseif class_name == "italic" then
 				table.insert(latex_before, [[\textit{]])
+				table.insert(latex_after, 1, "}")
+			elseif class_name == "strikethrough" then
+				table.insert(latex_before, [[\st{]])
 				table.insert(latex_after, 1, "}")
 			end
 		end

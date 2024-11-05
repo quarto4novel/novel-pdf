@@ -211,7 +211,7 @@ where they are placed as specified in
     - for divs:
         - [x] **.bold**
         - [x] *.italic*
-        - [ ] ~~.strikethrough~~
+        - [x] ~~.strikethrough~~
         - [ ] .smallcaps
         - [ ] .noindent
         - [ ] vfill=before/after/both
@@ -226,7 +226,7 @@ where they are placed as specified in
     - for spans:
         - [x] **.bold**
         - [x] *.italic*
-        - [ ] ~~.strikethrough~~
+        - [x] ~~.strikethrough~~
         - [ ] .smallcaps
         - [ ] hfill=before/after/both
         - [ ] font=???

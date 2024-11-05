@@ -117,8 +117,12 @@ Now let's try to format multiple paragraps at once using a div with formating at
 {{< lipsum 2 >}}
 :::
 
+:::{.strikethrough}
+{{< lipsum 2 >}}
+:::
+
 :::{.bold .italic}
 {{< lipsum 2 >}}
 :::
 
-And the same thing with spans [this is bold]{.bold} and [this is italic]{.italic} and [this is both]{.bold .italic}, that's it.
+And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough} and [this is both]{.bold .italic}, that's it.
