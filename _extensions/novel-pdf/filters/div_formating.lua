@@ -1,17 +1,31 @@
 local utils = require "utils"
 
+-- global variables to overcome weird bugs
 local first_para = true
+local para_need_smallcaps = false
 
 if FORMAT:match 'latex' then
 	-- Used localy inside epigraph div
-	local add_forceindent_to_first_para = {
+	local make_changes_to_para = {
 		Para = function(para)
+			local before_para = {}
+			local after_para = {}
+
 			if first_para then
+				table.insert(before_para, [[\forceindent ]])
 				first_para = false
-				return { {pandoc.RawInline('latex', [[\forceindent ]])} .. para.content}
-			else
-				return para
 			end
+
+			if para_need_smallcaps then
+				table.insert(before_para, [[\textsc{]])
+				table.insert(after_para, "}")
+			end
+
+			return {
+				{pandoc.RawInline('latex', table.concat(before_para, ""))}
+				.. para.content
+				.. {pandoc.RawInline('latex', table.concat(after_para, ""))}
+			}
 		end
 	}
 
@@ -31,6 +45,10 @@ if FORMAT:match 'latex' then
 			elseif class_name == "strikethrough" then
 				table.insert(all_latex_before, [[\st{]])
 				table.insert(all_latex_after, 1, "}")
+			elseif class_name == "smallcaps" then
+				-- BUG just using \scshape does not work (no error but no actual effect)
+				-- So we add \textsc to each paragraphs
+				para_need_smallcaps = true
 			end
 		end
 
@@ -38,7 +56,8 @@ if FORMAT:match 'latex' then
 		-- like a new start of chapter and do not put an indend like any other para start
 		-- BUG: the forceindent is included in the strikethrough when rendering
 		first_para = true
-		local content = div:walk(add_forceindent_to_first_para)
+		local content = div:walk(make_changes_to_para)
+		para_need_smallcaps = false
 
 		return {
 			pandoc.RawBlock('latex', table.concat(all_latex_before, "\n")),
@@ -47,7 +66,7 @@ if FORMAT:match 'latex' then
 		}
 	end
 
-	-- filter for Div
+	-- filter for Span
 	function add_formating_to_span(span)
 		local all_latex_before = {}  -- to store opening latex elements (same order as attributes)
 		local all_latex_after = {}  -- to store closing latex elements (in reversed order of attributes)
@@ -62,6 +81,8 @@ if FORMAT:match 'latex' then
 			elseif class_name == "strikethrough" then
 				table.insert(all_latex_before, [[\st{]])
 				table.insert(all_latex_after, 1, "}")
+			elseif class_name == "smallcaps" then
+				-- don't need to do anything since pandoc automaticaly add \textsc{...} around span with smallcaps class
 			end
 		end
 

@@ -21,10 +21,16 @@ Three paragraphs formated as strikethrough.
 {{< lipsum 2 >}}
 :::
 
+:::{.smallcaps}
+Three paragraphs formated in small caps.
+
+{{< lipsum 2 >}}
+:::
+
 :::{.bold .italic .strikethrough}
 Three paragraphs formated with combinations of previous formating classes.
 
 {{< lipsum 2 >}}
 :::
 
-And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough} and [this is both]{.bold .italic}, that's it.
+And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps} and [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.

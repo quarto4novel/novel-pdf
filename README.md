@@ -212,7 +212,8 @@ where they are placed as specified in
         - [x] **.bold**
         - [x] *.italic*
         - [x] ~~.strikethrough~~
-        - [ ] .smallcaps
+        - [x] .smallcaps
+        - [ ] .monospace
         - [ ] .noindent
         - [ ] vfill=before/after/both
         - [ ] font=???
@@ -227,7 +228,8 @@ where they are placed as specified in
         - [x] **.bold**
         - [x] *.italic*
         - [x] ~~.strikethrough~~
-        - [ ] .smallcaps
+        - [x] .smallcaps
+        - [ ] .monospace
         - [ ] hfill=before/after/both
         - [ ] font=???
         - [ ] scale=???
