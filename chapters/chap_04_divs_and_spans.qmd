@@ -1,5 +1,5 @@
 :::{.chapter}
-# Chapter 3: DIVs and SPANs
+# Chapter 4: DIVs and SPANs
 ## Test of many combinations of formating classes
 :::
 
