@@ -1,3 +1,4 @@
+-- See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#relative-paths-in-require-calls
 local utils = require "utils"
 
 -- global variables to overcome weird bugs
@@ -11,14 +12,19 @@ if FORMAT:match 'latex' then
 			local before_para = {}
 			local after_para = {}
 
+			-- As \scshape does not work we need to apply \textsc para by para
+			-- But that makes novel detect each para as a new chapter and so does not insert an indent at the para start
+			if para_need_smallcaps then
+				table.insert(before_para, [[\textsc{]])
+				table.insert(before_para, [[\forceindent ]])
+				first_para = false
+				table.insert(after_para, "}")
+			end
+
+			-- BUG: this also add an indent if this is the first para of a chapter (that should not be indented)
 			if first_para then
 				table.insert(before_para, [[\forceindent ]])
 				first_para = false
-			end
-
-			if para_need_smallcaps then
-				table.insert(before_para, [[\textsc{]])
-				table.insert(after_para, "}")
 			end
 
 			return {
@@ -50,6 +56,11 @@ if FORMAT:match 'latex' then
 				-- So we add \textsc to each paragraphs
 				para_need_smallcaps = true
 			end
+		end
+
+		-- if nothing was detected, change nothing
+		if utils.table_is_empty(all_latex_before) and utils.table_is_empty(all_latex_before) and not para_need_smallcaps then
+			return nil
 		end
 
 		-- We need to add force an indentation at the begining of the div since novel class consider it

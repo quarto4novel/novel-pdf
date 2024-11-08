@@ -7,6 +7,14 @@ function utils.table_contains(table, value)
   return false
 end
 
+function utils.table_is_empty(table)
+	if next(table) then
+		return false
+	end
+
+	return true
+end
+
 -- python-like % string formating/interpolation
 -- Example: print( "%(key)s is %(val)7.2f%" % {key = "concentration", val = 56.2795}
 --          outputs "concentration is   56.28%"

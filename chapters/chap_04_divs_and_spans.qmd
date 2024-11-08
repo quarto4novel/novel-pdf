@@ -6,31 +6,41 @@
 :::{.bold}
 Three paragraphs formated as bold.
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
 :::
 
 :::{.italic}
 Three paragraphs formated as italic.
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
 :::
 
 :::{.strikethrough}
 Three paragraphs formated as strikethrough.
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
 :::
 
 :::{.smallcaps}
 Three paragraphs formated in small caps.
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
 :::
 
-:::{.bold .italic .strikethrough}
+:::{.bold .italic .strikethrough .smallcaps}
 Three paragraphs formated with combinations of previous formating classes.
 
-{{< lipsum 2 >}}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
 :::
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps} and [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
