@@ -52,8 +52,8 @@ footnote for the moment⚠️
 - [ ] source code with language specification
 - [x] raw content block
 - [x] raw content inline
-- [ ] inline math
-- [ ] display math
+- [x] inline math
+- [x] display math
 - [ ] images `![Caption](elephant.png)`
 - [ ] callout blocks
 - [x] div attributes

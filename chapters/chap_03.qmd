@@ -25,6 +25,13 @@ belong to the previous footnote.
 This paragraph won't be part of the note, because it
 isn't indented.
 
+You can also use so basic math like $E = mc^2$ or even present them as equations :
+
+$$
+f(a)={\frac {1}{2\pi i}}\oint _{\gamma }{\frac {f(z)}{z-a}}\,dz
+\tag{1}
+$$
+
 {{< scenebreak line >}}
 
 And also some shortcodes:
