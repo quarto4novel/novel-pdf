@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require "../utils"
 
 -- LaTeX multiline strings declared here so that it does not have useless indentation
 local raw_latex_open_format <const> = [[

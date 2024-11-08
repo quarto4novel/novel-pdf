@@ -1,5 +1,4 @@
--- See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#relative-paths-in-require-calls
-local utils = require "utils"
+local utils = require "../utils"
 
 -- global variables to overcome weird bugs
 local first_para = true

@@ -1,4 +1,4 @@
-local utils = require "utils"
+local utils = require "../utils"
 
 if FORMAT:match 'latex' then
 	-- Create a valid set of options for the novel class according to the metadata provided
