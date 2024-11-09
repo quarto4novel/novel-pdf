@@ -48,8 +48,6 @@ footnote for the moment⚠️
     - level 2 (in front/back matter): subpart of **front/back matter**
 - [ ] blockquotes
 - [x] line blocks
-- [ ] source code without language specification
-- [ ] source code with language specification
 - [x] raw content block
 - [x] raw content inline
 - [x] inline math
@@ -76,7 +74,7 @@ specified in the
 ***task lists**.
 - **tables** are typeset using layout incompatible with the rest of novel as
 specified in the [novel class documentation about lists and tables](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h8)
-- source code with file name
+- code blocks
 - any advanced math
 - diagrams
 - videos (obviously !)
@@ -214,7 +212,8 @@ where they are placed as specified in
         - [x] ~~.strikethrough~~
         - [x] .smallcaps
         - [ ] .monospace
-        - [ ] .noindent
+        - [ ] .noparindent
+        - [ ] .noparskip
         - [ ] vfill=before/after/both
         - [ ] font=???
         - [ ] scale=???
@@ -266,6 +265,9 @@ where they are placed as specified in
 - [x] Different **rendering mode** adapted to different stage of writing or
     reviewing: printready, cropmarks, shademargins, cropview, closecrop and
     sandbox. They are detailed and documented in `_metadata.yml`.
+- [ ] **parindent** and **parskip** metadata to specify the default indentation
+    and default vertical space between paragraphs.
+    See: https://latexref.xyz/fr/_005cparindent-_0026-_005cparskip.html
 
 
 ## Example

@@ -3,12 +3,15 @@
 ## Where we are going to present all the basic feature
 :::
 
-You can use *italics*, **bold**, ***bold italics***, superscript^2^, subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
+You can use *italics*, **bold**, ***bold italics***, superscript^2^,
+subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links
+<https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
 
 {{< scenebreak line >}}
 
-You can also have footnote reference,[^1] and another.[^longnote]. Here is an inline note.^[Inlines notes are easier to write,
-since you don't have to pick an identifier and move down to
+You can also have footnote reference,[^1] and another.[^longnote]. Here is an
+inline note.^[Inlines notes are easier to write, since you don't have to pick an
+identifier and move down to
 type the note.]
 
 [^1]: Here is the footnote.
@@ -25,12 +28,62 @@ belong to the previous footnote.
 This paragraph won't be part of the note, because it
 isn't indented.
 
-You can also use so basic math like $E = mc^2$ or even present them as equations :
+You can also use so basic math like $E = mc^2$ or even present them as
+equations:
 
 $$
 f(a)={\frac {1}{2\pi i}}\oint _{\gamma }{\frac {f(z)}{z-a}}\,dz
 \tag{1}
 $$
+
+And we have support for line blocks too :
+
+| This is a line block
+| With multiple lines of text that should respect both word wrap...
+|
+| ...And manual linebreaks
+| Like this
+
+But if you want them without indentation at each new paragraph, you need to put
+it a div block with the `.noparindent` class. Just like that:
+
+```{=latex}
+\setlength{\parindent}{0em}
+```
+:::{.noparindent}
+| This is another line block
+| With multiple lines of text that should respect both word wrap...
+|
+| ...And manual linebreaks
+| Like this.
+|
+| But this time we have no paragraph indent.
+:::
+```{=latex}
+\setlength{\parindent}{1.5em} % back to original parindent
+```
+
+There is no support for code blocks (they are very complex and not something you
+expect to need in a fiction novel) but you can use line blocks with
+`noparindent` and `.monospace` classes applied:
+
+```{=latex}
+\setlength{\parindent}{0em}
+```
+:::{.noparindent .monospace}
+| This is yet another line block (that mimicks a code block)
+| With multiple lines of text that should respect both word wrap...
+|
+| ...And manual linebreaks
+| Like this.
+|
+| But this time we have no paragraph indent and this should be in monospace font.
+:::
+```{=latex}
+\setlength{\parindent}{1.5em} % back to original parindent
+```
+
+And some more text after.
 
 {{< scenebreak line >}}
 

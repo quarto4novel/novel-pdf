@@ -13,9 +13,11 @@ format:
     links-as-notes: true
 
     # TODO move this to _extensions/novel-pdf/_extension.yml
+
     # Basic template config
     template: novel-template.tex
     pdf-engine: lualatex  # Madatory: novel class only works with LuaLaTeX
+
     # Compilation options
     # See: https://quarto.org/docs/output-formats/pdf-engine.html#pdf-compilation
     latex-min-runs: 1
