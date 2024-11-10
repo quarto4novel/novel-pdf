@@ -44,12 +44,62 @@ footnote for the moment⚠️
   :::
   ```
 - [ ] headings (outside `.chapter` divs):
-  - [ ] level 1: structural parts (front matter, body matter, back matter)
-  - [ ] level 2 (in front/back matter): subpart of **front/back matter**
-  - [ ] level 2 (in body matter): chapter (can have detailed content using .chapter
-    div)
+  - [ ] level 1: structural parts
+    - `# Front matter`
+    - `# Body matter`
+    - `# Back matter`
+    - any other level 1 title is an error
+  - [ ] level 2 (in frontmatter): subpart of **front matter**. The name of each
+    subpart won't appear in the final document and are here only for
+    structuration when writing.
+    See: https://en.wikipedia.org/wiki/Book_design#Front_matter
+    - `## Half matter`
+    - `## Frontispiece`
+    - `## Title page`
+    - `## Copyright page`
+    - `## Dedication`
+    - `## Epigraph`
+    - `## Table of contents`
+    - `## Foreword`
+    - `## Preface`
+    - `## Acknowledgments`
+    - `## Introduction`
+    - `## Prologue`
+    - any other level 2 title inside front matter is an error
+  - [ ] level 2 (in backmatter): subpart of **back matter**. The name of each
+    subpart won't appear in the final document and are here only for
+    structuration when writing.
+    See: https://en.wikipedia.org/wiki/Book_design#Back_matter_(end_matter)
+    - `## Epilogue`
+    - `## Outro`
+    - `## Afterword`
+    - `## Conclusion`
+    - `## Postscript`
+    - `## Appendix` or `## Addendum`
+    - `## Glossary`
+    - `## Bibliography`
+    - `## Index`
+    - `## Colophon`
+    - `## Postface`
+    - `## Author`
+    - any other level 2 title inside front matter is an error
+  - [ ] level 2 (in body matter): **chapter** with title `## My chapter title`.
+    The chapter can have more detailed when encapsulated in a ``.chapter` div.
+
+    ```qmd
+    :::{.chapter}
+    ## My Super Chapter Title
+    ### And a wonderful subtitle to go with it
+
+    Some more content for the chapter start (epigraph, for word, image...).
+    :::
+    ```
   - [ ] level 3 (in body matter and inside .chapter div): chapter subtitle
-  - [ ] level 3 (in body matter): quick chapter / named scene change
+  - [ ] level 3 (in body matter):
+    - a **scenebreak** if the title is `### scenebreak`
+    - a **sceneline** if the title is `### sceneline`
+    - a **scenestars** if the title is `### scenestars`
+    - a **quick chapter** with title otherwise `### my title`
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
