@@ -55,12 +55,16 @@ footnote for the moment⚠️
 - [ ] images `![Caption](elephant.png)`
 - [ ] callout blocks
 - [x] div attributes
-- [ ] span attributes
-- [ ] endash `--`
-- [ ] emdash `---`
-- [ ] elipsis `...`
+- [x] span attributes
+- [ ] endash `--` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens
+- [ ] emdash `---` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens
+- [ ] elipsis `...` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Ellipsis_(%E2%80%A6)
 - [ ] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
     white dedicated font
+    - https://tex.stackexchange.com/questions/224584/define-fallback-font-for-specific-unicode-characters-in-lualatex
+    - [Substituting fonts for emojis in LuaLaTeX](https://tex.stackexchange.com/a/572220)
+        this is the best way
+    - [Define fallback font for missing glyphs in LuaLaTeX](https://tex.stackexchange.com/q/514940)
 
 ## Unsupported markdown feature
 
@@ -211,7 +215,9 @@ where they are placed as specified in
         - [x] *.italic*
         - [x] ~~.strikethrough~~
         - [x] .smallcaps
-        - [ ] .monospace
+        - [ ] .monospace via `alltt` ou `verbatim` ou `{\ttfamilly...}`
+            - https://en.wikibooks.org/wiki/LaTeX/Paragraph_Formatting#Verbatim_text
+            - https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_styles
         - [ ] .noparindent
         - [ ] .noparskip
         - [ ] vfill=before/after/both
@@ -228,7 +234,7 @@ where they are placed as specified in
         - [x] *.italic*
         - [x] ~~.strikethrough~~
         - [x] .smallcaps
-        - [ ] .monospace
+        - [ ] .monospace via `\texttt`
         - [ ] hfill=before/after/both
         - [ ] font=???
         - [ ] scale=???
@@ -253,10 +259,10 @@ where they are placed as specified in
 
     ```qml
     The young boy was afraid but he needed to communicate with his friend so he
-    whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was not
-    the kind of person to hide when confronted to danger. [« Don't worry dude,
-    this monstruous teddy bear is nothing like the pirate I crushed last week !
-    »]{.shout}.
+    whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was
+    not the kind of person to hide when confronted to danger. [« Don't worry
+    dude, this monstruous teddy bear is nothing like the pirate I crushed last
+    week ! »]{.shout}.
     ```
 
 - [ ] **toc shortcode**
@@ -268,6 +274,9 @@ where they are placed as specified in
 - [ ] **parindent** and **parskip** metadata to specify the default indentation
     and default vertical space between paragraphs.
     See: https://latexref.xyz/fr/_005cparindent-_0026-_005cparskip.html
+- [ ] **hyphenation control**
+    - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+    - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Margin_misalignment
 
 
 ## Example
