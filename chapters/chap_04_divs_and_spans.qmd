@@ -38,6 +38,12 @@ Three paragraphs formated in small caps.
 :::{.monospace}
 Three paragraphs formated in monospace (aka teletext) font.
 
+You can split a very log string so that it fits in the page via hyphenation by
+inserting a `\-` where you want the string to be cut and wrapped. Here is an
+example:
+
+1111111111222222222233333333334444444444555555555566666\-6666677777777778888888888
+
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -51,4 +57,7 @@ Three paragraphs formated with combinations of previous formating classes.
 {{< lipsum 1 >}}
 :::
 
-And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps}, [this is monospace]{.monospace} and [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
+And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
+[this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
+[this is monospace]{.monospace} and
+[this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.

@@ -278,6 +278,8 @@ where they are placed as specified in
   and default vertical space between paragraphs.
   See: https://latexref.xyz/fr/_005cparindent-_0026-_005cparskip.html
 - [ ] **hyphenation control**
+  You can set an "hyphenation cutting point" wherever you want using `\-` even
+  in a monospace div or span (useful for url and stuff like that)
   - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
   - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Margin_misalignment
 
