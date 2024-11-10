@@ -36,16 +36,20 @@ footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
 - [x] headings (inside `.chapter` divs): only level 1 `# chapter tile` and level 2 `## chapter subtitle`
-    are allowed and only in chapter div:
-    ```qmd
-    :::{.chapter}
-    # chapter tile
-    ## chapter subtitle
-    :::
-    ```
+  are allowed and only in chapter div:
+  ```qmd
+  :::{.chapter}
+  # chapter tile
+  ## chapter subtitle
+  :::
+  ```
 - [ ] headings (outside `.chapter` divs):
-    - level 1: structural parts (front matter, body matter, back matter)
-    - level 2 (in front/back matter): subpart of **front/back matter**
+  - [ ] level 1: structural parts (front matter, body matter, back matter)
+  - [ ] level 2 (in front/back matter): subpart of **front/back matter**
+  - [ ] level 2 (in body matter): chapter (can have detailed content using .chapter
+    div)
+  - [ ] level 3 (in body matter and inside .chapter div): chapter subtitle
+  - [ ] level 3 (in body matter): quick chapter / named scene change
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
@@ -60,11 +64,11 @@ footnote for the moment⚠️
 - [ ] emdash `---` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens
 - [ ] elipsis `...` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Ellipsis_(%E2%80%A6)
 - [ ] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
-    white dedicated font
-    - https://tex.stackexchange.com/questions/224584/define-fallback-font-for-specific-unicode-characters-in-lualatex
-    - [Substituting fonts for emojis in LuaLaTeX](https://tex.stackexchange.com/a/572220)
-        this is the best way
-    - [Define fallback font for missing glyphs in LuaLaTeX](https://tex.stackexchange.com/q/514940)
+  white dedicated font
+  - https://tex.stackexchange.com/questions/224584/define-fallback-font-for-specific-unicode-characters-in-lualatex
+  - [Substituting fonts for emojis in LuaLaTeX](https://tex.stackexchange.com/a/572220)
+    this is the best way
+  - [Define fallback font for missing glyphs in LuaLaTeX](https://tex.stackexchange.com/q/514940)
 
 ## Unsupported markdown feature
 
@@ -102,181 +106,180 @@ where they are placed as specified in
 ## Novel specific features
 
 - [x] **chapter shortcode** and **chapter div**: fictional works have a very
-    specific structure that do not correspond to academic structure used by
-    classical LaTeX document. In particular the hierarchical `\part`,
-    `\section`, `\chapter`, etc is not used in novels (see:
-    [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
-    ). That's why we provide a `{{< chapter "My chapter One" >}}` shortcode to
-    create a chapter easily and a div class that let you create advanced
-    chapters header with title, subtitle using level 1 and 2 headers and other
-    content:
+  specific structure that do not correspond to academic structure used by
+  classical LaTeX document. In particular the hierarchical `\part`,
+  `\section`, `\chapter`, etc is not used in novels (see:
+  [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
+  ). That's why we provide a `{{< chapter "My chapter One" >}}` shortcode to
+  create a chapter easily and a div class that let you create advanced
+  chapters header with title, subtitle using level 1 and 2 headers and other
+  content:
 
-    ```qmd
-    :::{.chapter}
-    # My Super Chapter Title
-    ## And a wonderful subtitle to go with it
-    :::
-    ```
+  ```qmd
+  :::{.chapter}
+  # My Super Chapter Title
+  ## And a wonderful subtitle to go with it
+  :::
+  ```
 
-    And with height specified:
+  And with height specified:
 
-    ```qmd
-    :::{.chapter height=20}
-    # My Super Chapter Title
-    ## And a wonderful subtitle to go with it
-    :::
-    ```
+  ```qmd
+  :::{.chapter height=20}
+  # My Super Chapter Title
+  ## And a wonderful subtitle to go with it
+  :::
+  ```
 - [x] **scenebreak shortcode**: mark a seperation in the text flow. Three
-    different kind of scene breake are possible `{{< scenebreak blank >}}`,
-    `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
-    [3 possible Scene Breaks of the novel class](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3).
+  different kind of scene breake are possible `{{< scenebreak blank >}}`,
+  `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
+  [3 possible Scene Breaks of the novel class](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3).
 
-    ```qmd
-    {{< scenebreak >}}
+  ```qmd
+  {{< scenebreak >}}
 
-    {{< scenebreak blank >}}
+  {{< scenebreak blank >}}
 
-    {{< scenebreak line >}}
+  {{< scenebreak line >}}
 
-    {{< scenebreak stars >}}
-    ```
+  {{< scenebreak stars >}}
+  ```
 
-    You can control if there is an indend in the text with the
-    `scenebreak.indent` metadata (false by default as it is a standard in
-    fiction). And you can set the default scene break type with the
-    `scenebreak.default` metadata (possible value are `blank`, `line` and
-    `stars`)
+  You can control if there is an indend in the text with the
+  `scenebreak.indent` metadata (false by default as it is a standard in
+  fiction). And you can set the default scene break type with the
+  `scenebreak.default` metadata (possible value are `blank`, `line` and
+  `stars`)
 
-    ```{.yaml filename=_metadata.yml}
-    scenebreaks:
-        indent: false
-        default: blank
-    ```
+  ```{.yaml filename=_metadata.yml}
+  scenebreaks:
+    indent: false
+    default: blank
+  ```
 - [x] **mainmatter shortcode**: mark the begining of your story
-    `{{< mainmatter >}}`
+  `{{< mainmatter >}}`
 - [ ] **page header** and **page footer** control
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
-    recto, without skipping a page.
+  recto, without skipping a page.
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if
-    necessary inserting a blank verso.
+  necessary inserting a blank verso.
 - [x] **emptypage shortcode**
 - [x] **null shortcode**
 - [ ] **vertical_fill shortcode**
 - [ ] **horizontal_fill shortcode**
 - [x] **epigraph filter**: include an epigraph (poem or citation) with author
-    and source:
+  and source:
 
-    ```qmd
-    :::{.epigraph by="John Lennon" from="An interview"}
-    When I was 5 years old, my mother always told me that happiness was the key
-    to life. When I went to school, they asked me what I wanted to be when I
-    grew up. I wrote down ‘happy’. They told me I didn’t understand the
-    assignment, and I told them they didn’t understand life.
-    :::
-    ```
+  ```qmd
+  :::{.epigraph by="John Lennon" from="An interview"}
+  When I was 5 years old, my mother always told me that happiness was the key
+  to life. When I went to school, they asked me what I wanted to be when I
+  grew up. I wrote down ‘happy’. They told me I didn’t understand the
+  assignment, and I told them they didn’t understand life.
+  :::
+  ```
 
-    or
+  or
 
-    ```
-    :::{.epigraph by="Robert Frost" from="Nothing Gold Can Stay"}
-    | Nature's first green is gold,
-    | Her hardest hue to hold.
-    | Her early leaf's a flower;
-    | But only so an hour.
-    :::
-    ```
-    Available attributes:
+  ```
+  :::{.epigraph by="Robert Frost" from="Nothing Gold Can Stay"}
+  | Nature's first green is gold,
+  | Her hardest hue to hold.
+  | Her early leaf's a flower;
+  | But only so an hour.
+  :::
+  ```
+  Available attributes:
 
-    - `lmargin` and `rmargin` to control the left and right margins
-    - `lines_before` and `lines_after` to jump a certain amount of lines before
-      and after the epigraph
-    - `keepindend` to let the paragraphs inside the epigraph have an indend like
-      any other paragraphs
+  - `lmargin` and `rmargin` to control the left and right margins
+  - `lines_before` and `lines_after` to jump a certain amount of lines before
+    and after the epigraph
+  - `keepindend` to let the paragraphs inside the epigraph have an indend like
+    any other paragraphs
 
-    Available metadata:
+  Available metadata:
 
-    - `epigraphs.lmargin` and `epigraphs.rmargin` default values for `lmargin`
-      and `rmargin` attributes for the whole document
-    - `epigraphs.lines_before` and `epigraphs.lines_after` default values for
-      `lines_before` and `lines_after`for the whole document
-    - `epigraphs.keepindend` default value for `keepindent` attribute for the
-      whole document
+  - `epigraphs.lmargin` and `epigraphs.rmargin` default values for `lmargin`
+    and `rmargin` attributes for the whole document
+  - `epigraphs.lines_before` and `epigraphs.lines_after` default values for
+    `lines_before` and `lines_after`for the whole document
+  - `epigraphs.keepindend` default value for `keepindent` attribute for the
+    whole document
 
 - [ ] **raw div formating** and **raw span formating**: classes that can be
-    applied to any div or span. ⚠️ ***markdown favors meaning over presentation
-    so those classes should not be used directly in your document, prefer the
-    semantic classes (see below) that are more suited for clean, meaning centered,
-    wrinting.*** ⚠️
+  applied to any div or span. ⚠️ ***markdown favors meaning over presentation
+  so those classes should not be used directly in your document, prefer the
+  semantic classes (see below) that are more suited for clean, meaning centered,
+  wrinting.*** ⚠️
 
-    Here are the available classes:
+  Here are the available classes:
 
-    - for divs:
-        - [x] **.bold**
-        - [x] *.italic*
-        - [x] ~~.strikethrough~~
-        - [x] .smallcaps
-        - [ ] .monospace via `alltt` ou `verbatim` ou `{\ttfamilly...}`
-            - https://en.wikibooks.org/wiki/LaTeX/Paragraph_Formatting#Verbatim_text
-            - https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_styles
-        - [ ] .noparindent
-        - [ ] .noparskip
-        - [ ] vfill=before/after/both
-        - [ ] font=???
-        - [ ] scale=???
-        - [ ] lang=???
-        - [ ] lmargin=???: left margin
-        - [ ] rmargin=???: right margin
-        - [ ] bmargin=???: equal margins (left and right with the same
-            value)
-        - [ ] align=left/right/centered (div only)
-    - for spans:
-        - [x] **.bold**
-        - [x] *.italic*
-        - [x] ~~.strikethrough~~
-        - [x] .smallcaps
-        - [ ] .monospace via `\texttt`
-        - [ ] hfill=before/after/both
-        - [ ] font=???
-        - [ ] scale=???
-        - [ ] lang=???
-        - [ ] first_words/last_words=???
+  - for divs:
+    - [x] **.bold**
+    - [x] *.italic*
+    - [x] ~~.strikethrough~~
+    - [x] .smallcaps
+    - [x] .monospace (with respect to multilign alignment by using right
+      alignment instead of default justified one)
+    - [ ] .noparindent
+    - [ ] .noparskip
+    - [ ] vfill=before/after/both
+    - [ ] font=???
+    - [ ] scale=???
+    - [ ] lang=???
+    - [ ] lmargin=???: left margin
+    - [ ] rmargin=???: right margin
+    - [ ] bmargin=???: equal margins (left and right with the same
+      value)
+    - [ ] align=left/right/centered (div only)
+  - for spans:
+    - [x] **.bold**
+    - [x] *.italic*
+    - [x] ~~.strikethrough~~
+    - [x] .smallcaps
+    - [x] .monospace
+    - [ ] hfill=before/after/both
+    - [ ] font=???
+    - [ ] scale=???
+    - [ ] lang=???
+    - [ ] first_words/last_words=???
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
-    specific classes in the `semantic_classes` metadata and specify which
-    **raw formating classes** you want to apply to that class (see this as a
-    very simple CSS system). Here is a typical config `_metadata.yml`:
+  specific classes in the `semantic_classes` metadata and specify which
+  **raw formating classes** you want to apply to that class (see this as a
+  very simple CSS system). Here is a typical config `_metadata.yml`:
 
-    ```yaml
-    semantic_classes:
-        greek_lang: [italic, lang=greek]
-        robot_speech: [bold, font=sf_futuristic_font]
-        shout: [scale=1.5, smallcaps]
-        whisper: [scale=0.8]
-        hand_written: [scale=1.2, font=my_cursive_font]
-    ```
+  ```yaml
+  semantic_classes:
+    greek_lang: [italic, lang=greek]
+    robot_speech: [bold, font=sf_futuristic_font]
+    shout: [scale=1.5, smallcaps]
+    whisper: [scale=0.8]
+    hand_written: [scale=1.2, font=my_cursive_font]
+  ```
 
-    And here is how to use it in you document:
+  And here is how to use it in you document:
 
-    ```qml
-    The young boy was afraid but he needed to communicate with his friend so he
-    whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was
-    not the kind of person to hide when confronted to danger. [« Don't worry
-    dude, this monstruous teddy bear is nothing like the pirate I crushed last
-    week ! »]{.shout}.
-    ```
+  ```qml
+  The young boy was afraid but he needed to communicate with his friend so he
+  whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was
+  not the kind of person to hide when confronted to danger. [« Don't worry
+  dude, this monstruous teddy bear is nothing like the pirate I crushed last
+  week ! »]{.shout}.
+  ```
 
 - [ ] **toc shortcode**
 - [x] **emptylines shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**
 - [x] Different **rendering mode** adapted to different stage of writing or
-    reviewing: printready, cropmarks, shademargins, cropview, closecrop and
-    sandbox. They are detailed and documented in `_metadata.yml`.
+  reviewing: printready, cropmarks, shademargins, cropview, closecrop and
+  sandbox. They are detailed and documented in `_metadata.yml`.
 - [ ] **parindent** and **parskip** metadata to specify the default indentation
-    and default vertical space between paragraphs.
-    See: https://latexref.xyz/fr/_005cparindent-_0026-_005cparskip.html
+  and default vertical space between paragraphs.
+  See: https://latexref.xyz/fr/_005cparindent-_0026-_005cparskip.html
 - [ ] **hyphenation control**
-    - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
-    - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Margin_misalignment
+  - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+  - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Margin_misalignment
 
 
 ## Example

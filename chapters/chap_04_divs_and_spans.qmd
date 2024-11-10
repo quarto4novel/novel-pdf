@@ -35,6 +35,14 @@ Three paragraphs formated in small caps.
 {{< lipsum 1 >}}
 :::
 
+:::{.monospace}
+Three paragraphs formated in monospace (aka teletext) font.
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
 :::{.bold .italic .strikethrough .smallcaps}
 Three paragraphs formated with combinations of previous formating classes.
 
@@ -43,4 +51,4 @@ Three paragraphs formated with combinations of previous formating classes.
 {{< lipsum 1 >}}
 :::
 
-And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps} and [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
+And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic}, [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps}, [this is monospace]{.monospace} and [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.

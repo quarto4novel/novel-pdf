@@ -54,6 +54,15 @@ if FORMAT:match 'latex' then
 				-- BUG just using \scshape does not work (no error but no actual effect)
 				-- So we add \textsc to each paragraphs
 				para_need_smallcaps = true
+			elseif class_name == "monospace" then
+				table.insert(all_latex_before, [[\begin{ttfamily}]])
+				table.insert(all_latex_after, 1, [[\end{ttfamily}]])
+
+				-- We had ragged right command since it's not possible to have monospaced justified text
+				-- since LaTeX can't adjust spaces in any way. And also to respect the alignment of
+				-- letters from line to line justified paragraph
+				table.insert(all_latex_before, [[\begin{flushleft}]])
+				table.insert(all_latex_after, 1, [[\end{flushleft}]])
 			end
 		end
 
@@ -93,6 +102,9 @@ if FORMAT:match 'latex' then
 				table.insert(all_latex_after, 1, "}")
 			elseif class_name == "smallcaps" then
 				-- don't need to do anything since pandoc automaticaly add \textsc{...} around span with smallcaps class
+			elseif class_name == "monospace" then
+				table.insert(all_latex_before, [[\texttt{]])
+				table.insert(all_latex_after, 1, "}")
 			end
 		end
 
