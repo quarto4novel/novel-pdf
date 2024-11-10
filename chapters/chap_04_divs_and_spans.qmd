@@ -38,6 +38,9 @@ Three paragraphs formated in small caps.
 :::{.monospace}
 Three paragraphs formated in monospace (aka teletext) font.
 
+Unlike verbatim, you can use **bold text**, *italic text* and ***bold italic
+text*** in the monospace divs or spans just like in any other place.
+
 You can split a very log string so that it fits in the page via hyphenation by
 inserting a `\-` where you want the string to be cut and wrapped. Here is an
 example:
