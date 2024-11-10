@@ -15,7 +15,7 @@ local raw_latex_close_format <const> = [[
 if FORMAT:match 'latex' then
 	local from_meta = {}
 
-	function get_margins_from_meta(meta)
+	function get_param_from_meta(meta)
 		from_meta.lmargin = meta.epigraphs.lmargin
 		from_meta.rmargin = meta.epigraphs.rmargin
 		from_meta.lines_before = meta.epigraphs.lines_before
@@ -81,7 +81,7 @@ if FORMAT:match 'latex' then
 	-- See: https://pandoc.org/lua-filters.html#typewise-traversal
 	return {
 		{
-			Meta = get_margins_from_meta
+			Meta = get_param_from_meta
 		},
 		{
 			Div = epigraph_from_div

@@ -139,6 +139,12 @@ page_layout:
   # Default lines per page (main textblock) is calculated from other layout settings.
   # When using all defaults, the calculated value is 35.
   lines_per_page: 35
+  # Horizontal indentation to apply for the first line of any paragraph (with LaTeX unit)
+  # Most fiction materials use a small indent to help reader to see paragraphs limits
+  parindent: 1.5em
+  # Vertical space to apply between each paragraph (with LaTeX unit)
+  # Most fiction materials don't use any space between paragraph
+  parskip: 0ex
 
 
 chapters:

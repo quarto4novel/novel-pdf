@@ -60,6 +60,24 @@ Three paragraphs formated with combinations of previous formating classes.
 {{< lipsum 1 >}}
 :::
 
+:::{.noparindent}
+Three paragraphs no paragraph indentation.
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+:::{parskip=1ex}
+Four paragraphs space between them.
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
 [this is monospace]{.monospace} and

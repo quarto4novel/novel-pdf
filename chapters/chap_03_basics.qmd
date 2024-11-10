@@ -47,9 +47,6 @@ And we have support for line blocks too :
 But if you want them without indentation at each new paragraph, you need to put
 it a div block with the `.noparindent` class. Just like that:
 
-```{=latex}
-\setlength{\parindent}{0em}
-```
 :::{.noparindent}
 | This is another line block
 | With multiple lines of text that should respect both word wrap...
@@ -59,17 +56,11 @@ it a div block with the `.noparindent` class. Just like that:
 |
 | But this time we have no paragraph indent.
 :::
-```{=latex}
-\setlength{\parindent}{1.5em} % back to original parindent
-```
 
 There is no support for code blocks (they are very complex and not something you
 expect to need in a fiction novel) but you can use line blocks with
 `noparindent` and `.monospace` classes applied:
 
-```{=latex}
-\setlength{\parindent}{0em}
-```
 :::{.noparindent .monospace}
 | This is yet another line block (that mimicks a code block)
 | With multiple lines of text that should respect both word wrap...
@@ -79,9 +70,6 @@ expect to need in a fiction novel) but you can use line blocks with
 |
 | But this time we have no paragraph indent and this should be in monospace font.
 :::
-```{=latex}
-\setlength{\parindent}{1.5em} % back to original parindent
-```
 
 And some more text after.
 
