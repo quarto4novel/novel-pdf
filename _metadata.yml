@@ -88,6 +88,59 @@ front_matter:
     \charscale[4.8]{\textbf{\color{gray}Die Hard}}\par
     ```
 
+fonts:
+  # In novel you do not directly set the main font (also known as roman default).
+  # Instead, you set a parent font, from which the main font is derived.
+  #
+  # Choose only Open Type or TrueType fonts, not the ancient Type 1 (PostScript) or Metafonts.
+  #
+  # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.1
+  parent:
+    name: Libertinus Serif
+    # Main text font automatically adds Numbers=OldStyle,Ligatures=Common
+    # Percent at end of line is necessary, when writing font settings multi-line:
+    features: |
+      ```{=latex}
+      % Effective when small caps requested locally.
+      SmallCapsFeatures={Renderer=Basic}, %
+      Kerning=On, %
+      Ligatures=TeX, %
+      ```
+    # Default main font size is based on other layout settings.
+    # Varies from 11pt to 12pt. With all default layouts, value is 11.4pt.
+    # Once you have set the Trim Size, margins, and parent font, set the font size
+    # for readability. Depending on whom you ask, each line of free-running text
+    # should average 60 to 66 characters (including spaces).
+    size: 11.4pt
+  # Open Type font NovelDeco.otf is packaged with the novel class. It is a
+  # special-purpose font that provides characters for the \decoglyph and \midcase commands.
+  # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.3
+  deco:
+    name: NovelDeco.otf
+  # The default sans-serif font (almost never used anywhere)
+  sans:
+    name: Libertinus Sans
+  # The font used by verbatim text and div/span with the .monospace class
+  mono:
+    name: DejaVu Sans Mono
+    # Set the scale to have a monospace font size match closely regular font size
+    # By default 0.8 works well for DejaVu Sans Mono font and all novel default font config
+    scale: 0.8
+  # There is basic math support in novel-pdf but don't expect to fine tune anything
+  # it's just in case one of your character is a mathematician or you wan't to write
+  # a math based enigma at any point in your story.
+  # If you need a math advanced feature, then may I gently suggest that maybe novel is not the right document class for you?
+  # Nevertheless, Libertinus Math is loaded if available; otherwise Latin Modern Math.
+  math:
+    name: Libertinus Math
+
+# Intrior page layout
+page_layout:
+  # Default lines per page (main textblock) is calculated from other layout settings.
+  # When using all defaults, the calculated value is 35.
+  lines_per_page: 35
+
+
 chapters:
   header_height: 10  # in number of lines
   title:

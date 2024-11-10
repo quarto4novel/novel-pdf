@@ -105,6 +105,9 @@ where they are placed as specified in
 
 ## Novel specific features
 
+- [x] **novel specific font configuration**: multiple options are available in
+  the `_metadata.yml` file to configure fonts used in your novel and they are
+  all well documented directly in the file itself.
 - [x] **chapter shortcode** and **chapter div**: fictional works have a very
   specific structure that do not correspond to academic structure used by
   classical LaTeX document. In particular the hierarchical `\part`,
