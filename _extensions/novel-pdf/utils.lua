@@ -20,7 +20,7 @@ end
 --          outputs "concentration is   56.28%"
 -- See: https://www.lua-users.org/wiki/StringInterpolation (with a fix to allow _ in variable names)
 -- See: https://www.lua.org/pil/20.2.html for the regex details
-function interp(s, tab)
+function utils.interp(s, tab)
 	return (
 		s:gsub(
 			'%%%((%a[_%w]*)%)([-0-9%.]*[cdeEfgGiouxXsq])',
@@ -29,6 +29,6 @@ function interp(s, tab)
 		)
 	)
 end
-getmetatable("").__mod = interp
+getmetatable("").__mod = utils.interp
 
 return utils

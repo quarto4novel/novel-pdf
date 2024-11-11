@@ -3,11 +3,13 @@
 ## Where we are going to present all the basic feature
 :::
 
+{{< quickchapter "1. Inline formatting" >}}
+
 You can use *italics*, **bold**, ***bold italics***, superscript^2^,
 subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links
 <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
 
-{{< scenebreak line >}}
+{{< quickchapter "2. Footnotes" >}}
 
 You can also have footnote reference,[^1] and another.[^longnote]. Here is an
 inline note.^[Inlines notes are easier to write, since you don't have to pick an
@@ -28,6 +30,8 @@ belong to the previous footnote.
 This paragraph won't be part of the note, because it
 isn't indented.
 
+{{< quickchapter "3. Basic math integration" >}}
+
 You can also use so basic math like $E = mc^2$ or even present them as
 equations:
 
@@ -35,6 +39,8 @@ $$
 f(a)={\frac {1}{2\pi i}}\oint _{\gamma }{\frac {f(z)}{z-a}}\,dz
 \tag{1}
 $$
+
+{{< quickchapter "4. Inline blocks" >}}
 
 And we have support for line blocks too :
 
@@ -73,11 +79,9 @@ expect to need in a fiction novel) but you can use line blocks with
 
 And some more text after.
 
-{{< scenebreak line >}}
+{{< quickchapter "5. Scene breaks" >}}
 
-And also some shortcodes:
-
-For example the `lipsum` shortcode separated by `scenebreak` shortcodes of different types:
+Here are some `scenebreak` shortcodes of different types:
 
 {{< lipsum 1 >}}
 
@@ -97,11 +101,15 @@ For example the `lipsum` shortcode separated by `scenebreak` shortcodes of diffe
 
 {{< lipsum 1 >}}
 
+{{< quickchapter "6. Spaces" >}}
+
 Now we jump 5 lines with `emptylines` shortcode
 
 {{< emptylines 5 >}}
 
 Jumped!
+
+{{< quickchapter "7. Epigraphs" >}}
 
 You can use an epigraph with an `epigraph` div:
 
@@ -134,6 +142,8 @@ assignment, and I told them they didn’t understand life.
 | Her early leaf's a flower;
 | But only so an hour.
 :::
+
+{{< quickchapter "8. Page breaks" >}}
 
 It's also possible to ask for a new page with the `clearpage` shortcode:
 

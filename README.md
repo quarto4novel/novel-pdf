@@ -183,6 +183,10 @@ where they are placed as specified in
   ## And a wonderful subtitle to go with it
   :::
   ```
+- [x] **quickchapter shortcode**: used by some books are designed with numerous
+  short chapters that run continously, so that chapters may start anywhere on a
+  page. They can also be used as **named scene break**. You can use it like that
+  `{{< quickchapter "chaptertitle" line=true/false/length >}}`.
 - [x] **scenebreak shortcode**: mark a seperation in the text flow. Three
   different kind of scene breake are possible `{{< scenebreak blank >}}`,
   `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
