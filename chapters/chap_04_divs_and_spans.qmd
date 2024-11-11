@@ -144,9 +144,42 @@ Some text down the page.
 
 {{< clearpage >}}
 
-{{< quickchapter "11. Span with formating" >}}
+{{< quickchapter "11. Scaled divs" >}}
+
+:::{scale=0.6}
+{{< lipsum 1 >}}
+:::
+
+:::{scale=1.0}
+{{< lipsum 1 >}}
+:::
+
+:::{scale=1.5}
+{{< lipsum 1 >}}
+:::
+
+{{< quickchapter "12. Span with formating" >}}
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
 [this is monospace]{.monospace} and
 [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
+
+We can also scale the text bay any factor:
+
+:::{.noparindent}
+| [Jack be quick. (1)]{scale=0.5}
+| [Jack be quick. (2)]{scale=0.8}
+| [Jack be quick. (3)]{scale=1.0}
+| [Jack be quick. (4)]{scale=1.2}
+| [Jack be quick. (5)]{scale=1.5}
+| [Jack be quick. (6)]{scale=2.5}
+| [Jack be quick, JACK (7)]{scale=1.2}
+:::
+
+And with the horizontal and vertical offsets:
+
+:::{.noparindent}
+| Alpha [Beta]{scale=1.25} Gamma. (1)
+| Alpha [Beta]{scale=1.25,8em,1.3\nbs} Gamma. (2)\par
+:::

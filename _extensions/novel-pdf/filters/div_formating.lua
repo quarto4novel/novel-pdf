@@ -99,6 +99,9 @@ if FORMAT:match 'latex' then
 				else
 					error("vfill div attribute only possible values are before, after and both, but has value: %(val)s." % {val=vfill})
 				end
+			elseif name == "scale" then
+				table.insert(all_latex_before, [[\begin{parascale}[%(scale)s] ]] % {scale=value})
+				table.insert(all_latex_after, 1, [[\end{parascale}]])
 			end
 		end
 
@@ -124,21 +127,33 @@ if FORMAT:match 'latex' then
 	function add_formating_to_span(span)
 		local all_latex_before = {}  -- to store opening latex elements (same order as attributes)
 		local all_latex_after = {}  -- to store closing latex elements (in reversed order of attributes)
-		-- iterate over all the classes
+
+		-- iterate over all the classes and attributes
+		local classes_and_attrs = {}
 		for _, class_name in ipairs(span.classes) do
-			if class_name == "bold" then
+			classes_and_attrs[class_name] = true
+		end
+		for attr_name, attr_value in pairs(span.attributes) do
+			classes_and_attrs[attr_name] = attr_value
+		end
+
+		for name, value in pairs(classes_and_attrs) do
+			if name == "bold" then
 				table.insert(all_latex_before, [[\textbf{]])
 				table.insert(all_latex_after, 1, "}")
-			elseif class_name == "italic" then
+			elseif name == "italic" then
 				table.insert(all_latex_before, [[\textit{]])
 				table.insert(all_latex_after, 1, "}")
-			elseif class_name == "strikethrough" then
+			elseif name == "strikethrough" then
 				table.insert(all_latex_before, [[\st{]])
 				table.insert(all_latex_after, 1, "}")
-			elseif class_name == "smallcaps" then
+			elseif name == "smallcaps" then
 				-- don't need to do anything since pandoc automaticaly add \textsc{...} around span with smallcaps class
-			elseif class_name == "monospace" then
+			elseif name == "monospace" then
 				table.insert(all_latex_before, [[\texttt{]])
+				table.insert(all_latex_after, 1, "}")
+			elseif name == "scale" then
+				table.insert(all_latex_before, [[\charscale[%(params)s]{]] % {params=value})
 				table.insert(all_latex_after, 1, "}")
 			end
 		end

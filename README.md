@@ -296,13 +296,20 @@ where they are placed as specified in
     - [x] `noparskip=value` to set the space between 2 consecutive paragraph
       (in LaTeX units)
     - [x] `vfill=before/after/both`
+    - [ ] `vspace=top_length,bottom_length` in LaTeX units (including `\nbs`)
+      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
     - [ ] `font=???`
-    - [ ] `scale=???`
+    - [x] `scale=factor` scale the text by a factor. `scale=1.2` will scale the
+      text by x1.2. The resulting paragraphs may finish off-grid (the grid of
+      lines that all pages should respect for a good readability) you can
+      compensate by adding vertical space after the div using `vspace`
+      attribute. The exact vertical space to add is for you to calculate
+      See:
+      [novel class -- Environment: parascale](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.3)
     - [ ] `lang=???`
-    - [ ] `lmargin=???` left margin
-    - [ ] `rmargin=???` right margin
-    - [ ] `bmargin=???` equal margins (left and right with the same value)
-    - [ ] `align=left/right/centered`
+    - [ ] `margin=left_length,right_length`
+      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
+    - [ ] `align=left/right/centered/justified`
   - for spans:
     - [x] `.bold`
     - [x] `.italic`
@@ -311,8 +318,15 @@ where they are placed as specified in
     - [x] `.monospace`
     - [ ] `hfill=before/after/both`
     - [ ] `font=???`
-    - [ ] `scale=???`
+    - [x] `scale=factor,hoffset,voffset` scale the text by a factor. Only the
+      first parameter is mandatory. `scale=1.2` will scale the text by x1.2. The
+      two other parameters are optional and need LaTeX units. Other lines are
+      not adjusted so there may be some overlapping.
+      See:
+      [novel class -- Local sizing: `\charscale`](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.2)
     - [ ] `lang=???`
+    - [ ] `hspace=left_length,right_length`
+      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
     - [ ] `first_words/last_words=???`
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
