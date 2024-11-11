@@ -110,9 +110,22 @@ footnote for the moment⚠️
 - [ ] callout blocks
 - [x] div attributes
 - [x] span attributes
-- [ ] endash `--` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens
-- [ ] emdash `---` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens
-- [ ] elipsis `...` https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Ellipsis_(%E2%80%A6)
+- [x] special characters support:
+  - hyphen (inter-word) `-``
+  - en dash `--`
+  - em dash `---`
+  - ellipsis `...`
+  - simple quotes `'...'`
+  - double quotes `"..."`
+  - french quotes `«...»`
+  - dollar sign `$`
+  - pound sign `£`
+  - euro sign `€`
+  - hashtag `#`
+  - pipe `|`
+  - star sign `*`
+  - slash `/`
+  - backslash `\`
 - [ ] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
   white dedicated font
   - https://tex.stackexchange.com/questions/224584/define-fallback-font-for-specific-unicode-characters-in-lualatex

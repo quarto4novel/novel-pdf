@@ -5,11 +5,33 @@
 
 {{< quickchapter "1. Inline formatting" >}}
 
-You can use *italics*, **bold**, ***bold italics***, superscript^2^,
-subscript~2~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links
+You can use *italics*, **bold**, ***bold italics***, super^script^,
+sub~script~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links
 <https://quarto.org>, Classic markdown links [Quarto](https://quarto.org).
 
-{{< quickchapter "2. Footnotes" >}}
+{{< quickchapter "2. Symbols and unicode" >}}
+
+You can use special characters:
+
+:::{.noparindent}
+| hyphen (inter-word) -
+| en dash --
+| em dash ---
+| ellipsis ...
+| simple quotes '...'
+| double quotes "..."
+| french quotes «...»
+| dollar sign $
+| pound sign £
+| euro sign €
+| hashtag #
+| pipe |
+| star sign *
+| slash /
+| backslash \
+:::
+
+{{< quickchapter "3. Footnotes" >}}
 
 You can also have footnote reference,[^1] and another.[^longnote]. Here is an
 inline note.^[Inlines notes are easier to write, since you don't have to pick an
@@ -30,7 +52,7 @@ belong to the previous footnote.
 This paragraph won't be part of the note, because it
 isn't indented.
 
-{{< quickchapter "3. Basic math integration" >}}
+{{< quickchapter "4. Basic math integration" >}}
 
 You can also use so basic math like $E = mc^2$ or even present them as
 equations:
@@ -40,7 +62,7 @@ f(a)={\frac {1}{2\pi i}}\oint _{\gamma }{\frac {f(z)}{z-a}}\,dz
 \tag{1}
 $$
 
-{{< quickchapter "4. Inline blocks" >}}
+{{< quickchapter "5. Inline blocks" >}}
 
 And we have support for line blocks too :
 
@@ -79,7 +101,7 @@ expect to need in a fiction novel) but you can use line blocks with
 
 And some more text after.
 
-{{< quickchapter "5. Scene breaks" >}}
+{{< quickchapter "6. Scene breaks" >}}
 
 Here are some `scenebreak` shortcodes of different types:
 
@@ -101,7 +123,7 @@ Here are some `scenebreak` shortcodes of different types:
 
 {{< lipsum 1 >}}
 
-{{< quickchapter "6. Spaces" >}}
+{{< quickchapter "7. Spaces" >}}
 
 Now we jump 5 lines with `emptylines` shortcode
 
@@ -109,7 +131,7 @@ Now we jump 5 lines with `emptylines` shortcode
 
 Jumped!
 
-{{< quickchapter "7. Epigraphs" >}}
+{{< quickchapter "8. Epigraphs" >}}
 
 You can use an epigraph with an `epigraph` div:
 
@@ -143,7 +165,7 @@ assignment, and I told them they didn’t understand life.
 | But only so an hour.
 :::
 
-{{< quickchapter "8. Page breaks" >}}
+{{< quickchapter "9. Page breaks" >}}
 
 It's also possible to ask for a new page with the `clearpage` shortcode:
 
