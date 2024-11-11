@@ -234,9 +234,10 @@ where they are placed as specified in
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if
   necessary inserting a blank verso.
 - [x] **emptypage shortcode**
-- [x] **null shortcode**
-- [ ] **vertical_fill shortcode**
-- [ ] **horizontal_fill shortcode**
+- [x] **null shortcode**: put a character with no width (usefull sometimes for
+  manual layout)
+- [x] **vfill shortcode**: fill the vertical space as long as possible pushing
+  subsequent element down
 - [x] **epigraph filter**: include an epigraph (poem or citation) with author
   and source:
 
@@ -294,7 +295,7 @@ where they are placed as specified in
     - [x] `.noparindent` to remove indentation of the first line of paragraphs
     - [x] `noparskip=value` to set the space between 2 consecutive paragraph
       (in LaTeX units)
-    - [ ] `vfill=before/after/both`
+    - [x] `vfill=before/after/both`
     - [ ] `font=???`
     - [ ] `scale=???`
     - [ ] `lang=???`

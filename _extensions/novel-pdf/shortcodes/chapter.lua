@@ -19,9 +19,9 @@ function chapter(args, kwargs, meta)
         lines_before = pandoc.utils.stringify(meta.chapters.title.lines_before)
     end
 
-    -- This shortcode is only for pdf
+    -- This shortcode is only for LaTeX
     -- In all other format just return the title as a paragraph
-    if not quarto.doc.isFormat('pdf') then
+    if not FORMAT:match 'latex' then
         return pandoc.Para(chapter_name)
     end
 

@@ -101,11 +101,27 @@ if FORMAT:match 'latex' then
 				table.insert(all_latex_after, 1, [[\null\setlength{\parskip}{]] .. global_parskip .. [[}]])
 
 				first_para_need_indent = false
+			elseif name == "vfill" then
+				-- Retreive value from attribute
+				local vfill = pandoc.utils.stringify(value)
+
+				if vfill == "before" then
+					table.insert(all_latex_before, [[\vfill]])
+				elseif vfill == "after" then
+					table.insert(all_latex_after, 1, [[\vfill]])
+				elseif vfill == "both" then
+					table.insert(all_latex_before, [[\vfill]])
+					table.insert(all_latex_after, 1, [[\vfill]])
+				else
+					error("vfill div attribute only possible values are before, after and both, but has value: %(val)s." % {val=vfill})
+				end
 			end
 		end
 
 		-- if nothing was detected, change nothing
-		if utils.table_is_empty(all_latex_before) and utils.table_is_empty(all_latex_before) and not para_need_smallcaps then
+		if utils.table_is_empty(all_latex_before)
+		and utils.table_is_empty(all_latex_after)
+		and not para_need_smallcaps then
 			return nil
 		end
 

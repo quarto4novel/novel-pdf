@@ -5,9 +5,9 @@
 
 {{< quickchapter "1. Bold div" >}}
 
-:::{.bold}
-Three paragraphs formated as bold.
+Two next paragraphs are formated as bold.
 
+:::{.bold}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -15,9 +15,9 @@ Three paragraphs formated as bold.
 
 {{< quickchapter "2. Italic div" line=false >}}
 
-:::{.italic}
-Three paragraphs formated as italic.
+Two next paragraphs are formated as italic.
 
+:::{.italic}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -25,9 +25,9 @@ Three paragraphs formated as italic.
 
 {{< quickchapter "3. Strikethrough div" line=true >}}
 
-:::{.strikethrough}
-Three paragraphs formated as strikethrough.
+Two next paragraphs are formated as strikethrough.
 
+:::{.strikethrough}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -35,9 +35,9 @@ Three paragraphs formated as strikethrough.
 
 {{< quickchapter "4. Small capitals div" >}}
 
-:::{.smallcaps}
-Three paragraphs formated in small caps.
+Two next paragraphs are formated in small caps.
 
+:::{.smallcaps}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -45,9 +45,9 @@ Three paragraphs formated in small caps.
 
 {{< quickchapter "5. Monospaced div" >}}
 
-:::{.monospace}
-Three paragraphs formated in monospace (aka teletext) font.
+Five next paragraphs are formated in monospace (aka teletext) font.
 
+:::{.monospace}
 Unlike verbatim, you can use **bold text**, *italic text* and ***bold italic
 text*** in the monospace divs or spans just like in any other place.
 
@@ -64,9 +64,10 @@ example:
 
 {{< quickchapter "6. Combined classes div" >}}
 
-:::{.bold .italic .strikethrough .smallcaps}
-Three paragraphs formated with combinations of previous formating classes.
+Two next paragraphs are formated with combinations of previous formating
+classes.
 
+:::{.bold .italic .strikethrough .smallcaps}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -74,9 +75,9 @@ Three paragraphs formated with combinations of previous formating classes.
 
 {{< quickchapter "7. Div without paragraph indentation" >}}
 
-:::{.noparindent}
-Three paragraphs no paragraph indentation.
+Two next paragraphs have no paragraph indentation.
 
+:::{.noparindent}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -84,9 +85,9 @@ Three paragraphs no paragraph indentation.
 
 {{< quickchapter "8. Div with space between paragraphs" >}}
 
-:::{parskip=1ex}
-Four paragraphs space between them.
+Three next paragraphs space between them.
 
+:::{parskip=1ex}
 {{< lipsum 1 >}}
 
 {{< lipsum 1 >}}
@@ -96,7 +97,44 @@ Four paragraphs space between them.
 
 And some text after the last paragraph (there should be space before it).
 
-{{< quickchapter "9. Span with formating" >}}
+{{< clearpage >}}
+
+{{< quickchapter "9. Vertival fill" >}}
+
+Next paragraph has filling space before and after and so should be vertically
+centered.
+
+:::{vfill=both}
+{{< lipsum 1 >}}
+:::
+
+Some text down the page.
+
+{{< clearpage >}}
+
+Next paragraph has filling space before only and so should be pushed down the
+page.
+
+:::{vfill=before}
+{{< lipsum 1 >}}
+:::
+
+Some text down the page.
+
+{{< clearpage >}}
+
+Next paragraph has filling space after only and so following content should be
+pushed down the page.
+
+:::{vfill=after}
+{{< lipsum 1 >}}
+:::
+
+Some text down the page.
+
+{{< clearpage >}}
+
+{{< quickchapter "10. Span with formating" >}}
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},

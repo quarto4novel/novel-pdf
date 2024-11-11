@@ -125,11 +125,18 @@ Here are some `scenebreak` shortcodes of different types:
 
 {{< quickchapter "7. Spaces" >}}
 
-Now we jump 5 lines with `emptylines` shortcode
+Now we jump 5 lines with `emptylines` shortcode.
 
 {{< emptylines 5 >}}
 
-Jumped!
+We can also fill a vertical space with as much empty line as possible (pushing
+following content down) using `vfill` shortcode:
+
+{{< vfill >}}
+
+And this is pushed at the end of the page.
+
+{{< clearpage >}}
 
 {{< quickchapter "8. Epigraphs" >}}
 
@@ -167,7 +174,7 @@ assignment, and I told them they didn’t understand life.
 
 {{< quickchapter "9. Page breaks" >}}
 
-It's also possible to ask for a new page with the `clearpage` shortcode:
+It's possible to ask for a new page with the `clearpage` shortcode:
 
 {{< clearpage >}}
 
