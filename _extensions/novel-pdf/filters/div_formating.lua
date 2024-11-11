@@ -1,7 +1,6 @@
 local utils = require "../utils"
 
--- global variables to overcome weird bugs
-local first_para_need_indent = true
+-- global variables needed to communicate between different filters
 local para_need_smallcaps = false
 
 if FORMAT:match 'latex' then
@@ -19,18 +18,9 @@ if FORMAT:match 'latex' then
 			local after_para = {}
 
 			-- As \scshape does not work we need to apply \textsc para by para
-			-- But that makes novel detect each para as a new chapter and so does not insert an indent at the para start
 			if para_need_smallcaps then
 				table.insert(before_para, [[\textsc{]])
-				table.insert(before_para, [[\forceindent ]])
-				first_para_need_indent = false
 				table.insert(after_para, "}")
-			end
-
-			-- BUG: this also add an indent if this is the first para of a chapter (that should not be indented)
-			if first_para_need_indent then
-				table.insert(before_para, [[\forceindent ]])
-				first_para_need_indent = false
 			end
 
 			return {
@@ -45,8 +35,6 @@ if FORMAT:match 'latex' then
 	function add_formating_to_div(div)
 		local all_latex_before = {}  -- to store opening latex elements (same order as attributes)
 		local all_latex_after = {}  -- to store closing latex elements (in reversed order of attributes)
-
-		first_para_need_indent = true
 
 		-- iterate over all the classes and attributes
 		local classes_and_attrs = {}
@@ -86,8 +74,6 @@ if FORMAT:match 'latex' then
 
 				table.insert(all_latex_before, [[\setlength{\parindent}{0em}]])
 				table.insert(all_latex_after, 1, [[\setlength{\parindent}{]] .. parindent .. [[}]])
-
-				first_para_need_indent = false
 			elseif name == "parskip" then
 				-- Retreive value from attribute
 				local local_parskip = pandoc.utils.stringify(value)
@@ -99,8 +85,6 @@ if FORMAT:match 'latex' then
 				-- Since we have a space before the first paragraphe we insert a \null after
 				-- the last one to also have a space after it (it's more symetrical)
 				table.insert(all_latex_after, 1, [[\null\setlength{\parskip}{]] .. global_parskip .. [[}]])
-
-				first_para_need_indent = false
 			elseif name == "vfill" then
 				-- Retreive value from attribute
 				local vfill = pandoc.utils.stringify(value)
@@ -125,9 +109,7 @@ if FORMAT:match 'latex' then
 			return nil
 		end
 
-		-- We need to add force an indentation at the begining of the div since novel class consider it
-		-- like a new start of chapter and do not put an indend like any other para start
-		-- BUG: the forceindent is included in the strikethrough when rendering
+		-- Some changes need to be done for each para
 		local content = div:walk(make_changes_to_para)
 		para_need_smallcaps = false
 

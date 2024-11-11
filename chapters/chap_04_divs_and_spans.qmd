@@ -3,7 +3,17 @@
 ## Test of many combinations of formating classes
 :::
 
-{{< quickchapter "1. Bold div" >}}
+{{< quickchapter "1. Simple div" >}}
+
+:::{}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+{{< quickchapter "2. Bold div" >}}
 
 Two next paragraphs are formated as bold.
 
@@ -13,7 +23,7 @@ Two next paragraphs are formated as bold.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "2. Italic div" line=false >}}
+{{< quickchapter "3. Italic div" line=false >}}
 
 Two next paragraphs are formated as italic.
 
@@ -23,7 +33,7 @@ Two next paragraphs are formated as italic.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "3. Strikethrough div" line=true >}}
+{{< quickchapter "4. Strikethrough div" line=true >}}
 
 Two next paragraphs are formated as strikethrough.
 
@@ -33,7 +43,7 @@ Two next paragraphs are formated as strikethrough.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "4. Small capitals div" >}}
+{{< quickchapter "5. Small capitals div" >}}
 
 Two next paragraphs are formated in small caps.
 
@@ -43,7 +53,7 @@ Two next paragraphs are formated in small caps.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "5. Monospaced div" >}}
+{{< quickchapter "6. Monospaced div" >}}
 
 Five next paragraphs are formated in monospace (aka teletext) font.
 
@@ -62,7 +72,7 @@ example:
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "6. Combined classes div" >}}
+{{< quickchapter "7. Combined classes div" >}}
 
 Two next paragraphs are formated with combinations of previous formating
 classes.
@@ -73,7 +83,7 @@ classes.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "7. Div without paragraph indentation" >}}
+{{< quickchapter "8. Div without paragraph indentation" >}}
 
 Two next paragraphs have no paragraph indentation.
 
@@ -83,7 +93,7 @@ Two next paragraphs have no paragraph indentation.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "8. Div with space between paragraphs" >}}
+{{< quickchapter "9. Div with space between paragraphs" >}}
 
 Three next paragraphs space between them.
 
@@ -99,7 +109,7 @@ And some text after the last paragraph (there should be space before it).
 
 {{< clearpage >}}
 
-{{< quickchapter "9. Vertival fill" >}}
+{{< quickchapter "10. Vertival fill" >}}
 
 Next paragraph has filling space before and after and so should be vertically
 centered.
@@ -134,7 +144,7 @@ Some text down the page.
 
 {{< clearpage >}}
 
-{{< quickchapter "10. Span with formating" >}}
+{{< quickchapter "11. Span with formating" >}}
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
