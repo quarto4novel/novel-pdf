@@ -5,7 +5,6 @@ quarto-required: ">=1.5.0"
 contributes:
   shortcodes:
     - shortcodes/pages.lua
-    - shortcodes/chapter.lua  # DEPRECATED
     - shortcodes/scenebreak.lua
     - shortcodes/mainmatter.lua
     - shortcodes/emptylines.lua
