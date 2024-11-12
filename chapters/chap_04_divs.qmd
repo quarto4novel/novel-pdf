@@ -1,6 +1,6 @@
 :::{.chapter}
-# Chapter 4: DIVs
-## Test of many combinations of formating classes
+## Chapter 4: DIVs
+### Test of many combinations of formating classes
 :::
 
 {{< quickchapter "1. Simple div" >}}

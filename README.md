@@ -35,12 +35,12 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
-- [x] headings (inside `.chapter` divs): only level 1 `# chapter tile` and level 2 `## chapter subtitle`
-  are allowed and only in chapter div:
+- [x] headings (inside `.chapter` divs): only level 2 `## chapter tile` and
+  level 3 `### chapter subtitle` are allowed and only in chapter div:
   ```qmd
   :::{.chapter}
-  # chapter tile
-  ## chapter subtitle
+  ## chapter tile
+  ### chapter subtitle
   :::
   ```
 - [ ] headings (outside `.chapter` divs):
@@ -183,8 +183,8 @@ where they are placed as specified in
 
   ```qmd
   :::{.chapter}
-  # My Super Chapter Title
-  ## And a wonderful subtitle to go with it
+  ## My Super Chapter Title
+  ### And a wonderful subtitle to go with it
   :::
   ```
 
@@ -192,8 +192,8 @@ where they are placed as specified in
 
   ```qmd
   :::{.chapter height=20}
-  # My Super Chapter Title
-  ## And a wonderful subtitle to go with it
+  ## My Super Chapter Title
+  ### And a wonderful subtitle to go with it
   :::
   ```
 - [x] **quickchapter shortcode**: used by some books are designed with numerous

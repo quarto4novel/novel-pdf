@@ -3,7 +3,7 @@ local utils = require "../utils"
 -- LaTeX multiline string declared here so that it does not have useless indentation
 local raw_latex_open_fmt <const> = [[
 \clearpage %% next chapter may begin recto or verso
-\begin{ChapterStart}%{options}s]]
+\begin{ChapterStart}%(options)s]]
 
 if FORMAT:match 'latex' then
 	local lines_before_title_from_meta
@@ -17,7 +17,7 @@ if FORMAT:match 'latex' then
 	-- Used localy inside chapter div
 	local chapter_titles_from_header = {
 		Header = function(header)
-			if header.level == 1 then
+			if header.level == 2 then
 				local lines = lines_before_title_from_meta
 				local title = pandoc.utils.stringify(header.content)
 
@@ -28,7 +28,7 @@ if FORMAT:match 'latex' then
 					pandoc.RawBlock('tex', raw_latex_vspace),
 					pandoc.RawBlock('tex', raw_latex_title)
 				}
-			elseif header.level == 2 then
+			elseif header.level == 3 then
 				local lines = lines_before_subtitle_from_meta
 				local subtitle = pandoc.utils.stringify(header.content)
 
@@ -40,8 +40,7 @@ if FORMAT:match 'latex' then
 					pandoc.RawBlock('tex', raw_latex_subtitle)
 				}
 			else
-				-- All other case we don't touche the content
-				return nil
+				error("Only level 2 and 3 heading are allowed inside a .chapter DIV. Level %(lvl)s found." % {lvl=header.level})
 			end
 		end
 	}

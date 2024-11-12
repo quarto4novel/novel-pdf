@@ -1,6 +1,6 @@
 :::{.chapter}
-# Chapter 5: SPANs
-## Test of many combinations of formating classes
+## Chapter 5: SPANs
+### Test of many combinations of formating classes
 :::
 
 {{< quickchapter "1. Simple span" >}}
