@@ -46,6 +46,7 @@ if FORMAT:match 'latex' then
 		end
 
 		for name, value in pairs(classes_and_attrs) do
+
 			if name == "bold" then
 				table.insert(all_latex_before, [[\begin{bfseries}]])
 				table.insert(all_latex_after, 1, [[\end{bfseries}]])
@@ -142,7 +143,8 @@ if FORMAT:match 'latex' then
 					error("align attribute with value '%(attr_val)s' but the only possible values are left, right, center and justify." % {attr_val=value})
 				end
 			end
-		end
+
+		end  -- for classes_and_attrs
 
 		-- if nothing was detected, change nothing
 		if utils.table_is_empty(all_latex_before)

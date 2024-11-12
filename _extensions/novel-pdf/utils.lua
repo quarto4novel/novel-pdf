@@ -81,13 +81,16 @@ function utils.create_chapter(title_inlines, lines_before, height)
     table.insert(title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
     table.insert(title_inlines, pandoc.RawInline('latex', "}"))
 
+    title_div = pandoc.Div {title_inlines}
+    title_div.attr.attributes = {lines_before=lines_before}
+
     local raw_latex_close = pandoc.RawBlock('latex', [[\end{ChapterStart}]])
 
     -- Build and return the resulting div
     return pandoc.Div {
         raw_latex_clear,
         raw_latex_open,
-        title_inlines,
+        title_div,
         raw_latex_close
     }
 end

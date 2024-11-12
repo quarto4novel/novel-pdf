@@ -14,7 +14,7 @@ if FORMAT:match 'latex' then
 			-- Retreive attributes or get default from meta
 			local title_inlines = header.content
 			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before)
-			local height = pandoc.utils.stringify(from_meta.height)
+			local height = pandoc.utils.stringify(header.attributes.height or from_meta.height)
 			-- TODO: add support for chapter style
 
 			return utils.create_chapter(title_inlines, lines_before, height)
