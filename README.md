@@ -84,9 +84,23 @@ footnote for the moment⚠️
     - `## Author`
     - any other level 2 title inside front matter is an error
   - [ ] level 2 (in body matter): **chapter** with title `## My chapter title`.
+
+    fictional works have a very
+    specific structure that do not correspond to academic structure used by
+    classical LaTeX document. In particular the hierarchical `\part`,
+    `\section`, `\chapter`, etc is not used in novels (see:
+    [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
+    ). That's why we provide a `{{< chapter "My chapter One" >}}` shortcode to
+    create a chapter easily and a div class that let you create advanced
+    chapters header with title, subtitle using level 1 and 2 headers and other
+    content
+
     You can use the `lines_before=7` attribute to set the position of the title,
     it defaults to `chapters.title.lines_before` metadata. The chapter can have
     more detailed when encapsulated in a ``.chapter` div.
+
+    You can use the `height=15` (in number of lines) attribute to set the total
+    height of the chapter header.
 
     ```qmd
     :::{.chapter}
@@ -351,7 +365,7 @@ where they are placed as specified in
 
 ## Deprecated features
 
-- **chapter shortcode** and **chapter div**: fictional works have a very
+- **chapter shortcode**: fictional works have a very
   specific structure that do not correspond to academic structure used by
   classical LaTeX document. In particular the hierarchical `\part`,
   `\section`, `\chapter`, etc is not used in novels (see:

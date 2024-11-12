@@ -1,4 +1,4 @@
-## Chapter Two with more space before title {lines_before=7}
+## Chapter Two [with more space before title]{scale=0.8} {lines_before=7}
 
 The night was still dark and stormy. This should not be surprising, seeing as how only half an hour has elapsed since the first chapter. That information was necessary, in case you put the book down and haven't read any of it for the last two weeks.
 

@@ -32,12 +32,18 @@ end
 getmetatable("").__mod = utils.interp
 
 
-function utils.create_quickchapter(name, line)
-    -- name: string
+function utils.create_quickchapter(title_inlines, line)
+    -- title_inlines: pandoc.Inlines
     -- line: string with different possible values
     --      - "true": default line length
     --      - "false": no line
     --      - length of line in LaTeX unit
+
+    -- This is only for LaTeX
+    -- In all other format just return the title as a paragraph
+    if not FORMAT:match 'latex' then
+        return pandoc.Para(title_inlines)
+    end
 
     -- line parameter need to be adapted
     local line_config
@@ -49,42 +55,41 @@ function utils.create_quickchapter(name, line)
         line_config = "[%(line)s]" % {line=line}
     end
 
-    -- This is only for LaTeX
-    -- In all other format just return the title as a paragraph
-    if not FORMAT:match 'latex' then
-        return pandoc.Para(name)
-    end
+    -- We encapsulate the title inlines to make them a title
+    table.insert(title_inlines, 1, pandoc.RawInline('latex', [[\QuickChapter%(line_config)s{]] % {line_config=line_config}))
+    table.insert(title_inlines, pandoc.RawInline('latex', "}"))
 
-    local raw_latex = [[\QuickChapter%(line_config)s{%(title)s}]] % {
-        line_config=line_config,
-        title=name
-    }
-
-    return pandoc.RawBlock('tex', raw_latex)
+    return pandoc.Div {title_inlines}
 end
 
--- LaTeX multiline strings declared here so that it does not have useless indentation
-local raw_latex_chap_fmt <const> = [[
-\clearpage %% next chapter may begin recto or verso
-\begin{ChapterStart}
-\vspace*{%(lbefore)s\nbs}
-\ChapterTitle{%(title)s}
-\end{ChapterStart}
-]]
 
-function utils.create_chapter(name, lines_before)
+function utils.create_chapter(title_inlines, lines_before, height)
+    assert(title_inlines)
+    assert(lines_before)
+    assert(height)
+
     -- This is only for LaTeX
     -- In all other format just return the title as a paragraph
     if not FORMAT:match 'latex' then
-        return pandoc.Para(name)
+        return pandoc.Para(title_inlines)
     end
 
-    local raw_latex = raw_latex_chap_fmt % {
-        lbefore=lines_before,
-        title=name
-    }
+    local raw_latex_clear = pandoc.RawBlock('latex', [[\clearpage %% next chapter may begin recto or verso]])
+    local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=height})
 
-    return pandoc.RawBlock('tex', raw_latex)
+    -- We encapsulate the title inlines to make them a title
+    table.insert(title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
+    table.insert(title_inlines, pandoc.RawInline('latex', "}"))
+
+    local raw_latex_close = pandoc.RawBlock('latex', [[\end{ChapterStart}]])
+
+    -- Build and return the resulting div
+    return pandoc.Div {
+        raw_latex_clear,
+        raw_latex_open,
+        title_inlines,
+        raw_latex_close
+    }
 end
 
 return utils

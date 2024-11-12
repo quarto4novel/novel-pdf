@@ -1,45 +1,46 @@
 local utils = require "../utils"
 
--- LaTeX multiline string declared here so that it does not have useless indentation
-local raw_latex_open_fmt <const> = [[
-\clearpage %% next chapter may begin recto or verso
-\begin{ChapterStart}%(options)s]]
-
 -- global variables needed to communicate between different filters
-local lines_before_title_from_meta
-local lines_before_subtitle_from_meta
+local from_meta = {}
 
 if FORMAT:match 'latex' then
 	function get_vspaces_from_meta(meta)
-		lines_before_title_from_meta = pandoc.utils.stringify(meta.chapters.title.lines_before)
-		lines_before_subtitle_from_meta = pandoc.utils.stringify(meta.chapters.subtitle.lines_before)
+		from_meta.lines_before_title = meta.chapters.title.lines_before
+		from_meta.lines_before_subtitle = meta.chapters.subtitle.lines_before
+		from_meta.height = meta.chapters.header_height
 	end
 
 	-- Used localy inside chapter div
 	local chapter_titles_from_header = {
 		Header = function(header)
 			if header.level == 2 then
-				local lines = lines_before_title_from_meta
-				local title = pandoc.utils.stringify(header.content)
+				local lines = pandoc.utils.stringify(from_meta.lines_before_title)
+				local title_inlines = header.content
 
-				local raw_latex_vspace = [[\vspace*{%(lines)s\nbs}]] % {lines=lines}
-				local raw_latex_title = [[\ChapterTitle{%(title)s}]] % {title=title}
+				local raw_latex_before = pandoc.RawInline('latex', [[\ChapterTitle{]])
+				local raw_latex_after = pandoc.RawInline('latex', "}")
 
-				return {
-					pandoc.RawBlock('tex', raw_latex_vspace),
-					pandoc.RawBlock('tex', raw_latex_title)
-				}
+				table.insert(title_inlines, 1, raw_latex_before)
+				table.insert(title_inlines, raw_latex_after)
+
+				new_div = pandoc.Div {title_inlines}
+				new_div.attributes = {lines_before=lines}
+
+				return new_div
 			elseif header.level == 3 then
-				local lines = lines_before_subtitle_from_meta
-				local subtitle = pandoc.utils.stringify(header.content)
+				local lines = pandoc.utils.stringify(from_meta.lines_before_subtitle)
+				local subtitle_inlines = header.content
 
-				local raw_latex_vspace = [[\vspace*{%(lines)s\nbs}]] % {lines=lines}
-				local raw_latex_subtitle = [[\ChapterSubtitle{%(subtitle)s}]] % {subtitle=subtitle}
+				local raw_latex_before = pandoc.RawInline('latex', [[\ChapterSubtitle{]])
+				local raw_latex_after = pandoc.RawInline('latex', "}")
 
-				return {
-					pandoc.RawBlock('tex', raw_latex_vspace),
-					pandoc.RawBlock('tex', raw_latex_subtitle)
-				}
+				table.insert(subtitle_inlines, 1, raw_latex_before)
+				table.insert(subtitle_inlines, raw_latex_after)
+
+				new_div = pandoc.Div {subtitle_inlines}
+				new_div.attributes = {lines_before=lines}
+
+				return new_div
 			else
 				error("Only level 2 and 3 heading are allowed inside a .chapter DIV. Level %(lvl)s found." % {lvl=header.level})
 			end
@@ -48,31 +49,21 @@ if FORMAT:match 'latex' then
 
 	function chapter_start_from_div(div)
 		if utils.table_contains(div.classes, "chapter") then
+			local height = pandoc.utils.stringify(div.attributes.height or from_meta.height)
 
-			-- Retreive the height of the chapter header in the attribute of the div if provided
-			local nb_lines_config
-			if div.attributes.height then
-				nb_lines_config = "[%(height)s]" % {height=pandoc.utils.stringify(div.attributes.height)}
-			else
-				nb_lines_config = ""
-			end
+		    local content_block = div:walk(chapter_titles_from_header)
 
-			local raw_latex_open = raw_latex_open_fmt % {options=nb_lines_config}
-
-		    local content = div:walk(chapter_titles_from_header)
-
-			local raw_latex_close = [[\end{ChapterStart}]]
-
-			table.insert(div.classes, "toto")
+		    local raw_latex_clear = pandoc.RawBlock('latex', [[\clearpage %% next chapter may begin recto or verso]])
+			local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=height})
+			local raw_latex_close = pandoc.RawBlock('latex', [[\end{ChapterStart}]])
 
 			-- Build and return the resulting div
-			return pandoc.Div(
-				pandoc.Blocks {
-					pandoc.RawBlock('tex', raw_latex_open),
-					content,
-					pandoc.RawBlock('tex', raw_latex_close),
-				}
-			)
+			return pandoc.Div {
+				raw_latex_clear,
+				raw_latex_open,
+				content_block,
+				raw_latex_close
+			}
 		end
 
 		-- if the div doesn't have the correct class we are not touching it

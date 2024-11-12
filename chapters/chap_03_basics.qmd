@@ -1,9 +1,13 @@
 :::{.chapter}
-## Chapter 3: Basic formating
-### Where we are going to present all the basic feature
+## Chapter 3: Basic **formating**
+### Where we are going to present all the [basic]{scale=0.5} feature
+
+Some few stuffs in the chapter header.
+
+Some **other** stuffs in the chapter header.
 :::
 
-### 1. Inline formatting
+### 1. Inline formatting [this is provided by pandoc]{scale=0.5}
 
 You can use *italics*, **bold**, ***bold italics***, super^script^,
 sub~script~, ~~strikethrough~~, `verbatim inline code`, Angle brackets links
