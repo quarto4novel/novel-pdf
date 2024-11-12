@@ -299,6 +299,9 @@ where they are placed as specified in
     - [x] `vspace_before/after/both=length` in LaTeX units (including `\nbs` for
       number of lines). For example `vspace_after=3\nbs` to jump 3 lines after
       the div
+    - [x] `lines_before/after/both=nb` in number of lines. Shortcut for vspace
+      attribute with value always in number of lines. For example
+      `lines_after=3` to jump 3 lines after the div
     - [ ] `font=???`
     - [x] `scale=factor` scale the text by a factor. `scale=1.2` will scale the
       text by x1.2. The resulting paragraphs may finish off-grid (the grid of

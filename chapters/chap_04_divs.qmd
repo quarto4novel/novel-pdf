@@ -168,6 +168,31 @@ Next div has vertical space after.
 {{< lipsum 1 >}}
 :::
 
+Next div has vertical space before and after (using shortcut in number of
+lines).
+
+:::{lines_both=3}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+Next div has vertical space before (using shortcut in number of lines).
+
+:::{lines_before=3}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+Next div has vertical space after (using shortcut in number of lines).
+
+:::{lines_after=3}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
 Some text after.
 
 {{< quickchapter "11. Margins" >}}
