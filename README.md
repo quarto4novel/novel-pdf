@@ -329,6 +329,9 @@ where they are placed as specified in
     - [x] `hspace_before/after/both=length` in LaTeX units. For example
       `hspace_before=2cm` to add a horizontal space of 2cm at the left of the
       span
+    - [x] `phantom` Does not print the text, but leaves a horizontal gap as if
+      the text were there. Caution: ⚠️ In some locations, this command has
+      unexpected results, such as by adding a line.
     - [ ] `first_words/last_words=???`
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define

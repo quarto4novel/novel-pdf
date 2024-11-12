@@ -194,6 +194,9 @@ if FORMAT:match 'latex' then
 			elseif name == "hspace_both" then
 				table.insert(all_latex_before, [[\hspace*{%(space)s}]] % {space=value})
 				table.insert(all_latex_after, 1, [[\vspace*{%(space)s}]] % {space=value})
+			elseif name == "phantom" then
+				table.insert(all_latex_before, [[\phantom{]])
+				table.insert(all_latex_after, 1, "}")
 			end
 		end
 
