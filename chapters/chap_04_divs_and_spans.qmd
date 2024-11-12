@@ -285,3 +285,7 @@ And with the horizontal and vertical offsets:
 | Alpha [Beta]{scale=1.25} Gamma. (1)
 | Alpha [Beta]{scale=1.25,8em,1.3\nbs} Gamma. (2)\par
 :::
+
+You can also insert horizontal space before [**a span**]{hspace_before=2cm} or
+eventually after [**a span**]{hspace_after=2cm} and even to both sides of
+[**a span**]{hspace_both=2cm} just like that.

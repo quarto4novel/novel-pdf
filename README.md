@@ -326,9 +326,9 @@ where they are placed as specified in
       See:
       [novel class -- Local sizing: `\charscale`](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.2)
     - [ ] `lang=???`
-    - [ ] `hspace_left=length` in LaTeX units
-    - [ ] `hspace_right=length` in LaTeX units
-    - [ ] `hspace_both=length` in LaTeX units
+    - [x] `hspace_before/after/both=length` in LaTeX units. For example
+      `hspace_before=2cm` to add a horizontal space of 2cm at the left of the
+      span
     - [ ] `first_words/last_words=???`
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
