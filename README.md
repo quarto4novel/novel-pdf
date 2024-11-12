@@ -310,7 +310,7 @@ where they are placed as specified in
     - [ ] `lang=???`
     - [x] `margin_left/right/both=length` in LaTeX units. For example
       `margin_left=5em` to add a margin of 5em at the left of the div
-    - [ ] `align=left/right/centered/justified`
+    - [x] `align=left/right/centered/justified`
   - for spans:
     - [x] `.bold`
     - [x] `.italic`

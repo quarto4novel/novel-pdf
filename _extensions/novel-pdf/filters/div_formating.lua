@@ -118,6 +118,22 @@ if FORMAT:match 'latex' then
 			elseif name == "margin_both" then
 				table.insert(all_latex_before, [[\begin{adjustwidth}{%(margin)s}{%(margin)s}]] % {margin=value})
 				table.insert(all_latex_after, 1, [[\end{adjustwidth}]])
+			elseif name == "align" then
+				if value == "left" then
+					table.insert(all_latex_before, [[\begin{FlushLeft}]])
+					table.insert(all_latex_after, 1, [[\end{FlushLeft}]])
+				elseif value == "right" then
+					table.insert(all_latex_before, [[\begin{FlushRight}]])
+					table.insert(all_latex_after, 1, [[\end{FlushRight}]])
+				elseif value == "center" then
+					table.insert(all_latex_before, [[\begin{Center}]])
+					table.insert(all_latex_after, 1, [[\end{Center}]])
+				elseif value == "justify" then
+					table.insert(all_latex_before, [[\begin{justify}]])
+					table.insert(all_latex_after, 1, [[\end{justify}]])
+				else
+					error("align attribute with value '%(attr_val)s' but the only possible values are left, right, center and justify." % {attr_val=value})
+				end
 			end
 		end
 

@@ -214,7 +214,39 @@ Next divs have different right and left margins.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "12. Scaled divs" >}}
+{{< quickchapter "11. Margins" >}}
+
+Next divs have different left alignment.
+
+:::{align=left}
+{{< lipsum 1 >}}
+:::
+
+:::{align=right}
+{{< lipsum 1 >}}
+:::
+
+:::{align=center}
+{{< lipsum 1 >}}
+:::
+
+:::{align=justify}
+{{< lipsum 1 >}}
+:::
+
+And you can nest them:
+
+:::{align=left}
+{{< lipsum 1 >}}
+
+::::::{align=justify}
+{{< lipsum 1 >}}
+::::::
+
+{{< lipsum 1 >}}
+:::
+
+{{< quickchapter "13. Scaled divs" >}}
 
 :::{scale=0.6}
 {{< lipsum 1 >}}
@@ -228,7 +260,7 @@ Next divs have different right and left margins.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "13. Span with formating" >}}
+{{< quickchapter "14. Span with formating" >}}
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
