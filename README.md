@@ -297,7 +297,7 @@ where they are placed as specified in
       (in LaTeX units)
     - [x] `vfill=before/after/both`
     - [x] `vspace_before/after/both=length` in LaTeX units (including `\nbs` for
-      number of lines).For example `vspace_after=3\nbs` to jump 3 lines after
+      number of lines). For example `vspace_after=3\nbs` to jump 3 lines after
       the div
     - [ ] `font=???`
     - [x] `scale=factor` scale the text by a factor. `scale=1.2` will scale the
@@ -308,9 +308,8 @@ where they are placed as specified in
       See:
       [novel class -- Environment: parascale](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.3)
     - [ ] `lang=???`
-    - [ ] `margin_left=length` in LaTeX units
-    - [ ] `margin_right=length` in LaTeX units
-    - [ ] `margin_both=length` in LaTeX units
+    - [x] `margin_left/right/both=length` in LaTeX units. For example
+      `margin_left=5em` to add a margin of 5em at the left of the div
     - [ ] `align=left/right/centered/justified`
   - for spans:
     - [x] `.bold`

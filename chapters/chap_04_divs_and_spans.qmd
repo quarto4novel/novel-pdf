@@ -170,7 +170,51 @@ Next div has vertical space after.
 
 Some text after.
 
-{{< quickchapter "11. Scaled divs" >}}
+{{< quickchapter "11. Margins" >}}
+
+Next divs have different left margins.
+
+:::{margin_left=1em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_left=3em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_left=5em}
+{{< lipsum 1 >}}
+:::
+
+Next divs have different right margins.
+
+:::{margin_right=1em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_right=3em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_right=5em}
+{{< lipsum 1 >}}
+:::
+
+Next divs have different right and left margins.
+
+:::{margin_both=1em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_both=3em}
+{{< lipsum 1 >}}
+:::
+
+:::{margin_both=5em}
+{{< lipsum 1 >}}
+:::
+
+{{< quickchapter "12. Scaled divs" >}}
 
 :::{scale=0.6}
 {{< lipsum 1 >}}
@@ -184,7 +228,7 @@ Some text after.
 {{< lipsum 1 >}}
 :::
 
-{{< quickchapter "12. Span with formating" >}}
+{{< quickchapter "13. Span with formating" >}}
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},

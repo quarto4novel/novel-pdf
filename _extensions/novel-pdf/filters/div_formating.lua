@@ -109,6 +109,15 @@ if FORMAT:match 'latex' then
 			elseif name == "vspace_both" then
 				table.insert(all_latex_before, [[\vspace*{%(space)s}]] % {space=value})
 				table.insert(all_latex_after, 1, [[\vspace*{%(space)s}]] % {space=value})
+			elseif name == "margin_left" then
+				table.insert(all_latex_before, [[\begin{adjustwidth}{%(margin)s}{0em}]] % {margin=value})
+				table.insert(all_latex_after, 1, [[\end{adjustwidth}]])
+			elseif name == "margin_right" then
+				table.insert(all_latex_before, [[\begin{adjustwidth}{0em}{%(margin)s}]] % {margin=value})
+				table.insert(all_latex_after, 1, [[\end{adjustwidth}]])
+			elseif name == "margin_both" then
+				table.insert(all_latex_before, [[\begin{adjustwidth}{%(margin)s}{%(margin)s}]] % {margin=value})
+				table.insert(all_latex_after, 1, [[\end{adjustwidth}]])
 			end
 		end
 
