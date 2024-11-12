@@ -1,4 +1,4 @@
-{{< chapter "Chapter One" lines_before="3">}}
+## Chapter One with default placement
 
 It was a dark and stormy night. Lord Withens rode his horse through the gloom, which was, as heretofore mentioned, dark. Most gloom is dark, eh wot?
 

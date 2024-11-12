@@ -39,8 +39,6 @@ function utils.create_quickchapter(name, line)
     --      - "false": no line
     --      - length of line in LaTeX unit
 
-    print("create_quickchapter line=", line)
-
     -- line parameter need to be adapted
     local line_config
     if line == "true" then
@@ -51,7 +49,7 @@ function utils.create_quickchapter(name, line)
         line_config = "[%(line)s]" % {line=line}
     end
 
-    -- This shortcode is only for LaTeX
+    -- This is only for LaTeX
     -- In all other format just return the title as a paragraph
     if not FORMAT:match 'latex' then
         return pandoc.Para(name)
@@ -59,6 +57,30 @@ function utils.create_quickchapter(name, line)
 
     local raw_latex = [[\QuickChapter%(line_config)s{%(title)s}]] % {
         line_config=line_config,
+        title=name
+    }
+
+    return pandoc.RawBlock('tex', raw_latex)
+end
+
+-- LaTeX multiline strings declared here so that it does not have useless indentation
+local raw_latex_chap_fmt <const> = [[
+\clearpage %% next chapter may begin recto or verso
+\begin{ChapterStart}
+\vspace*{%(lbefore)s\nbs}
+\ChapterTitle{%(title)s}
+\end{ChapterStart}
+]]
+
+function utils.create_chapter(name, lines_before)
+    -- This is only for LaTeX
+    -- In all other format just return the title as a paragraph
+    if not FORMAT:match 'latex' then
+        return pandoc.Para(name)
+    end
+
+    local raw_latex = raw_latex_chap_fmt % {
+        lbefore=lines_before,
         title=name
     }
 
