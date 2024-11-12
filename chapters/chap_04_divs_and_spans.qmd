@@ -109,7 +109,7 @@ And some text after the last paragraph (there should be space before it).
 
 {{< clearpage >}}
 
-{{< quickchapter "10. Vertival fill" >}}
+{{< quickchapter "10. Vertival spaces" >}}
 
 Next paragraph has filling space before and after and so should be vertically
 centered.
@@ -143,6 +143,32 @@ pushed down the page.
 Some text down the page.
 
 {{< clearpage >}}
+
+Next div has vertical space before and after.
+
+:::{vspace_both=3\nbs}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+Next div has vertical space before.
+
+:::{vspace_before=3\nbs}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+Next div has vertical space after.
+
+:::{vspace_after=3\nbs}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+Some text after.
 
 {{< quickchapter "11. Scaled divs" >}}
 

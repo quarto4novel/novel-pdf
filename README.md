@@ -296,8 +296,9 @@ where they are placed as specified in
     - [x] `noparskip=value` to set the space between 2 consecutive paragraph
       (in LaTeX units)
     - [x] `vfill=before/after/both`
-    - [ ] `vspace=top_length,bottom_length` in LaTeX units (including `\nbs`)
-      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
+    - [x] `vspace_before/after/both=length` in LaTeX units (including `\nbs` for
+      number of lines).For example `vspace_after=3\nbs` to jump 3 lines after
+      the div
     - [ ] `font=???`
     - [x] `scale=factor` scale the text by a factor. `scale=1.2` will scale the
       text by x1.2. The resulting paragraphs may finish off-grid (the grid of
@@ -307,8 +308,9 @@ where they are placed as specified in
       See:
       [novel class -- Environment: parascale](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.3)
     - [ ] `lang=???`
-    - [ ] `margin=left_length,right_length`
-      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
+    - [ ] `margin_left=length` in LaTeX units
+    - [ ] `margin_right=length` in LaTeX units
+    - [ ] `margin_both=length` in LaTeX units
     - [ ] `align=left/right/centered/justified`
   - for spans:
     - [x] `.bold`
@@ -325,8 +327,9 @@ where they are placed as specified in
       See:
       [novel class -- Local sizing: `\charscale`](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h6.1.2)
     - [ ] `lang=???`
-    - [ ] `hspace=left_length,right_length`
-      ℹ️For spliting string in Lua see: https://stackoverflow.com/a/1428077
+    - [ ] `hspace_left=length` in LaTeX units
+    - [ ] `hspace_right=length` in LaTeX units
+    - [ ] `hspace_both=length` in LaTeX units
     - [ ] `first_words/last_words=???`
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define

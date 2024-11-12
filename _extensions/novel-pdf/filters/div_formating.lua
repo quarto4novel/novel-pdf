@@ -102,6 +102,13 @@ if FORMAT:match 'latex' then
 			elseif name == "scale" then
 				table.insert(all_latex_before, [[\begin{parascale}[%(scale)s] ]] % {scale=value})
 				table.insert(all_latex_after, 1, [[\end{parascale}]])
+			elseif name == "vspace_before" then
+				table.insert(all_latex_before, [[\vspace*{%(space)s}]] % {space=value})
+			elseif name == "vspace_after" then
+				table.insert(all_latex_after, 1, [[\vspace*{%(space)s}]] % {space=value})
+			elseif name == "vspace_both" then
+				table.insert(all_latex_before, [[\vspace*{%(space)s}]] % {space=value})
+				table.insert(all_latex_after, 1, [[\vspace*{%(space)s}]] % {space=value})
 			end
 		end
 
