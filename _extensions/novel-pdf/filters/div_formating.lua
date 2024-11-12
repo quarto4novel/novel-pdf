@@ -197,6 +197,17 @@ if FORMAT:match 'latex' then
 			elseif name == "phantom" then
 				table.insert(all_latex_before, [[\phantom{]])
 				table.insert(all_latex_after, 1, "}")
+			elseif name == "hfill" then
+				if value == "before" then
+					table.insert(all_latex_before, [[\strut\hfill]])
+				elseif value == "after" then
+					table.insert(all_latex_after, 1, [[\strut\hfill]])
+				elseif value == "both" then
+					table.insert(all_latex_before, [[\strut\hfill]])
+					table.insert(all_latex_after, 1, [[\strut\hfill]])
+				else
+					error("hfill attribute with value '%(attr_val)s' but the only possible values are before, after and both." % {attr_val=value})
+				end
 			end
 		end
 

@@ -290,7 +290,16 @@ You can also insert horizontal space before [**a span**]{hspace_before=2cm} or
 eventually after [**a span**]{hspace_after=2cm} and even to both sides of
 [**a span**]{hspace_both=2cm} just like that.
 
-Ypou can use phantom text, i.e. text that that won't show but leaves a
+You can use phantom text, i.e. text that that won't show but leaves a
 horizontal gap as if the text were there. For example here you can't see that
 the words « [you can't see me, I'm a ghost]{.phantom} » are written, but they
 are here ! The text was « you can't see me, I'm a ghost ».
+
+You can also fill horizontal space in a line:
+
+:::{.noparindent}
+| start **no hfill** end
+| start [**hfill only before**]{hfill=before} end
+| start [**hfill only after**]{hfill=after} end
+| start [**hfill on both side**]{hfill=both} end
+:::

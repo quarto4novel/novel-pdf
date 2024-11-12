@@ -317,7 +317,7 @@ where they are placed as specified in
     - [x] `.strikethrough`
     - [x] `.smallcaps`
     - [x] `.monospace`
-    - [ ] `hfill=before/after/both`
+    - [x] `hfill=before/after/both`
     - [ ] `font=???`
     - [x] `scale=factor,hoffset,voffset` scale the text by a factor. Only the
       first parameter is mandatory. `scale=1.2` will scale the text by x1.2. The
