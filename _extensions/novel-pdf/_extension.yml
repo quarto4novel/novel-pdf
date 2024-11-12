@@ -14,6 +14,7 @@ contributes:
   # See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#more-precise-targeting-of-ast-processing-phases
   filters:
     - filters/novel_class_options.lua
-    - filters/chapter.lua  # TODO make the formating simply set the right format class for later processing
+    - filters/chapter.lua
+    - filters/headings.lua
     - filters/div_formating.lua
     - filters/epigraph.lua

@@ -3,18 +3,18 @@
 ### Test of many combinations of formating classes
 :::
 
-{{< quickchapter "1. Simple span" >}}
+### 1. Simple span
 
 Here a sentence with [a span in the middle]{} and some normal text.
 
-{{< quickchapter "2. Basic formating" >}}
+### 2. Basic formating
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
 [this is monospace]{.monospace} and
 [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
 
-{{< quickchapter "3. Scaling and offset" >}}
+### 3. Scaling and offset
 
 We can also scale the text bay any factor:
 
@@ -35,20 +35,20 @@ And with the horizontal and vertical offsets:
 | Alpha [Beta]{scale=1.25,8em,1.3\nbs} Gamma. (2)\par
 :::
 
-{{< quickchapter "4. Horizontal space" >}}
+### 4. Horizontal space
 
 You can also insert horizontal space before [**a span**]{hspace_before=2cm} or
 eventually after [**a span**]{hspace_after=2cm} and even to both sides of
 [**a span**]{hspace_both=2cm} just like that.
 
-{{< quickchapter "5. Phantom text" >}}
+### 5. Phantom text
 
 You can use phantom text, i.e. text that that won't show but leaves a
 horizontal gap as if the text were there. For example here you can't see that
 the words « [you can't see me, I'm a ghost]{.phantom} » are written, but they
 are here ! The text was « you can't see me, I'm a ghost ».
 
-{{< quickchapter "6. Horizontal filling" >}}
+### 6. Horizontal filling
 
 You can also fill horizontal space in a line:
 

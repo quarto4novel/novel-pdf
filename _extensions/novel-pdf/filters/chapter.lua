@@ -5,10 +5,11 @@ local raw_latex_open_fmt <const> = [[
 \clearpage %% next chapter may begin recto or verso
 \begin{ChapterStart}%(options)s]]
 
-if FORMAT:match 'latex' then
-	local lines_before_title_from_meta
-	local lines_before_subtitle_from_meta
+-- global variables needed to communicate between different filters
+local lines_before_title_from_meta
+local lines_before_subtitle_from_meta
 
+if FORMAT:match 'latex' then
 	function get_vspaces_from_meta(meta)
 		lines_before_title_from_meta = pandoc.utils.stringify(meta.chapters.title.lines_before)
 		lines_before_subtitle_from_meta = pandoc.utils.stringify(meta.chapters.subtitle.lines_before)
@@ -47,6 +48,7 @@ if FORMAT:match 'latex' then
 
 	function chapter_start_from_div(div)
 		if utils.table_contains(div.classes, "chapter") then
+
 			-- Retreive the height of the chapter header in the attribute of the div if provided
 			local nb_lines_config
 			if div.attributes.height then
@@ -61,11 +63,16 @@ if FORMAT:match 'latex' then
 
 			local raw_latex_close = [[\end{ChapterStart}]]
 
-			return {
-				pandoc.RawBlock('tex', raw_latex_open),
-				content,
-				pandoc.RawBlock('tex', raw_latex_close),
-			}
+			table.insert(div.classes, "toto")
+
+			-- Build and return the resulting div
+			return pandoc.Div(
+				pandoc.Blocks {
+					pandoc.RawBlock('tex', raw_latex_open),
+					content,
+					pandoc.RawBlock('tex', raw_latex_close),
+				}
+			)
 		end
 
 		-- if the div doesn't have the correct class we are not touching it

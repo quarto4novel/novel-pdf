@@ -1,10 +1,10 @@
 local utils = {}
 
 function utils.table_contains(table, value)
-  for _, v in ipairs(table) do
-    if v == value then return true end
-  end
-  return false
+	for _, v in ipairs(table) do
+		if v == value then return true end
+	end
+	return false
 end
 
 function utils.table_is_empty(table)
@@ -30,5 +30,39 @@ function utils.interp(s, tab)
 	)
 end
 getmetatable("").__mod = utils.interp
+
+
+function utils.create_quickchapter(name, line)
+    -- name: string
+    -- line: string with different possible values
+    --      - "true": default line length
+    --      - "false": no line
+    --      - length of line in LaTeX unit
+
+    print("create_quickchapter line=", line)
+
+    -- line parameter need to be adapted
+    local line_config
+    if line == "true" then
+        line_config = ""
+    elseif line == "false" then
+        line_config = "[*]"
+    else
+        line_config = "[%(line)s]" % {line=line}
+    end
+
+    -- This shortcode is only for LaTeX
+    -- In all other format just return the title as a paragraph
+    if not FORMAT:match 'latex' then
+        return pandoc.Para(name)
+    end
+
+    local raw_latex = [[\QuickChapter%(line_config)s{%(title)s}]] % {
+        line_config=line_config,
+        title=name
+    }
+
+    return pandoc.RawBlock('tex', raw_latex)
+end
 
 return utils
