@@ -19,7 +19,7 @@ output-file: my_novel.pdf
 | Then shall the rivers overflow with mead.
 :::
 
-{{< mainmatter >}}
+# Body matter
 
 {{< include chapters/chap_01.qmd >}}
 
@@ -30,3 +30,5 @@ output-file: my_novel.pdf
 {{< include chapters/chap_04_divs.qmd >}}
 
 {{< include chapters/chap_05_spans.qmd >}}
+
+# Back matter

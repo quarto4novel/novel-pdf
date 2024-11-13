@@ -44,7 +44,7 @@ footnote for the moment⚠️
   :::
   ```
 - [ ] headings (outside `.chapter` divs):
-  - [ ] level 1: structural parts
+  - [x] level 1: structural parts
     - `# Front matter`
     - `# Body matter`
     - `# Back matter`
@@ -83,7 +83,7 @@ footnote for the moment⚠️
     - `## Postface`
     - `## Author`
     - any other level 2 title inside front matter is an error
-  - [ ] level 2 (in body matter): **chapter** with title `## My chapter title`.
+  - [x] level 2 (in body matter): **chapter** with title `## My chapter title`.
 
     You can use the `lines_before=7` attribute to set the position of the title,
     it defaults to `chapters.title.lines_before` metadata. The chapter can have
@@ -100,12 +100,12 @@ footnote for the moment⚠️
     Some more content for the chapter start (epigraph, for word, image...).
     :::
     ```
-  - [ ] level 3 (in body matter and inside .chapter div): chapter subtitle
+  - [x] level 3 (in body matter inside .chapter div): chapter subtitle
   - [ ] level 3 (in body matter):
-    - a **scenebreak** if the title is `### scenebreak`
-    - a **sceneline** if the title is `### sceneline`
-    - a **scenestars** if the title is `### scenestars`
-    - a **quick chapter** with title otherwise `### my title`
+    - [ ] a **scenebreak** if the title is `### scenebreak`
+    - [ ] a **sceneline** if the title is `### sceneline`
+    - [ ] a **scenestars** if the title is `### scenestars`
+    - [x] a **quick chapter** with title otherwise `### my title`
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
@@ -230,8 +230,6 @@ where they are placed as specified in
     indent: false
     default: blank
   ```
-- [x] **mainmatter shortcode**: mark the begining of your story
-  `{{< mainmatter >}}`
 - [ ] **page header** and **page footer** control
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
   recto, without skipping a page.
@@ -382,7 +380,7 @@ where they are placed as specified in
 
 ## Deprecated features
 
-None at the moment.
+- **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
 
 ## Example
 

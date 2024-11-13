@@ -95,4 +95,56 @@ function utils.create_chapter(title_inlines, lines_before, height)
     }
 end
 
+
+local frontmatter_raw_latex <const> = [[
+% This command must be written immediately after \begin{document}
+\frontmatter]]
+
+
+function utils.create_frontmatter()
+    -- This is only for LaTeX
+    -- In all other format just return nothing
+    if not FORMAT:match 'latex' then
+        return nil
+    end
+
+    return pandoc.RawBlock('tex', frontmatter_raw_latex)
+end
+
+
+local mainmatter_raw_latex <const> = [[
+% here, inserts blank, so mainmatter begins recto
+\cleartorecto
+
+% Now to begin your story:
+\mainmatter]]
+
+function utils.create_mainmatter()
+    -- This is only for LaTeX
+    -- In all other format just return nothing
+    if not FORMAT:match 'latex' then
+        return nil
+    end
+
+    return pandoc.RawBlock('tex', mainmatter_raw_latex)
+end
+
+
+local backmatter_raw_latex <const> = [[
+% it does nothing.
+% If you really wish to change page numbering, then you must code it manually.
+% This is not advised for P.O.D. books, as it may confuse someone performing quality inspection
+\backmatter]]
+
+
+function utils.create_backmatter()
+    -- This is only for LaTeX
+    -- In all other format just return nothing
+    if not FORMAT:match 'latex' then
+        return nil
+    end
+
+    return pandoc.RawBlock('tex', backmatter_raw_latex)
+end
+
 return utils
