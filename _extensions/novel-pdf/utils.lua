@@ -62,35 +62,66 @@ function utils.create_quickchapter(title_inlines, line)
     return pandoc.Div {title_inlines}
 end
 
+utils.ChapterBuilder = {}
 
-function utils.create_chapter(title_inlines, lines_before, height)
-    assert(title_inlines)
-    assert(lines_before)
-    assert(height)
+-- Constructor
+-- See: https://www.lua.org/pil/16.1.html
+function utils.ChapterBuilder:new()
+    builder = {}
+    setmetatable(builder, self)
+    self.__index = self
+    return builder
+end
+
+function utils.ChapterBuilder:title_inlines(v) self._title_inlines = v; return self end
+function utils.ChapterBuilder:lines_before_title(v) self._lines_before_title = v; return self end
+function utils.ChapterBuilder:subtitle_inlines(v) self._subtitle_inlines = v; return self end
+function utils.ChapterBuilder:lines_before_subtitle(v) self._lines_before_subtitle = v; return self end
+function utils.ChapterBuilder:height(v) self._height = v; return self end
+function utils.ChapterBuilder:content_block(v) self._content_block = v; return self end
+
+function utils.ChapterBuilder:build()
+    assert(self._title_inlines)
+    assert(self._lines_before_title)
+    assert(self._height)
 
     -- This is only for LaTeX
     -- In all other format just return the title as a paragraph
     if not FORMAT:match 'latex' then
-        return pandoc.Para(title_inlines)
+        return pandoc.Para(self._title_inlines)
     end
 
     local raw_latex_clear = pandoc.RawBlock('latex', [[\clearpage %% next chapter may begin recto or verso]])
-    local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=height})
+    local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=self._height})
 
     -- We encapsulate the title inlines to make them a title
-    table.insert(title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
-    table.insert(title_inlines, pandoc.RawInline('latex', "}"))
+    table.insert(self._title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
+    table.insert(self._title_inlines, pandoc.RawInline('latex', "}"))
 
-    title_div = pandoc.Div {title_inlines}
-    title_div.attr.attributes = {lines_before=lines_before}
+    local title_div = pandoc.Div {self._title_inlines}
+    title_div.attr.attributes = {lines_before=self._lines_before_title}
+
+    local subtitle_div
+    if self._subtitle_inlines then
+        -- We encapsulate the subtitle inlines to make them a subtitle
+        table.insert(self._subtitle_inlines, 1, pandoc.RawInline('latex', [[\ChapterSubtitle{]]))
+        table.insert(self._subtitle_inlines, pandoc.RawInline('latex', "}"))
+
+        subtitle_div = pandoc.Div {self._subtitle_inlines}
+        subtitle_div.attr.attributes = {lines_before=self._lines_before_subtitle}
+    end
 
     local raw_latex_close = pandoc.RawBlock('latex', [[\end{ChapterStart}]])
+
+    print("> Chapter: ", pandoc.utils.stringify(self._title_inlines))
 
     -- Build and return the resulting div
     return pandoc.Div {
         raw_latex_clear,
         raw_latex_open,
         title_div,
+        subtitle_div or {},
+        self._content_block or {},
         raw_latex_close
     }
 end

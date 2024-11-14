@@ -39,14 +39,15 @@ if FORMAT:match 'latex' then
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
 		elseif header.level == 2 and current_matter == MATTER.BODY then
-			print("> Chapter: ", pandoc.utils.stringify(header))
 			-- Retreive attributes or get default from meta
-			local title_inlines = header.content
-			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before)
-			local height = pandoc.utils.stringify(header.attributes.height or from_meta.height)
-			-- TODO: add support for chapter style
+			local chapter = utils.ChapterBuilder:new()
+				:title_inlines(header.content)
+				:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before))
+				:height(pandoc.utils.stringify(header.attributes.height or from_meta.height))
+				-- TODO: add support for chapter style
+				:build()
 
-			return utils.create_chapter(title_inlines, lines_before, height)
+			return chapter
 		elseif header.level == 3 and current_matter == MATTER.BODY then
 			print(">> Quickchapter: ", pandoc.utils.stringify(header))
 			-- Retreive attributes or get default from meta
