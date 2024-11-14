@@ -37,7 +37,7 @@ getmetatable("").__mod = utils.interp
 
 -- ****************************************************************************
 -- To create quick chapters
-function utils.create_quickchapter(title_inlines, line)
+function utils.build_quickchapter(title_inlines, line)
     -- title_inlines: pandoc.Inlines
     -- line: string with different possible values
     --      - "true": default line length
@@ -70,7 +70,7 @@ end
 
 -- ****************************************************************************
 -- To create the 3 kinds of scene break
-function utils.create_scenebreak(title, default_break)
+function utils.build_scenebreak(title, default_break)
     if title == "Scene break blank"
     or (title == "Scene break" and default_break == "blank") then
         return pandoc.RawBlock("latex", [[\scenebreak]])
@@ -154,13 +154,13 @@ function utils.ChapterBuilder:build()
     }
 end
 
-
+-- ****************************************************************************
+-- Build front matter
 local frontmatter_raw_latex <const> = [[
 % This command must be written immediately after \begin{document}
 \frontmatter]]
 
-
-function utils.create_frontmatter()
+function utils.build_frontmatter()
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then
@@ -171,6 +171,8 @@ function utils.create_frontmatter()
 end
 
 
+-- ****************************************************************************
+-- Build main matter
 local mainmatter_raw_latex <const> = [[
 % here, inserts blank, so mainmatter begins recto
 \cleartorecto
@@ -178,7 +180,7 @@ local mainmatter_raw_latex <const> = [[
 % Now to begin your story:
 \mainmatter]]
 
-function utils.create_mainmatter()
+function utils.build_mainmatter()
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then
@@ -189,6 +191,8 @@ function utils.create_mainmatter()
 end
 
 
+-- ****************************************************************************
+-- Build back matter
 local backmatter_raw_latex <const> = [[
 % it does nothing.
 % If you really wish to change page numbering, then you must code it manually.
@@ -196,7 +200,7 @@ local backmatter_raw_latex <const> = [[
 \backmatter]]
 
 
-function utils.create_backmatter()
+function utils.build_backmatter()
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then

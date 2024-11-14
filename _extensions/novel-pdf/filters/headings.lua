@@ -26,17 +26,17 @@ if FORMAT:match 'latex' then
 			if title == "Front matter" then
 				print("Front matter start")
 				current_matter = MATTER.FRONT
-				return utils.create_frontmatter()
+				return utils.build_frontmatter()
 
 			elseif title == "Body matter" then
 				print("Body matter start")
 				current_matter = MATTER.BODY
-				return utils.create_mainmatter()
+				return utils.build_mainmatter()
 
 			elseif title == "Back matter" then
 				print("Back matter start")
 				current_matter = MATTER.BACK
-				return utils.create_backmatter()
+				return utils.build_backmatter()
 			else
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
@@ -55,11 +55,11 @@ if FORMAT:match 'latex' then
 			local name_inlines = header.content
 			local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
 
-			return utils.create_quickchapter(name_inlines, line)
+			return utils.build_quickchapter(name_inlines, line)
 
 		elseif header.level == 4 and current_matter == MATTER.BODY then
 			local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
-			return utils.create_scenebreak(title, default_break)
+			return utils.build_scenebreak(title, default_break)
 		else
 			-- TODO
 		end
