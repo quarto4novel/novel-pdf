@@ -167,7 +167,7 @@ function utils.build_frontmatter()
         return nil
     end
 
-    return pandoc.RawBlock('tex', frontmatter_raw_latex)
+    return pandoc.RawBlock('latex', frontmatter_raw_latex)
 end
 
 
@@ -187,7 +187,7 @@ function utils.build_mainmatter()
         return nil
     end
 
-    return pandoc.RawBlock('tex', mainmatter_raw_latex)
+    return pandoc.RawBlock('latex', mainmatter_raw_latex)
 end
 
 
@@ -207,7 +207,23 @@ function utils.build_backmatter()
         return nil
     end
 
-    return pandoc.RawBlock('tex', backmatter_raw_latex)
+    return pandoc.RawBlock('latex', backmatter_raw_latex)
+end
+
+-- ****************************************************************************
+-- Build front matter subsection
+
+local bm_sub_raw_latex <const> = [[
+%% Front matter %(title)s
+\clearpage
+\thispagestyle{empty}]]
+
+function utils.build_frontmatter_sub(title)
+    print("> Front Subsection: ", title)
+    return pandoc.RawBlock(
+        'latex',
+        bm_sub_raw_latex % {title=title}
+    )
 end
 
 return utils

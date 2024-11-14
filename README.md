@@ -49,7 +49,7 @@ footnote for the moment⚠️
     - `# Body matter`
     - `# Back matter`
     - any other level 1 title is an error
-  - [ ] level 2 (in frontmatter): subpart of **front matter**. The name of each
+  - [x] level 2 (in frontmatter): subpart of **front matter**. The name of each
     subpart won't appear in the final document and are here only for
     structuration when writing.
     See: https://en.wikipedia.org/wiki/Book_design#Front_matter

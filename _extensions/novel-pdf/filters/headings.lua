@@ -9,7 +9,9 @@ local MATTER <const> = {
 
 if FORMAT:match 'latex' then
 	local from_meta = {}
-	local current_matter = MATTER.NOTHING
+	-- HACK: as long as the whole front matter is not written in markdown with a clean `# Front matter`
+	--       we need to start with a fake FRONT state
+	local current_matter = MATTER.FRONT -- MATTER.NOTHING
 
 	function get_param_from_meta(meta)
 		from_meta.line = meta.chapters.quick.line[1]
@@ -40,6 +42,9 @@ if FORMAT:match 'latex' then
 			else
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
+		elseif header.level == 2 and current_matter == MATTER.FRONT then
+			-- TODO: add support for the .samepage class
+			return utils.build_frontmatter_sub(title)
 		elseif header.level == 2 and current_matter == MATTER.BODY then
 			-- Retreive attributes or get default from meta
 			local chapter = utils.ChapterBuilder:new()
