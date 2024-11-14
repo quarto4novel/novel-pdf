@@ -1,5 +1,7 @@
 local utils = {}
 
+-- ****************************************************************************
+-- Table utils
 function utils.table_contains(table, value)
 	for _, v in ipairs(table) do
 		if v == value then return true end
@@ -15,6 +17,7 @@ function utils.table_is_empty(table)
 	return true
 end
 
+-- ****************************************************************************
 -- python-like % string formating/interpolation
 -- Example: print( "%(key)s is %(val)7.2f%" % {key = "concentration", val = 56.2795}
 --          outputs "concentration is   56.28%"
@@ -32,6 +35,8 @@ end
 getmetatable("").__mod = utils.interp
 
 
+-- ****************************************************************************
+-- To create quick chapters
 function utils.create_quickchapter(title_inlines, line)
     -- title_inlines: pandoc.Inlines
     -- line: string with different possible values
@@ -62,6 +67,29 @@ function utils.create_quickchapter(title_inlines, line)
     return pandoc.Div {title_inlines}
 end
 
+
+-- ****************************************************************************
+-- To create the 3 kinds of scene break
+function utils.create_scenebreak(title, default_break)
+    if title == "Scene break blank"
+    or (title == "Scene break" and default_break == "blank") then
+        return pandoc.RawBlock("latex", [[\scenebreak]])
+    elseif title == "Scene break line"
+    or (title == "Scene break" and default_break == "line") then
+        return pandoc.RawBlock("latex", [[\sceneline]])
+    elseif title == "Scene break stars"
+    or title == "Scene break" and default_break == "stars" then
+        return pandoc.RawBlock("latex", [[\scenestars]])
+    else
+        error("Scene break asked by level 4 heading with title '%(title)s' and default '%(default)s'"
+            % {title=title, default=default_break}
+        )
+    end
+end
+
+
+-- ****************************************************************************
+-- To create the Chapter start
 utils.ChapterBuilder = {}
 
 -- Constructor

@@ -18,6 +18,7 @@ if FORMAT:match 'latex' then
 		from_meta.scene_break_default = meta.scenebreaks.default[1]
 	end
 
+
 	local function structure_from_headers(header)
 		local title = pandoc.utils.stringify(header.content)
 
@@ -50,42 +51,15 @@ if FORMAT:match 'latex' then
 
 			return chapter
 		elseif header.level == 3 and current_matter == MATTER.BODY then
-			print(">> Quickchapter: ", pandoc.utils.stringify(header))
 			-- Retreive attributes or get default from meta
 			local name_inlines = header.content
 			local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
 
 			return utils.create_quickchapter(name_inlines, line)
-		elseif header.level == 4 and current_matter == MATTER.BODY then
-			if title == "Scene break" then
-				print(">> Scenebreak default")
-				local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
 
-				if default_break == "blank" then
-					return pandoc.RawBlock("latex", [[\scenebreak]])
-				elseif default_break == "line" then
-					return pandoc.RawBlock("latex", [[\sceneline]])
-				elseif default_break == "stars" then
-					return pandoc.RawBlock("latex", [[\scenestars]])
-				else
-					error("Scene break asked but metadata 'scenebreaks.default' \z
-						has invalid value '%(val)s' but only possible values are \z
-						'blank', 'line' and 'stars'."
-						% {val=default_break}
-					)
-				end
-			elseif title == "Scene break blank" then
-				print(">> Scenebreak blank")
-				return pandoc.RawBlock("latex", [[\scenebreak]])
-			elseif title == "Scene break line" then
-				print(">> Scenebreak line")
-				return pandoc.RawBlock("latex", [[\sceneline]])
-			elseif title == "Scene break stars" then
-				print(">> Scenebreak stars")
-				return pandoc.RawBlock("latex", [[\scenestars]])
-			else
-				error("Level 4 heading '# %(title)s' found but the only possible title are 'Scene break', 'Scene break line' and 'Scene break stars'" % {title=title})
-			end
+		elseif header.level == 4 and current_matter == MATTER.BODY then
+			local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
+			return utils.create_scenebreak(title, default_break)
 		else
 			-- TODO
 		end
