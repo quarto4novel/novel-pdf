@@ -1,3 +1,4 @@
+-- DEPRECATED
 function scenebreak(args, kwargs, meta)
     -- Retreive parameters
     local scenebreak_default = pandoc.utils.stringify(meta.scenebreaks.default)

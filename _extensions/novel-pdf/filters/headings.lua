@@ -15,23 +15,24 @@ if FORMAT:match 'latex' then
 		from_meta.line = meta.chapters.quick.line[1]
 		from_meta.lines_before = meta.chapters.title.lines_before[1]
 		from_meta.height = meta.chapters.header_height[1]
+		from_meta.scene_break_default = meta.scenebreaks.default[1]
 	end
 
 	local function structure_from_headers(header)
-		if header.level == 1 then
-			local title = pandoc.utils.stringify(header.content)
+		local title = pandoc.utils.stringify(header.content)
 
-			if title:match "Front matter" then
+		if header.level == 1 then
+			if title == "Front matter" then
 				print("Front matter start")
 				current_matter = MATTER.FRONT
 				return utils.create_frontmatter()
 
-			elseif title:match "Body matter" then
+			elseif title == "Body matter" then
 				print("Body matter start")
 				current_matter = MATTER.BODY
 				return utils.create_mainmatter()
 
-			elseif title:match "Back matter" then
+			elseif title == "Back matter" then
 				print("Back matter start")
 				current_matter = MATTER.BACK
 				return utils.create_backmatter()
@@ -55,6 +56,36 @@ if FORMAT:match 'latex' then
 			local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
 
 			return utils.create_quickchapter(name_inlines, line)
+		elseif header.level == 4 and current_matter == MATTER.BODY then
+			if title == "Scene break" then
+				print(">> Scenebreak default")
+				local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
+
+				if default_break == "blank" then
+					return pandoc.RawBlock("latex", [[\scenebreak]])
+				elseif default_break == "line" then
+					return pandoc.RawBlock("latex", [[\sceneline]])
+				elseif default_break == "stars" then
+					return pandoc.RawBlock("latex", [[\scenestars]])
+				else
+					error("Scene break asked but metadata 'scenebreaks.default' \z
+						has invalid value '%(val)s' but only possible values are \z
+						'blank', 'line' and 'stars'."
+						% {val=default_break}
+					)
+				end
+			elseif title == "Scene break blank" then
+				print(">> Scenebreak blank")
+				return pandoc.RawBlock("latex", [[\scenebreak]])
+			elseif title == "Scene break line" then
+				print(">> Scenebreak line")
+				return pandoc.RawBlock("latex", [[\sceneline]])
+			elseif title == "Scene break stars" then
+				print(">> Scenebreak stars")
+				return pandoc.RawBlock("latex", [[\scenestars]])
+			else
+				error("Level 4 heading '# %(title)s' found but the only possible title are 'Scene break', 'Scene break line' and 'Scene break stars'" % {title=title})
+			end
 		else
 			-- TODO
 		end

@@ -107,23 +107,24 @@ And some more text after.
 
 ### 6. Scene breaks
 
-Here are some `scenebreak` shortcodes of different types:
+Here are some `scenebreak` via headings level 4 (with convenient names) of
+different types:
 
 {{< lipsum 1 >}}
 
-{{< scenebreak >}}
+#### Scene break
 
 {{< lipsum 1 >}}
 
-{{< scenebreak blank >}}
+#### Scene break blank
 
 {{< lipsum 1 >}}
 
-{{< scenebreak line >}}
+#### Scene break line
 
 {{< lipsum 1 >}}
 
-{{< scenebreak stars >}}
+#### Scene break stars
 
 {{< lipsum 1 >}}
 

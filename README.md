@@ -101,11 +101,24 @@ footnote for the moment⚠️
     :::
     ```
   - [x] level 3 (in body matter inside .chapter div): chapter subtitle
-  - [ ] level 3 (in body matter):
-    - [ ] a **scenebreak** if the title is `### scenebreak`
-    - [ ] a **sceneline** if the title is `### sceneline`
-    - [ ] a **scenestars** if the title is `### scenestars`
-    - [x] a **quick chapter** with title otherwise `### my title`
+  - [x] level 3 (in body matter): a **quick chapter** with title `### my title`
+  - [x] level 4 (in body matter): a **scenebreak** mark a seperation in the text
+    flow. Different kind of scene breaks are possible:
+    - [ ] a **blank scene break** that just add a vertical space in the text
+      flow if the title is `### Scene break blank`
+    - [ ] a **line scene break** that insert an horizontal line in the text flow
+      if the title is `### Scene break line`
+    - [ ] a **stars scene break** that insert three little stars in the text
+      flow if the title is `### Scene break stars`
+    - [ ] a **default scene break** that insert one of the previous scene break
+      metadata if the title is simply `### Scene break`
+
+    You can control if there is an indend in the text with the
+    `scenebreak.indent` metadata (false by default as it is a standard in
+    fiction).
+
+    You can set the default scene break type with the `scenebreak.default`
+    metadata (possible value are `blank`, `line` and `stars`)
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
@@ -204,32 +217,6 @@ where they are placed as specified in
 - [x] **novel specific font configuration**: multiple options are available in
   the `_metadata.yml` file to configure fonts used in your novel and they are
   all well documented directly in the file itself.
-- [x] **scenebreak shortcode**: mark a seperation in the text flow. Three
-  different kind of scene breake are possible `{{< scenebreak blank >}}`,
-  `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
-  [3 possible Scene Breaks of the novel class](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3).
-
-  ```qmd
-  {{< scenebreak >}}
-
-  {{< scenebreak blank >}}
-
-  {{< scenebreak line >}}
-
-  {{< scenebreak stars >}}
-  ```
-
-  You can control if there is an indend in the text with the
-  `scenebreak.indent` metadata (false by default as it is a standard in
-  fiction). And you can set the default scene break type with the
-  `scenebreak.default` metadata (possible value are `blank`, `line` and
-  `stars`)
-
-  ```{.yaml filename=_metadata.yml}
-  scenebreaks:
-    indent: false
-    default: blank
-  ```
 - [ ] **page header** and **page footer** control
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
   recto, without skipping a page.
@@ -381,6 +368,32 @@ where they are placed as specified in
 ## Deprecated features
 
 - **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
+- **scenebreak shortcode**: mark a seperation in the text flow. Three
+  different kind of scene breake are possible `{{< scenebreak blank >}}`,
+  `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
+  [3 possible Scene Breaks of the novel class](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3).
+
+  ```qmd
+  {{< scenebreak >}}
+
+  {{< scenebreak blank >}}
+
+  {{< scenebreak line >}}
+
+  {{< scenebreak stars >}}
+  ```
+
+  You can control if there is an indend in the text with the
+  `scenebreak.indent` metadata (false by default as it is a standard in
+  fiction). And you can set the default scene break type with the
+  `scenebreak.default` metadata (possible value are `blank`, `line` and
+  `stars`)
+
+  ```{.yaml filename=_metadata.yml}
+  scenebreaks:
+    indent: false
+    default: blank
+  ```
 
 ## Example
 
