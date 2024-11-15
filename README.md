@@ -227,6 +227,8 @@ where they are placed as specified in
   manual layout)
 - [x] **vfill shortcode**: fill the vertical space as long as possible pushing
   subsequent element down
+- [x] **null shortcode**: empty element needed before/after a **vfill** if there
+  is no content before/after on the sama page
 - [x] **epigraph filter**: include an epigraph (poem or citation) with author
   and source:
 

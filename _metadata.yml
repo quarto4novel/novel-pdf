@@ -45,31 +45,6 @@ publisher:
   name: "Independantly published by {{< meta author >}}"  # Publisher is you, not the print/distribution service.
   location: "Anytown • Anyplace • Anywhere"  # As precise as you want from country to exact address
   online_contact: "www.example.com/dhardcase/publications/"  # Contact for publisher or author, email or website
-  catalog_mention: |  # Fiction often does not need catalog data. (Optional)
-    | Publisher's Cataloging-In-Publication Data
-    | available upon request.
-  full_mention: |
-    {{< meta publisher.name >}},\
-    {{< meta publisher.location >}}
-
-    {{< meta publisher.online_contact >}}
-
-    `\null`{=latex}
-    {{< meta publisher.catalog_mention >}}
-
-# Can be copyrights, copyleft, licence
-legal_rights: |
-  Copyright ©2024 {{< meta author >}}.
-
-  All Rights Reserved.
-
-# Or similar language (default to "This is a work of fiction..." and so on boiler plate)
-fiction_mention: |
-  | This is a work of fiction.
-  | All persons and events are
-  | from the author's imagination.
-  | Resemblance to any real person,
-  | living or dead, is coincidental.
 
 front_matter:
   # Optional half_title in LaTeX (if not provided we use the title)

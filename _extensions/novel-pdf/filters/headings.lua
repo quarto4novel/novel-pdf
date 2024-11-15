@@ -43,7 +43,8 @@ if FORMAT:match 'latex' then
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
 		elseif header.level == 2 and current_matter == MATTER.FRONT then
-			-- TODO: add support for the .samepage class
+			-- TODO: add support for .samepage class
+			-- TODO: add support for .thispage=empty attribute
 			return utils.build_frontmatter_sub(title)
 		elseif header.level == 2 and current_matter == MATTER.BODY then
 			-- Retreive attributes or get default from meta

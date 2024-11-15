@@ -91,18 +91,19 @@ if FORMAT:match 'latex' then
 				local vfill = pandoc.utils.stringify(value)
 
 				if vfill == "before" then
-					table.insert(all_latex_before, [[\vfill]])
+					table.insert(all_latex_before, [[\null\vfill]])
 				elseif vfill == "after" then
-					table.insert(all_latex_after, 1, [[\vfill]])
+					table.insert(all_latex_after, 1, [[\vfill\null]])
 				elseif vfill == "both" then
-					table.insert(all_latex_before, [[\vfill]])
-					table.insert(all_latex_after, 1, [[\vfill]])
+					table.insert(all_latex_before, [[\null\vfill]])
+					table.insert(all_latex_after, 1, [[\vfill\null]])
 				else
 					error("vfill div attribute only possible values are before, after and both, but has value: %(val)s." % {val=vfill})
 				end
 			elseif name == "scale" then
 				table.insert(all_latex_before, [[\begin{parascale}[%(scale)s] ]] % {scale=value})
 				table.insert(all_latex_after, 1, [[\end{parascale}]])
+			-- TODO: make number of lines the default unit if none provided
 			elseif name == "vspace_before" then
 				table.insert(all_latex_before, [[\vspace*{%(space)s}]] % {space=value})
 			elseif name == "vspace_after" then

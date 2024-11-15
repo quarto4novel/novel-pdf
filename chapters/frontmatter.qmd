@@ -1,3 +1,39 @@
+## Copyright
+
+:::{align=center .italic}
+
+::::::{.smallcaps vfill=before}
+{{< meta title >}}
+::::::
+
+<!-- Can be copyrights, copyleft, licence... -->
+Copyright ©2024 {{< meta author >}}.
+
+All Rights Reserved.
+
+<!-- Or similar language boiler plate) -->
+::::::{vspace_both=1\nbs}
+| This is a work of fiction.
+| All persons and events are
+| from the author's imagination.
+| Resemblance to any real person,
+| living or dead, is coincidental.
+::::::
+
+<!-- Whatever it is. No barcode, just number. -->
+ISBN {{< meta isbn >}}
+
+::::::{vspace_both=1\nbs}
+| {{< meta publisher.name >}},
+| {{< meta publisher.location >}}
+| {{< meta publisher.online_contact >}}
+::::::
+
+<!-- Fiction often does not need catalog data. -->
+| Publisher's Cataloging-In-Publication Data
+| available upon request.
+:::
+
 ## Epigraph
 
 <!-- Epigraph: -->
