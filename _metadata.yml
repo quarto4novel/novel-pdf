@@ -55,13 +55,6 @@ front_matter:
     \vspace{\nbs}
     \hfill\charscale[2.4]{\textbf{\color{gray}Die Hard}}\par
     ```
-  # Optional full_title in LaTeX (if not provided we use the title)
-  full_title: |
-    ```{=latex}
-    \charscale[3.6]{\textbf{Live long and}}\par
-    \vspace{2\nbs}
-    \charscale[4.8]{\textbf{\color{gray}Die Hard}}\par
-    ```
 
 fonts:
   # In novel you do not directly set the main font (also known as roman default).

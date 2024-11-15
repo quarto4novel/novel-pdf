@@ -1,3 +1,36 @@
+## Full Title page
+
+:::{align=center vspace_before=5\nbs}
+
+<!-- TODO: Use first_words=??? and last_words=??? attributes here on title -->
+[**Live long and**]{scale=3.6}
+{{< emptylines 2 >}}
+[**Die Hard**]{scale=4.8 color=gray5}
+
+{{< emptylines 1.5 >}}
+
+[ {{< meta subtitle>}} ]{scale=1.6}
+
+{{< emptylines 4 >}}
+
+```{=latex}
+\ChapterDeco[6]{\decoglyph{n9548}}
+```
+
+{{< emptylines 4 >}}
+
+[ {{< meta author>}} ]{scale=3}
+
+{{< vfill >}}
+
+::::::{scale=1.25}
+| {{< meta publisher.name>}}
+| {{< meta publisher.location>}}
+::::::
+
+:::
+
+
 ## Copyright
 
 :::{align=center .italic}
