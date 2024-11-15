@@ -1,3 +1,7 @@
+## Blank page
+
+{{< emptypage >}}
+
 ## Full Title page
 
 :::{align=center vspace_before=5\nbs}
