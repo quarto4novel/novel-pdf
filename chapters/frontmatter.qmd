@@ -1,3 +1,14 @@
+## Half Title page
+
+{{< emptylines 6 >}}
+
+:::{align=right}
+<!-- TODO: Use first_words=??? and last_words=??? attributes here on title -->
+[**Live Long and**]{scale=1.8}
+{{< emptylines 1 >}}
+[**Die Hard**]{scale=2.4 color=gray5}
+:::
+
 ## Blank page
 
 {{< emptypage >}}

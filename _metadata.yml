@@ -46,16 +46,6 @@ publisher:
   location: "Anytown • Anyplace • Anywhere"  # As precise as you want from country to exact address
   online_contact: "www.example.com/dhardcase/publications/"  # Contact for publisher or author, email or website
 
-front_matter:
-  # Optional half_title in LaTeX (if not provided we use the title)
-  half_title: |
-    ```{=latex}
-    \vspace*{6\nbs}
-    \hfill\charscale[1.8]{\textbf{Live Long and}}\par
-    \vspace{\nbs}
-    \hfill\charscale[2.4]{\textbf{\color{gray}Die Hard}}\par
-    ```
-
 fonts:
   # In novel you do not directly set the main font (also known as roman default).
   # Instead, you set a parent font, from which the main font is derived.
