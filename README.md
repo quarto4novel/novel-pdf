@@ -305,6 +305,7 @@ where they are placed as specified in
     - [x] `margin_left/right/both=length` in LaTeX units. For example
       `margin_left=5em` to add a margin of 5em at the left of the div
     - [x] `align=left/right/centered/justified`
+    - [ ] `color` See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#hE.2.2
   - for spans:
     - [x] `.bold`
     - [x] `.italic`
@@ -326,7 +327,16 @@ where they are placed as specified in
     - [x] `phantom` Does not print the text, but leaves a horizontal gap as if
       the text were there. Caution: ⚠️ In some locations, this command has
       unexpected results, such as by adding a line.
-    - [ ] `first_words/last_words=???`
+    - [ ] `first_words/last_words=???` to retrieve the first or last word of a
+      span (usefull for title formating)
+    - [x] `color` set a color for the text (only in grayscale because of
+      printing constraints) the possible values are, in order from dark to
+      light: black, gray1, gray2, gray3, gray4, gray5, gray6, gray7, gray8,
+      gray9, white. ⚠️ Placing light text over a dark background may produce
+      unexpected results in print, even if it looks good in PDF. If you need
+      this effect, it is better to build the text into the background, as a
+      single image. See:
+      [Novel - Color and Opacity](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#hE.2.2)
 
 - [ ] **semantic div formating** and **semantic span formating**: you can define
   specific classes in the `semantic_classes` metadata and specify which

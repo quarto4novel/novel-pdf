@@ -218,6 +218,14 @@ if FORMAT:match 'latex' then
 				else
 					error("hfill attribute with value '%(attr_val)s' but the only possible values are before, after and both." % {attr_val=value})
 				end
+			elseif name == "color" then
+				local allowed_colors = {"black", "gray1", "gray2", "gray3", "gray4", "gray5", "gray6", "gray7", "gray8", "gray9", "white"}
+				assert(
+					utils.table_contains(allowed_colors, value),
+					"Invalid color %(color)s. Accepted colors are: black, gray1, gray2, gray3, gray4, gray5, gray6, gray7, gray8, gray9, white" % {color=value}
+				)
+				table.insert(all_latex_before, [[{\color{%(color)s}]] % {color=value})
+				table.insert(all_latex_after, 1, "}")
 			end
 		end
 

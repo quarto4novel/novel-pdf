@@ -198,3 +198,22 @@ And you can also simply put an empty page using `emptypage` and `clearpage` shor
 {{< clearpage >}}
 
 And here is the followup after an empty page.
+
+### 10. Colors
+
+You can specify the color of the text (the last one is white but you can't see
+it on white background):
+
+:::{.noparindent}
+| [this text is in color **black** and it's *beautiful*]{color=black}
+| [this text is in color **gray1** and it's *beautiful*]{color=gray1}
+| [this text is in color **gray2** and it's *beautiful*]{color=gray2}
+| [this text is in color **gray3** and it's *beautiful*]{color=gray3}
+| [this text is in color **gray4** and it's *beautiful*]{color=gray4}
+| [this text is in color **gray5** and it's *beautiful*]{color=gray5}
+| [this text is in color **gray6** and it's *beautiful*]{color=gray6}
+| [this text is in color **gray7** and it's *beautiful*]{color=gray7}
+| [this text is in color **gray8** and it's *beautiful*]{color=gray8}
+| [this text is in color **gray9** and it's *beautiful*]{color=gray9}
+| [this text is in color **white** and it's *beautiful*]{color=white} (white)
+:::
