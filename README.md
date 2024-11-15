@@ -1,5 +1,14 @@
 # Novel-pdf Format
 
+Novel-pdf is a quarto template dedicated to fiction writing, expecialy novels.
+It's the adaptation of the novel LaTeX class to the quarto markdown syntax. All
+the novel/fiction functionality are provided by the novel class, I just wrote
+filters and shortcodes around it so that it's easy to write a print-ready
+fiction book of professional quality in simple markdown syntax.
+
+[Novel class documentation](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html)
+[Novel class source](https://ctan.math.illinois.edu/macros/luatex/latex/novel.zip)
+
 ## Installing
 
 ```bash
@@ -376,6 +385,8 @@ where they are placed as specified in
   in a monospace div or span (useful for url and stuff like that)
   - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
   - https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Margin_misalignment
+- [ ] **decoglyph shortcode** See `doc/extras/NovelDeco-glyphs.pdf` in : https://ctan.math.illinois.edu/macros/luatex/latex/novel.zip
+- [ ] **chapter deco** See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.1.3.3
 
 ## Deprecated features
 
