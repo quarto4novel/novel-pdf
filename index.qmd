@@ -19,3 +19,28 @@ output-file: my_novel.pdf
 {{< include chapters/chap_05_spans.qmd >}}
 
 # Back matter
+
+<!-- Once upon a time, when printing was not so electronically automated, it was
+difficult to add material to the end of a previously-typeset section of front
+matter. So, if there was a subsequent printing of the book, with new material
+that ought to go in front matter, the problem was solved by placing the new
+material in "back matter." Then, the original pagination did not have to be
+altered.
+
+That is a situation you are never likely to address. When most authors speak
+about "back matter," what they mean is explanatory material that follows the end
+of the story. That is, anything after the final Chapter, Epilogue, or
+Conclusion. A good example can be found in J.R.R. Tolkien's The Return of the
+King, which has quite a bit of material following the end of the story. That
+material discusses the language and history of the Elves, and a variety of other
+things. But its page numbering continues Arabic. It looks like critical
+commentary, but it is part of Tolkien's original, fictional structure for the
+book. Thus, it is main matter.
+
+So, your book is unlikely to have true back matter. If you do, DO NOT change
+page numbering, this is not advised for P.O.D. books, as it may confuse someone
+performing quality inspection; true back matter is so rare.
+
+See:
+https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#hD.3.4.1
+-->
