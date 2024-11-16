@@ -45,87 +45,8 @@ footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
 - [ ] headings (outside `.chapter` divs):
-  - [x] level 1: structural parts
-    - `# Front matter`
-    - `# Body matter`
-    - `# Back matter`
-    - any other level 1 title is an error
+  - [x] level 1: front/body/back matter
   - [x] level 2 (in frontmatter or backmatter): subpart of **front matter**.
-
-    By default the name of each subpart won't appear in the final document and
-    are here only for structuration when writing.
-
-    If you want a subpart to have a title like a classic chapter (this is useful
-    for prologue, preface, etc that need a standardized title just like any
-    chapter) you can add the `.chapterlike` class or use a chapter div.
-
-    The classical
-    [front matter subparts](https://en.wikipedia.org/wiki/Book_design#Front_matter)
-    are:
-    - `## Half matter`
-    - `## Frontispiece`
-    - `## Title page`
-    - `## Copyright page`
-    - `## Dedication`
-    - `## Epigraph`
-    - `## Table of contents`
-    - `## Foreword`
-    - `## Preface`
-    - `## Acknowledgments`
-    - `## Introduction`
-    - `## Prologue`
-
-    The classical
-    [back matter subparts](https://en.wikipedia.org/wiki/Book_design#Back_matter_(end_matter))
-    are:
-    - `## Epilogue`
-    - `## Outro` (this is where you write "The End" or "To be continued...")
-    - `## Afterword`
-    - `## Conclusion`
-    - `## Postscript`
-    - `## Appendix` or `## Addendum`
-    - `## Glossary`
-    - `## Bibliography`
-    - `## Index`
-    - `## Colophon`
-    - `## Postface`
-    - `## Author`
-  - [x] level 2 (in body matter): **chapter** with title `## My chapter title`.
-
-    You can use the `lines_before=7` attribute to set the position of the title,
-    it defaults to `chapters.title.lines_before` metadata. The chapter can have
-    more detailed when encapsulated in a ``.chapter` div.
-
-    You can use the `height=15` (in number of lines) attribute to set the total
-    height of the chapter header.
-
-    ```qmd
-    :::{.chapter}
-    ## My Super Chapter Title
-    ### And a wonderful subtitle to go with it
-
-    Some more content for the chapter start (epigraph, for word, image...).
-    :::
-    ```
-  - [x] level 3 (in body matter inside .chapter div): chapter subtitle
-  - [x] level 3 (in body matter): a **quick chapter** with title `### my title`
-  - [x] level 4 (in body matter): a **scenebreak** mark a seperation in the text
-    flow. Different kind of scene breaks are possible:
-    - [ ] a **blank scene break** that just add a vertical space in the text
-      flow if the title is `### Scene break blank`
-    - [ ] a **line scene break** that insert an horizontal line in the text flow
-      if the title is `### Scene break line`
-    - [ ] a **stars scene break** that insert three little stars in the text
-      flow if the title is `### Scene break stars`
-    - [ ] a **default scene break** that insert one of the previous scene break
-      metadata if the title is simply `### Scene break`
-
-    You can control if there is an indend in the text with the
-    `scenebreak.indent` metadata (false by default as it is a standard in
-    fiction).
-
-    You can set the default scene break type with the `scenebreak.default`
-    metadata (possible value are `blank`, `line` and `stars`)
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
@@ -210,10 +131,8 @@ where they are placed as specified in
     classical LaTeX document. In particular the hierarchical `\part`,
     `\section`, `\chapter`, etc is not used in novels (see:
     [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
-    ). That's why we provide a `{{< chapter "My chapter One" >}}` shortcode to
-    create a chapter easily and a div class that let you create advanced
-    chapters header with title, subtitle using level 1 and 2 headers and other
-    content.
+    ). That's why we provide a div class that let you create advanced chapters
+    header with title, subtitle using level 1 and 2 headers and other content.
 
     See **headings level 2 in body matter** to know how to use chapters
 
@@ -225,7 +144,7 @@ where they are placed as specified in
     ```
 - [x] **quickchapter**: used by some books are designed with numerous
   short chapters that run continously, so that chapters may start anywhere on a
-  page. They can also be used as **named scene break**.
+  page. They can also be used as subdivision of chapters.
 
   See **headings level 3 in body matter** to know how to use chapters
 

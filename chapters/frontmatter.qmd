@@ -46,7 +46,7 @@
 :::
 
 
-## Copyright
+## Legal notice
 
 :::{align=center .italic}
 
