@@ -40,9 +40,29 @@ if FORMAT:match 'latex' then
 			else
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
-		elseif header.level == 2 and current_matter == MATTER.FRONT then
-			if utils.table_contains(header.classes, "chapterlike") then
-				-- TODO add specific default config for chapterlike
+		end -- level 1
+
+		if current_matter == MATTER.FRONT or current_matter == MATTER.BACK then
+			if header.level == 2 then
+				if utils.table_contains(header.classes, "chapterlike") then
+					-- TODO add specific default config for chapterlike
+					-- Retreive attributes or get default from meta
+					local chapter = utils.ChapterBuilder:new()
+						:title_inlines(header.content)
+						:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before))
+						:height(pandoc.utils.stringify(header.attributes.height or from_meta.height))
+						-- TODO: add support for chapter style
+						:build()
+
+					return chapter
+				else
+					-- TODO: add support for .samepage class
+					-- TODO: add support for .thispage=empty attribute
+					return utils.build_frontmatter_sub(title)
+				end
+			end
+		elseif current_matter == MATTER.BODY then
+			if header.level == 2 then
 				-- Retreive attributes or get default from meta
 				local chapter = utils.ChapterBuilder:new()
 					:title_inlines(header.content)
@@ -52,34 +72,18 @@ if FORMAT:match 'latex' then
 					:build()
 
 				return chapter
-			else
-				-- TODO: add support for .samepage class
-				-- TODO: add support for .thispage=empty attribute
-				return utils.build_frontmatter_sub(title)
+			elseif header.level == 3 then
+				-- Retreive attributes or get default from meta
+				local name_inlines = header.content
+				local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
+
+				return utils.build_quickchapter(name_inlines, line)
+
+			elseif header.level == 4 then
+				local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
+				return utils.build_scenebreak(title, default_break)
 			end
-		elseif header.level == 2 and current_matter == MATTER.BODY then
-			-- Retreive attributes or get default from meta
-			local chapter = utils.ChapterBuilder:new()
-				:title_inlines(header.content)
-				:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before))
-				:height(pandoc.utils.stringify(header.attributes.height or from_meta.height))
-				-- TODO: add support for chapter style
-				:build()
-
-			return chapter
-		elseif header.level == 3 and current_matter == MATTER.BODY then
-			-- Retreive attributes or get default from meta
-			local name_inlines = header.content
-			local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
-
-			return utils.build_quickchapter(name_inlines, line)
-
-		elseif header.level == 4 and current_matter == MATTER.BODY then
-			local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
-			return utils.build_scenebreak(title, default_break)
-		else
-			-- TODO
-		end
+		end -- current_matter
 	end
 
 	return {

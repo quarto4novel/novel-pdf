@@ -50,9 +50,10 @@ footnote for the moment⚠️
     - `# Body matter`
     - `# Back matter`
     - any other level 1 title is an error
-  - [x] level 2 (in frontmatter): subpart of **front matter**. By default the
-    name of each subpart won't appear in the final document and are here only
-    for structuration when writing.
+  - [x] level 2 (in frontmatter or backmatter): subpart of **front matter**.
+
+    By default the name of each subpart won't appear in the final document and
+    are here only for structuration when writing.
 
     If you want a subpart to have a title like a classic chapter (this is useful
     for prologue, preface, etc that need a standardized title just like any
@@ -73,12 +74,12 @@ footnote for the moment⚠️
     - `## Acknowledgments`
     - `## Introduction`
     - `## Prologue`
-  - [ ] level 2 (in backmatter): subpart of **back matter**. The name of each
-    subpart won't appear in the final document and are here only for
-    structuration when writing.
-    See: https://en.wikipedia.org/wiki/Book_design#Back_matter_(end_matter)
+
+    The classical
+    [back matter subparts](https://en.wikipedia.org/wiki/Book_design#Back_matter_(end_matter))
+    are:
     - `## Epilogue`
-    - `## Outro`
+    - `## Outro` (this is where you write "The End" or "To be continued...")
     - `## Afterword`
     - `## Conclusion`
     - `## Postscript`
