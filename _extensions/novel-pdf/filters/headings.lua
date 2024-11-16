@@ -9,9 +9,7 @@ local MATTER <const> = {
 
 if FORMAT:match 'latex' then
 	local from_meta = {}
-	-- HACK: as long as the whole front matter is not written in markdown with a clean `# Front matter`
-	--       we need to start with a fake FRONT state
-	local current_matter = MATTER.FRONT -- MATTER.NOTHING
+	local current_matter = MATTER.NOTHING
 
 	function get_param_from_meta(meta)
 		from_meta.line = meta.chapters.quick.line[1]
