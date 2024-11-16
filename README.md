@@ -44,24 +44,23 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
-- [x] headings (inside `.chapter` divs): only level 2 `## chapter tile` and
-  level 3 `### chapter subtitle` are allowed and only in chapter div:
-  ```qmd
-  :::{.chapter}
-  ## chapter tile
-  ### chapter subtitle
-  :::
-  ```
 - [ ] headings (outside `.chapter` divs):
   - [x] level 1: structural parts
     - `# Front matter`
     - `# Body matter`
     - `# Back matter`
     - any other level 1 title is an error
-  - [x] level 2 (in frontmatter): subpart of **front matter**. The name of each
-    subpart won't appear in the final document and are here only for
-    structuration when writing.
-    See: https://en.wikipedia.org/wiki/Book_design#Front_matter
+  - [x] level 2 (in frontmatter): subpart of **front matter**. By default the
+    name of each subpart won't appear in the final document and are here only
+    for structuration when writing.
+
+    If you want a subpart to have a title like a classic chapter (this is useful
+    for prologue, preface, etc that need a standardized title just like any
+    chapter) you can add the `.chapterlike` class or use a chapter div.
+
+    The classical
+    [front matter subparts](https://en.wikipedia.org/wiki/Book_design#Front_matter)
+    are:
     - `## Half matter`
     - `## Frontispiece`
     - `## Title page`
@@ -74,7 +73,6 @@ footnote for the moment⚠️
     - `## Acknowledgments`
     - `## Introduction`
     - `## Prologue`
-    - any other level 2 title inside front matter is an error
   - [ ] level 2 (in backmatter): subpart of **back matter**. The name of each
     subpart won't appear in the final document and are here only for
     structuration when writing.
@@ -91,7 +89,6 @@ footnote for the moment⚠️
     - `## Colophon`
     - `## Postface`
     - `## Author`
-    - any other level 2 title inside front matter is an error
   - [x] level 2 (in body matter): **chapter** with title `## My chapter title`.
 
     You can use the `lines_before=7` attribute to set the position of the title,
@@ -160,6 +157,17 @@ footnote for the moment⚠️
   - [Substituting fonts for emojis in LuaLaTeX](https://tex.stackexchange.com/a/572220)
     this is the best way
   - [Define fallback font for missing glyphs in LuaLaTeX](https://tex.stackexchange.com/q/514940)
+- [ ] preselection of useful fonts:
+  - [ ] cursive font
+    - https://www.notebookandpenguin.com/cursive-google-fonts/
+    - https://www.elegantthemes.com/blog/resources/free-cursive-fonts#ornate-cursive-fonts
+  - [ ] monospace font
+    - https://rubjo.github.io/victor-mono/
+    - https://github.com/tonsky/FiraCode
+    - https://www.creativebloq.com/features/the-best-monospace-fonts-for-coding
+  - [ ] first letter font ???
+    - https://www.1001freefonts.com/precious.font
+
 
 ## Unsupported markdown feature
 

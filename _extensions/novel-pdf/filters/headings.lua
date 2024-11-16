@@ -43,9 +43,22 @@ if FORMAT:match 'latex' then
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
 		elseif header.level == 2 and current_matter == MATTER.FRONT then
-			-- TODO: add support for .samepage class
-			-- TODO: add support for .thispage=empty attribute
-			return utils.build_frontmatter_sub(title)
+			if utils.table_contains(header.classes, "chapterlike") then
+				-- TODO add specific default config for chapterlike
+				-- Retreive attributes or get default from meta
+				local chapter = utils.ChapterBuilder:new()
+					:title_inlines(header.content)
+					:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before))
+					:height(pandoc.utils.stringify(header.attributes.height or from_meta.height))
+					-- TODO: add support for chapter style
+					:build()
+
+				return chapter
+			else
+				-- TODO: add support for .samepage class
+				-- TODO: add support for .thispage=empty attribute
+				return utils.build_frontmatter_sub(title)
+			end
 		elseif header.level == 2 and current_matter == MATTER.BODY then
 			-- Retreive attributes or get default from meta
 			local chapter = utils.ChapterBuilder:new()

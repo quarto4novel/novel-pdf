@@ -95,3 +95,7 @@ See: https://style.mla.org/styling-epigraphs/
 | And white birds cease their twitter,
 | Then shall the rivers overflow with mead.
 :::
+
+## Foreword {.chapterlike}
+
+{{< lipsum 5 >}}
