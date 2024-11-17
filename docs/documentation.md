@@ -20,6 +20,50 @@ footnote for the moment⚠️
 - simple footnote
 - inline footnote
 
+## Page header and footer
+
+You can control what kind of header and footer will be displayed in the book
+using the `headerfooter.style` metadata.
+
+Possible values are based on the classic header/footer you can typicaly
+find in fiction novel (if you want to use a customized config, use the
+closest default):
+- `onlyheadercentered`
+  - Only Header.
+  - Page number at outside (left verso, right recto).
+  - Optional emblem adjacent to page number.
+  - Text centered. Default author verso, title recto.
+  - This is the default for the novel document class.
+- `onlyheaderoutside`
+  - Only Header.
+  - Page number at outside (left verso, right recto).
+  - Optional emblem adjacent to page number.
+  - Text towards outside, instead of centered.
+  - Text begins or ends 1em from the emblem.
+  - Default author verso, title recto.
+- `onlyheaderinside`
+  - Only Header.
+  - Page number at outside (left verso, right recto).
+  - Optional emblem adjacent to page number.
+  - Text towards inside, instead of centered.
+  - Default author verso, title recto.
+- `onlyfootercentered`
+  - Only Footer.
+  - Page number centered.
+  - Disregards emblem, if coded.
+- `onlyfooteroutside`
+  - Only Footer.
+  - Page number at outside (left verso, right recto).
+  - Optional emblem adjacent to page number.
+- `bothcentered`
+  - Header and Footer.
+  - Page number centered in footer.
+  - Disregards emblem, if coded.
+  - Text centered in header.
+  - Default author verso, title recto.
+
+See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
+
 ## Structure
 
 ### The 3 matters

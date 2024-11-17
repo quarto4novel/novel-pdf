@@ -44,7 +44,7 @@ Based on [Quarto - mardown basics](https://quarto.org/docs/authoring/markdown-ba
 footnote for the moment⚠️
 - [x] simple footnote
 - [x] inline footnote
-- [ ] headings (outside `.chapter` divs):
+- [x] headings (outside `.chapter` divs):
   - [x] level 1: front/body/back matter
   - [x] level 2 (in frontmatter or backmatter): subpart of **front matter**.
 - [ ] blockquotes
@@ -154,7 +154,21 @@ where they are placed as specified in
 - [x] **novel specific font configuration**: multiple options are available in
   the `_metadata.yml` file to configure fonts used in your novel and they are
   all well documented directly in the file itself.
-- [ ] **page header** and **page footer** control
+- [x] **page header** and **page footer** control
+  - [x] classical header and footer config
+  - [ ] **thispagehf shortcode**
+  - [ ] header recto and verso text setting via
+    `headerfooter.header_text.recto/verso` metadata
+  - [ ] footer recto and verso text setting via
+    `headerfooter.footer_text.recto/verso` metadata
+  - [ ] emblems setting via `headerfooter.emblems.recto/verso` metadata
+  - [ ] header recto and verso text setting via **header shortcode**
+  - [ ] footer recto and verso text setting via **footer shortcode**
+  - [ ] special text `\theTitle`
+  - [ ] special text `\theAuthor`
+  - [ ] special text `\theChapter`
+  - [ ] special text `\thePart`
+  - [ ] **soundtrack shortcode**
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
   recto, without skipping a page.
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if

@@ -105,6 +105,22 @@ page_layout:
   parskip: 0ex
 
 
+headerfooter:
+  # What kind of header and footer will be displayed in the book.
+  # Possible values are based on the classic header/footer you can typicaly
+  # find in fiction novel (if you want to use a customized config, use the
+  # closest default):
+  #
+  # - onlyheadercentered
+  # - onlyheaderoutside
+  # - onlyheaderinside
+  # - onlyfootercentered
+  # - onlyfooteroutside
+  # - bothcentered
+  #
+  # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
+  style: onlyheadercentered
+
 chapters:
   header_height: 10  # in number of lines
   title:
