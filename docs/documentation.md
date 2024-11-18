@@ -66,14 +66,20 @@ closest default):
 
 See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
 
-### For just the current page
+### For just the next page
 
-To change the header and footer style for juste the current page you can use the
-**thispageheaderfooter shortcode** it must be used just after a **clearpage** or
-**cleartorecto** shortcode or **chapter div**:
+To change the header and footer style for just the next page you can use the
+`nextpagestyle=???` of the **clearpage shortcode** or
+**cleartorecto shortcode**:
 
 ```qmd
-{{< thispageheaderfooter fancy>}}
+{{< clearpage nextpagestyle=fancy>}}
+```
+
+or
+
+```qmd
+{{< cleartorecto nextpagestyle=fancy>}}
 ```
 
 Possible values are:

@@ -158,8 +158,10 @@ where they are placed as specified in
   - [x] classical header and footer config
   - [x] **thispageheaderfooter shortcode** to change the header/footer of the
     current page
-  - [ ] **clearpage** or **cleartorecto** shortcode or **chapter div** attribute
-    `nextpagestyle=???` attribute
+  - [x] **clearpage** or **cleartorecto** shortcode attribute
+    `nextpagestyle=???` attribute to change the header/footer of the next page
+  - [ ] **chapter div** attribute `nextpagestyle=???` attribute to change the
+    header/footer of the first page of a chapter
   - [ ] header recto and verso text setting via
     `headerfooter.header_text.recto/verso` metadata
   - [ ] footer recto and verso text setting via

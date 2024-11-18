@@ -2,43 +2,37 @@
 
 {{< lipsum 2 >}}
 
-{{< clearpage >}}
-{{< thispageheaderfooter fancy >}}
+{{< clearpage nextpagestyle=fancy >}}
 
 :::{vfill=both scale=3 align=center}
 Page with a **fancy** style
 :::
 
-{{< clearpage >}}
-{{< thispageheaderfooter empty >}}
+{{< clearpage nextpagestyle=empty >}}
 
 :::{vfill=both scale=3 align=center}
 Page with a **empty** style
 :::
 
-{{< clearpage >}}
-{{< thispageheaderfooter footer >}}
+{{< clearpage nextpagestyle=footer >}}
 
 :::{vfill=both scale=3 align=center}
 Page with a **footer** style
 :::
 
-{{< clearpage >}}
-{{< thispageheaderfooter forcenumber >}}
+{{< clearpage nextpagestyle=forcenumber >}}
 
 :::{vfill=both scale=3 align=center}
 Page with a **forcenumber** style
 :::
 
-{{< clearpage >}}
-{{< thispageheaderfooter dropfoliobeneath >}}
+{{< clearpage nextpagestyle=dropfoliobeneath >}}
 
 :::{vfill=both scale=3 align=center}
 Page with a **dropfoliobeneath** style
 :::
 
-{{< clearpage >}}
-{{< thispageheaderfooter dropfolioinside >}}
+{{< clearpage nextpagestyle=dropfolioinside >}}
 
 :::{vfill=both scale=3 align=center scale=3 align=center}
 Page with a **dropfolioinside** style
