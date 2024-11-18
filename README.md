@@ -48,7 +48,8 @@ footnote for the moment⚠️
   - [x] level 1: front/body/back matter
   - [x] level 2 (in front/back matter): subpart of **front matter**.
   - [x] level 2 (in body matter): **chapter**.
-  - [x] level 2 (in body matter with `.part` class): **part**.
+  - [x] level 2 (in body matter with `.part` class): a **part** that can regroup
+    multiple chapters.
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block

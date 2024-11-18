@@ -1,0 +1,6 @@
+:::{.part}
+## First part
+### A lot of lorem ipsum
+
+That's all.
+:::

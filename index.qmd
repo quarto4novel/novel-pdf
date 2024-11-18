@@ -8,9 +8,13 @@ output-file: my_novel.pdf
 
 # Body matter
 
+{{< include chapters/part_I.qmd >}}
+
 {{< include chapters/chap_01.qmd >}}
 
 {{< include chapters/chap_02.qmd >}}
+
+{{< include chapters/part_II.qmd >}}
 
 {{< include chapters/chap_03_basics.qmd >}}
 

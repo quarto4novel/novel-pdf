@@ -15,6 +15,7 @@ contributes:
   filters:
     - filters/novel_class_options.lua
     - filters/chapter_div.lua
+    - filters/part_div.lua
     - filters/headings.lua
     - filters/div_formating.lua
     - filters/epigraph.lua

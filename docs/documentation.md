@@ -122,7 +122,7 @@ them self).
 
 ### Inside the main matter
 
-Novel use only 2 structure inside the **main matter**:
+Novel use 3 structures inside the **main matter**:
 
 - **chapters**: a chapter always start on a new page and has a **chapter
   start**, an empty vertical space containing only the chapter title, subtitle
@@ -130,6 +130,11 @@ Novel use only 2 structure inside the **main matter**:
   of the chapter itself.
 - **quickchapters**: a quick chapter only has a title (and sometimes decoration)
   and does not start on a new page.
+- **parts**: a part is a chapter with no text content, it is just a separation
+  between two chapters. There is no hierarchical relationship between chapters
+  and parts but you can use them as if there was. Parts are in fact a chapter
+  with a chapter start and no content. It is always on it's own recto page next
+  to an empty verso page.
 
 #### Chapter and quick chapters (and scene breaks)
 
@@ -204,6 +209,24 @@ inside a chapter div to control its rendering:
 
 - `lines_before=7` (in number of lines) attribute to set the position of the
   title/subtitle
+
+#### What about parts?
+
+To create a part use a **part div**:
+
+```qmd
+:::{.part}
+## Title of my big part
+### Subtitle if you need one
+
+Anything you want integrated in your part page
+```
+
+This will insert a clear to recto and write the title subtitle and what you
+added after that to the rector page. Default fonts for parts are scaled to be
+bigger than regular chapters.
+
+The default values for parts is in the `parts` metadata.
 
 ### Inside the front/back matter
 

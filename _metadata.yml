@@ -132,6 +132,15 @@ chapters:
     # Default length of the dash line after the title of the quick chapters
     line: 3em  # true/false/length in LaTeX units
 
+parts:
+  header_height: 30  # in number of lines
+  title:
+    scale: 3
+    lines_before: 12  # in number of lines
+  subtitle:
+    scale: 2
+    lines_before: 3  # in number of lines
+
 # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3
 scenebreaks:
   # no indent after scene break is the standard in fiction
