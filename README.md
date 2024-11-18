@@ -156,7 +156,10 @@ where they are placed as specified in
   all well documented directly in the file itself.
 - [x] **page header** and **page footer** control
   - [x] classical header and footer config
-  - [ ] **thispagehf shortcode**
+  - [x] **thispageheaderfooter shortcode** to change the header/footer of the
+    current page
+  - [ ] **clearpage** or **cleartorecto** shortcode or **chapter div** attribute
+    `nextpagestyle=???` attribute
   - [ ] header recto and verso text setting via
     `headerfooter.header_text.recto/verso` metadata
   - [ ] footer recto and verso text setting via

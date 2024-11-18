@@ -1,0 +1,45 @@
+## Header and footer
+
+{{< lipsum 2 >}}
+
+{{< clearpage >}}
+{{< thispageheaderfooter fancy >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **fancy** style
+:::
+
+{{< clearpage >}}
+{{< thispageheaderfooter empty >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **empty** style
+:::
+
+{{< clearpage >}}
+{{< thispageheaderfooter footer >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **footer** style
+:::
+
+{{< clearpage >}}
+{{< thispageheaderfooter forcenumber >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **forcenumber** style
+:::
+
+{{< clearpage >}}
+{{< thispageheaderfooter dropfoliobeneath >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **dropfoliobeneath** style
+:::
+
+{{< clearpage >}}
+{{< thispageheaderfooter dropfolioinside >}}
+
+:::{vfill=both scale=3 align=center scale=3 align=center}
+Page with a **dropfolioinside** style
+:::

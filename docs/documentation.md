@@ -22,6 +22,8 @@ footnote for the moment⚠️
 
 ## Page header and footer
 
+### For the whole book
+
 You can control what kind of header and footer will be displayed in the book
 using the `headerfooter.style` metadata.
 
@@ -63,6 +65,27 @@ closest default):
   - Default author verso, title recto.
 
 See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
+
+### For just the current page
+
+To change the header and footer style for juste the current page you can use the
+**thispageheaderfooter shortcode** it must be used just after a **clearpage** or
+**cleartorecto** shortcode or **chapter div**:
+
+```qmd
+{{< thispageheaderfooter fancy>}}
+```
+
+Possible values are:
+
+- fancy
+- empty
+- footer
+- forcenumber
+- dropfoliobeneath
+- dropfolioinside
+
+See [novel class - tispagestyle](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.5.1)
 
 ## Structure
 

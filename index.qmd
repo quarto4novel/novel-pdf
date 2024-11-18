@@ -18,6 +18,8 @@ output-file: my_novel.pdf
 
 {{< include chapters/chap_05_spans.qmd >}}
 
+{{< include chapters/chap_06_header_and_footer.qmd >}}
+
 # Back matter
 
 {{< include chapters/backmatter.qmd >}}
