@@ -46,7 +46,9 @@ footnote for the moment⚠️
 - [x] inline footnote
 - [x] headings (outside `.chapter` divs):
   - [x] level 1: front/body/back matter
-  - [x] level 2 (in frontmatter or backmatter): subpart of **front matter**.
+  - [x] level 2 (in front/back matter): subpart of **front matter**.
+  - [x] level 2 (in body matter): **chapter**.
+  - [x] level 2 (in body matter with `.part` class): **part**.
 - [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
@@ -169,10 +171,12 @@ where they are placed as specified in
   - [ ] emblems setting via `headerfooter.emblems.recto/verso` metadata
   - [ ] header recto and verso text setting via **header shortcode**
   - [ ] footer recto and verso text setting via **footer shortcode**
-  - [ ] special text `\theTitle`
-  - [ ] special text `\theAuthor`
-  - [ ] special text `\theChapter`
-  - [ ] special text `\thePart`
+  - [x] **thetitle shortcode** `{{< thetitle >}}`
+  - [x] **theauthor shortcode** `{{< theauthor >}}`
+  - [x] **thepage shortcode** `{{< thepage >}}`
+  - [x] **thechapter shortcode** `{{< thechapter >}}`
+  - [x] **thequickchapter shortcode** `{{< thequickchapter >}}`
+  - [ ] **thepart shortcode** `{{< thepart >}}`
   - [ ] **soundtrack shortcode**
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
   recto, without skipping a page.

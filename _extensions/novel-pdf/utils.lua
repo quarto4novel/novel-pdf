@@ -64,7 +64,13 @@ function utils.build_quickchapter(title_inlines, line)
     table.insert(title_inlines, 1, pandoc.RawInline('latex', [[\QuickChapter%(line_config)s{]] % {line_config=line_config}))
     table.insert(title_inlines, pandoc.RawInline('latex', "}"))
 
-    return pandoc.Div {title_inlines}
+    -- get a string version of the title to put in latex variable
+    local title_str = pandoc.utils.stringify(title_inlines)
+
+    return pandoc.Div {
+        title_inlines,
+        pandoc.RawBlock("latex", [[\renewcommand{\thequickchapter}{%(title)s}]] % {title=title_str})
+    }
 end
 
 
@@ -141,7 +147,14 @@ function utils.ChapterBuilder:build()
 
     local raw_latex_close = pandoc.RawBlock('latex', [[\end{ChapterStart}]])
 
-    print("> Chapter: ", pandoc.utils.stringify(self._title_inlines))
+    -- get a string version of the title to put in latex variable
+    local title_str = pandoc.utils.stringify(self._title_inlines)
+
+    -- handle the LaTeX variables for chapter and quickchapter
+    local raw_latex_set_thechapter = pandoc.RawBlock("latex", [[\renewcommand{\thechapter}{%(title)s}]] % {title=title_str})
+    local raw_latex_reset_thequickchapter = pandoc.RawBlock("latex", [[\renewcommand{\thequickchapter}{}]])
+
+    print("> Chapter: ", title_str)
 
     -- Build and return the resulting div
     return pandoc.Div {
@@ -150,7 +163,9 @@ function utils.ChapterBuilder:build()
         title_div,
         subtitle_div or {},
         self._content_block or {},
-        raw_latex_close
+        raw_latex_close,
+        raw_latex_set_thechapter,
+        raw_latex_reset_thequickchapter,
     }
 end
 

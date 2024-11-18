@@ -1,6 +1,24 @@
 ## Header and footer
 
-{{< lipsum 2 >}}
+The current chapter is {{< thechapter >}} and quick chapter
+{{< thequickchapter >}}. This is the book **{{< thetitle >}}** written by
+_{{< theauthor >}}_.
+
+### A little quick chapter
+
+The current page is {{< thepage >}}, the current chapter is {{< thechapter >}}
+and the current quick chapter is {{< thequickchapter >}}.
+
+{{< lipsum 1 >}}
+
+### Another quick chapter
+
+The current page is {{< thepage >}}, the current chapter is {{< thechapter >}}
+and the current quick chapter is {{< thequickchapter >}}.
+
+{{< lipsum 1 >}}
+
+### The real header footer tests
 
 {{< clearpage nextpagestyle=fancy >}}
 

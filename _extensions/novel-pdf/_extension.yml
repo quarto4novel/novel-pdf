@@ -8,6 +8,7 @@ contributes:
     - shortcodes/scenebreak.lua
     - shortcodes/mainmatter.lua
     - shortcodes/spaces.lua
+    - shortcodes/current_elements.lua
   # BUG: precise targeting of filters does not work in extension
   # This prevent filters to act after quarto processing of shortcodes which force us to use lipsum one para at a time
   # See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#more-precise-targeting-of-ast-processing-phases
