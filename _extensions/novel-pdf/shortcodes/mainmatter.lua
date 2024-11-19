@@ -1,6 +1,7 @@
 local utils = require "../utils"
+local builders = require "../builders"
 
 -- DEPRECATED
 function mainmatter()
-    return utils.build_mainmatter()
+    return builders.build_mainmatter()
 end

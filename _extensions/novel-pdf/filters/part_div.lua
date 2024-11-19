@@ -1,4 +1,5 @@
 local utils = require "../utils"
+local builders = require "../builders"
 
 -- global variables needed to communicate between different filters
 local from_meta = {}
@@ -52,7 +53,7 @@ if FORMAT:match 'latex' then
 
 	function part_start_from_div(div)
 		if utils.table_contains(div.classes, "part") then
-			builder = utils.PartBuilder:new()
+			builder = builders.PartBuilder:new()
 
 			builder:height(pandoc.utils.stringify(div.attributes.height or from_meta.height))
 			builder:content_block(div:walk(part_titles_from_header))

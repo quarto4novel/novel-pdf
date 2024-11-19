@@ -1,4 +1,5 @@
 local utils = require "../utils"
+local builders = require "../builders"
 
 local MATTER <const> = {
 	NOTHING = 0,
@@ -26,17 +27,17 @@ if FORMAT:match 'latex' then
 			if title == "Front matter" then
 				print("Front matter start")
 				current_matter = MATTER.FRONT
-				return utils.build_frontmatter()
+				return builders.build_frontmatter()
 
 			elseif title == "Body matter" then
 				print("Body matter start")
 				current_matter = MATTER.BODY
-				return utils.build_mainmatter()
+				return builders.build_mainmatter()
 
 			elseif title == "Back matter" then
 				print("Back matter start")
 				current_matter = MATTER.BACK
-				return utils.build_backmatter()
+				return builders.build_backmatter()
 			else
 				error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 			end
@@ -51,7 +52,7 @@ if FORMAT:match 'latex' then
 					local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
 
 					-- build chapterlike
-					local chapter = utils.ChapterBuilder:new()
+					local chapter = builders.ChapterBuilder:new()
 						:title_inlines(header.content)
 						:lines_before_title(lines_before)
 						:height(height)
@@ -62,7 +63,7 @@ if FORMAT:match 'latex' then
 				else
 					-- TODO: add support for .samepage class
 					-- TODO: add support for page_style=empty attribute
-					return utils.build_frontmatter_sub(title)
+					return builders.build_frontmatter_sub(title)
 				end
 			end
 		elseif current_matter == MATTER.BODY then
@@ -74,7 +75,7 @@ if FORMAT:match 'latex' then
 					local scale = pandoc.utils.stringify(header.attributes.scale or from_meta.parts.title.scale)
 
 					-- Build the part
-					local part = utils.PartBuilder:new()
+					local part = builders.PartBuilder:new()
 						:title_inlines(header.content)
 						:title_scale(scale)
 						:lines_before_title(lines_before)
@@ -88,7 +89,7 @@ if FORMAT:match 'latex' then
 					local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
 					local page_style = pandoc.utils.stringify(header.attributes.page_style or from_meta.chapters.page_style)
 
-					local chap_builder = utils.ChapterBuilder:new()
+					local chap_builder = builders.ChapterBuilder:new()
 						:title_inlines(header.content)
 						:lines_before_title(lines_before)
 						:height(height)
@@ -101,13 +102,13 @@ if FORMAT:match 'latex' then
 				local name_inlines = header.content
 				local line = pandoc.utils.stringify(header.attributes.line or from_meta.quickchapters.line)
 
-				return utils.build_quickchapter(name_inlines, line)
+				return builders.build_quickchapter(name_inlines, line)
 
 			elseif header.level == 4 then
 				-- Retreive attributes or get default from meta
 				local default_break = pandoc.utils.stringify(from_meta.scenebreaks.default)
 
-				return utils.build_scenebreak(title, default_break)
+				return builders.build_scenebreak(title, default_break)
 			end
 		end -- current_matter
 	end
