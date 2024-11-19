@@ -222,7 +222,13 @@ To create a part use a **part div**:
 Anything you want integrated in your part page
 ```
 
-This will insert a clear to recto and write the title subtitle and what you
+...or a a **level 2 heading with .part class**:
+
+```qmd
+## Title of my huge part{.part}
+```
+
+This will insert a clear to recto and write the title, subtitle and what you
 added after that to the rector page. Default fonts for parts are scaled to be
 bigger than regular chapters.
 

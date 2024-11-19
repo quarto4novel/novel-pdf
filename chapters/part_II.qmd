@@ -1,6 +1,1 @@
-:::{.part}
-## Second part
-### Less lorem ipsum
-
-That's all folks!
-:::
+## Second part{.part}

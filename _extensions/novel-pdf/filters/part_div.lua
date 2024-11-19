@@ -19,30 +19,26 @@ if FORMAT:match 'latex' then
 			assert(builder)
 
 			if header.level == 2 then
-				before_title = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_title)
-				title_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.title_scale)
-				title_inlines = pandoc.Inlines {
-					pandoc.Span(header.content, {scale=title_scale}),
-				}
+				local before_title = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_title)
+				local title_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.title_scale)
 
 				builder
 					:lines_before_title(before_title)
-					:title_inlines(title_inlines)
+					:title_inlines(header.content)
+					:title_scale(title_scale)
 
 				-- return empty table to remove the heading from AST preventing it to be processed later by dedicated filters
 				-- this is important since we already created the chapter and its title here
 				return {}
 
 			elseif header.level == 3 then
-				before_subtitle = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_subtitle)
-				subtitle_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.subtitle_scale)
-				subtitle_inlines = pandoc.Inlines {
-					pandoc.Span(header.content, {scale=subtitle_scale}),
-				}
+				local before_subtitle = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_subtitle)
+				local subtitle_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.subtitle_scale)
 
 				builder
 					:lines_before_subtitle(before_subtitle)
-					:subtitle_inlines(subtitle_inlines)
+					:subtitle_inlines(header.content)
+					:subtitle_scale(subtitle_scale)
 
 				-- return empty table to remove the heading from AST preventing it to be processed later by dedicated filters
 				-- this is important since we already created the chapter and its subtitle here

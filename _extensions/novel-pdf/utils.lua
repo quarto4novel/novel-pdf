@@ -184,8 +184,10 @@ function utils.PartBuilder:new()
 end
 
 function utils.PartBuilder:title_inlines(v) self._title_inlines = v; return self end
+function utils.PartBuilder:title_scale(v) self._title_scale = v; return self end
 function utils.PartBuilder:lines_before_title(v) self._lines_before_title = v; return self end
 function utils.PartBuilder:subtitle_inlines(v) self._subtitle_inlines = v; return self end
+function utils.PartBuilder:subtitle_scale(v) self._subtitle_scale = v; return self end
 function utils.PartBuilder:lines_before_subtitle(v) self._lines_before_subtitle = v; return self end
 function utils.PartBuilder:height(v) self._height = v; return self end
 function utils.PartBuilder:content_block(v) self._content_block = v; return self end
@@ -205,20 +207,30 @@ function utils.PartBuilder:build()
     local raw_latex_cleartorecto = pandoc.RawBlock('latex', [[\thispagestyle{empty}\null\cleartorecto %% part are always recto with empty verso]])
     local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=self._height})
 
-    -- We encapsulate the title inlines to make them a title
-    table.insert(self._title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
-    table.insert(self._title_inlines, pandoc.RawInline('latex', "}"))
+    -- We add scaling to title
+    local scaled_title_inlines = pandoc.Inlines {
+        pandoc.Span(self._title_inlines, {scale=self._title_scale}),
+    }
 
-    local title_div = pandoc.Div {self._title_inlines}
+    -- We encapsulate the title inlines to make them a title
+    table.insert(scaled_title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
+    table.insert(scaled_title_inlines, pandoc.RawInline('latex', "}"))
+
+    local title_div = pandoc.Div {scaled_title_inlines}
     title_div.attr.attributes = {lines_before=self._lines_before_title}
 
     local subtitle_div
     if self._subtitle_inlines then
-        -- We encapsulate the subtitle inlines to make them a subtitle
-        table.insert(self._subtitle_inlines, 1, pandoc.RawInline('latex', [[\ChapterSubtitle{]]))
-        table.insert(self._subtitle_inlines, pandoc.RawInline('latex', "}"))
+        -- We add scaling to title
+        local subtitle_inlines = pandoc.Inlines {
+            pandoc.Span(self._subtitle_inlines, {scale=self._subtitle_scale}),
+        }
 
-        subtitle_div = pandoc.Div {self._subtitle_inlines}
+        -- We encapsulate the subtitle inlines to make them a subtitle
+        table.insert(subtitle_inlines, 1, pandoc.RawInline('latex', [[\ChapterSubtitle{]]))
+        table.insert(subtitle_inlines, pandoc.RawInline('latex', "}"))
+
+        subtitle_div = pandoc.Div {subtitle_inlines}
         subtitle_div.attr.attributes = {lines_before=self._lines_before_subtitle}
     end
 
