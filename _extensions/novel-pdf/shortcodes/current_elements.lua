@@ -10,6 +10,10 @@ if FORMAT:match 'latex' then
         return pandoc.RawInline('latex', [[\thechapter]])
     end
 
+    function thepart(args)
+        return pandoc.RawInline('latex', [[\thepart]])
+    end
+
     function thequickchapter(args)
         return pandoc.RawInline('latex', [[\thequickchapter]])
     end

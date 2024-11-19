@@ -1,8 +1,8 @@
 ## Chapter 6: Header and footer
 
-The current chapter is {{< thechapter >}} and quick chapter
-{{< thequickchapter >}}. This is the book **{{< thetitle >}}** written by
-_{{< theauthor >}}_.
+The current part is {{< thepart >}}, the current chapter is {{< thechapter >}}
+and the current quick chapter {{< thequickchapter >}}. This is the book
+**{{< thetitle >}}** written by _{{< theauthor >}}_.
 
 ### A little quick chapter
 

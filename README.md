@@ -172,13 +172,9 @@ where they are placed as specified in
   - [ ] emblems setting via `headerfooter.emblems.recto/verso` metadata
   - [ ] header recto and verso text setting via **header shortcode**
   - [ ] footer recto and verso text setting via **footer shortcode**
-  - [x] **thetitle shortcode** `{{< thetitle >}}`
-  - [x] **theauthor shortcode** `{{< theauthor >}}`
-  - [x] **thepage shortcode** `{{< thepage >}}`
-  - [x] **thechapter shortcode** `{{< thechapter >}}`
-  - [x] **thequickchapter shortcode** `{{< thequickchapter >}}`
-  - [ ] **thepart shortcode** `{{< thepart >}}`
   - [ ] **soundtrack shortcode**
+- [x] shortcodes (and LaTeX command of the same name) to [access current
+  elements](docs/documentation.md#access-to-the-current-structural-elements)
 - [x] **clearpage shortcode**: provides a new page, which will be verso or
   recto, without skipping a page.
 - [x] **cleartorecto shortcode**: forces new page to begin on a recto page, if

@@ -1,6 +1,6 @@
 # novel-pdf documentation
 
-## Basic formatin
+## Basic formating
 
 You can use the following native markdown formating:
 
@@ -307,3 +307,25 @@ or back matter. The most common stuff in fiction novels are:
 front and back matter so except if you are opting for auto editing don't spend
 time to micro manage those... spend your time on your story, most reader don't
 even read the front/back matter!**
+
+## Access to the current structural elements
+
+You can access to current structural element title or value using convenient
+shortcodes:
+
+- **thetitle shortcode** `{{< thetitle >}}`
+- **theauthor shortcode** `{{< theauthor >}}`
+- **thepage shortcode** `{{< thepage >}}`
+- **thechapter shortcode** `{{< thechapter >}}`
+- **thequickchapter shortcode** `{{< thequickchapter >}}`
+- **thepart shortcode** `{{< thepart >}}`
+
+You also have LaTeX commands of the exact same names if ever you want to
+customize header/footer:
+
+- **thetitle command** `\thetitle`
+- **theauthor command** `\theauthor`
+- **thepage command** `\thepage`
+- **thechapter command** `\thechapter`
+- **thequickchapter command** `\thequickchapter`
+- **thepart command** `\thepart`
