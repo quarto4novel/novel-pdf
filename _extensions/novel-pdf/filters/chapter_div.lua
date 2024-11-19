@@ -6,9 +6,7 @@ local builder = nil
 
 if FORMAT:match 'latex' then
 	function get_vspaces_from_meta(meta)
-		from_meta.lines_before_title = meta.chapters.title.lines_before
-		from_meta.lines_before_subtitle = meta.chapters.subtitle.lines_before
-		from_meta.height = meta.chapters.header_height
+		from_meta.chapters = meta.chapters
 	end
 
 	-- Used localy inside chapter div
@@ -18,7 +16,7 @@ if FORMAT:match 'latex' then
 
 			if header.level == 2 then
 				builder
-					:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_title))
+					:lines_before_title(pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.title.lines_before))
 					:title_inlines(header.content)
 
 				-- return empty table to remove the heading from AST preventing it to be processed later by dedicated filters
@@ -27,7 +25,7 @@ if FORMAT:match 'latex' then
 
 			elseif header.level == 3 then
 				builder
-					:lines_before_subtitle(pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_subtitle))
+					:lines_before_subtitle(pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.subtitle.lines_before))
 					:subtitle_inlines(header.content)
 
 				-- return empty table to remove the heading from AST preventing it to be processed later by dedicated filters
@@ -42,10 +40,18 @@ if FORMAT:match 'latex' then
 
 	function chapter_start_from_div(div)
 		if utils.table_contains(div.classes, "chapter") then
+			-- We need a builder
 			builder = utils.ChapterBuilder:new()
 
-			builder:height(pandoc.utils.stringify(div.attributes.height or from_meta.height))
-			builder:content_block(div:walk(chapter_titles_from_header))
+			-- Retreive attributes or get default from meta
+			local height = pandoc.utils.stringify(div.attributes.height or from_meta.chapters.header_height)
+			local page_style = pandoc.utils.stringify(div.attributes.page_style or from_meta.chapters.page_style)
+
+			-- build the chapter
+			builder
+				:height(height)
+				:page_style(page_style)
+				:content_block(div:walk(chapter_titles_from_header))
 
 			return builder:build()
 		end

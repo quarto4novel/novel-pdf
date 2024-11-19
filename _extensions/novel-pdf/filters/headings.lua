@@ -12,13 +12,10 @@ if FORMAT:match 'latex' then
 	local current_matter = MATTER.NOTHING
 
 	function get_param_from_meta(meta)
-		from_meta.line = meta.chapters.quick.line[1]
-		from_meta.lines_before_chapter = meta.chapters.title.lines_before[1]
-		from_meta.height_chapter = meta.chapters.header_height[1]
-		from_meta.lines_before_part = meta.parts.title.lines_before[1]
-		from_meta.height_part = meta.parts.header_height[1]
-		from_meta.title_scale_part = meta.parts.title.scale[1]
-		from_meta.scene_break_default = meta.scenebreaks.default[1]
+		from_meta.chapters = meta.chapters
+		from_meta.quickchapters = meta.quickchapters
+		from_meta.scenebreaks = meta.scenebreaks
+		from_meta.parts = meta.parts
 	end
 
 
@@ -50,8 +47,8 @@ if FORMAT:match 'latex' then
 				if utils.table_contains(header.classes, "chapterlike") then
 					-- TODO add specific default config for chapterlike
 					-- Retreive attributes or get default from meta
-					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_chapter)
-					local height = pandoc.utils.stringify(header.attributes.height or from_meta.height_chapter)
+					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.title.lines_before)
+					local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
 
 					-- build chapterlike
 					local chapter = utils.ChapterBuilder:new()
@@ -64,7 +61,7 @@ if FORMAT:match 'latex' then
 					return chapter
 				else
 					-- TODO: add support for .samepage class
-					-- TODO: add support for .thispage=empty attribute
+					-- TODO: add support for page_style=empty attribute
 					return utils.build_frontmatter_sub(title)
 				end
 			end
@@ -72,9 +69,9 @@ if FORMAT:match 'latex' then
 			if header.level == 2 then
 				if utils.table_contains(header.classes, "part") then
 					-- Retreive attributes or get default from meta
-					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_part)
-					local height = pandoc.utils.stringify(header.attributes.height or from_meta.height_part)
-					local scale = pandoc.utils.stringify(header.attributes.scale or from_meta.title_scale_part)
+					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.parts.title.lines_before)
+					local height = pandoc.utils.stringify(header.attributes.height or from_meta.parts.header_height)
+					local scale = pandoc.utils.stringify(header.attributes.scale or from_meta.parts.title.scale)
 
 					-- Build the part
 					local part = utils.PartBuilder:new()
@@ -87,28 +84,28 @@ if FORMAT:match 'latex' then
 					return part
 				else
 					-- Retreive attributes or get default from meta
-					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_chapter)
-					local height = pandoc.utils.stringify(header.attributes.height or from_meta.height_chapter)
+					local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.title.lines_before)
+					local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
+					local page_style = pandoc.utils.stringify(header.attributes.page_style or from_meta.chapters.page_style)
 
-					local chapter = utils.ChapterBuilder:new()
+					local chap_builder = utils.ChapterBuilder:new()
 						:title_inlines(header.content)
 						:lines_before_title(lines_before)
 						:height(height)
-						-- TODO: add support for chapter style
-						:build()
+						:page_style(page_style)
 
-					return chapter
+					return chap_builder:build()
 				end
 			elseif header.level == 3 then
 				-- Retreive attributes or get default from meta
 				local name_inlines = header.content
-				local line = pandoc.utils.stringify(header.attributes.line or from_meta.line)
+				local line = pandoc.utils.stringify(header.attributes.line or from_meta.quickchapters.line)
 
 				return utils.build_quickchapter(name_inlines, line)
 
 			elseif header.level == 4 then
 				-- Retreive attributes or get default from meta
-				local default_break = pandoc.utils.stringify(from_meta.scene_break_default)
+				local default_break = pandoc.utils.stringify(from_meta.scenebreaks.default)
 
 				return utils.build_scenebreak(title, default_break)
 			end

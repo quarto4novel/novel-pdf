@@ -122,15 +122,26 @@ headerfooter:
   style: onlyheadercentered
 
 chapters:
+  # header/footer style for the first page of the chapter. Possible values are:
+  #
+  # - fancy
+  # - empty
+  # - footer
+  # - forcenumber
+  # - dropfoliobeneath
+  # - dropfolioinside
+  #
+  # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.5.1
+  page_style: empty
   header_height: 10  # in number of lines
   title:
     lines_before: 3  # in number of lines
   subtitle:
     lines_before: 1  # in number of lines
-  # Quick chapter config
-  quick:
-    # Default length of the dash line after the title of the quick chapters
-    line: 3em  # true/false/length in LaTeX units
+
+quickchapters:
+  # Default length of the dash line after the title of the quick chapters
+  line: 3em  # true/false/length in LaTeX units
 
 parts:
   header_height: 30  # in number of lines

@@ -1,4 +1,4 @@
-## Header and footer
+## Chapter 6: Header and footer
 
 The current chapter is {{< thechapter >}} and quick chapter
 {{< thequickchapter >}}. This is the book **{{< thetitle >}}** written by

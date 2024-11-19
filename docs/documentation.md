@@ -203,6 +203,19 @@ control its rendering:
 - `height=15` (in number of lines) to set the height of the vertical space for
   the chapter start. The default value is set in `_metadata.yml` via the
   `chapters.height` metadata
+- `page_style=empty` to set header/footer style for the first page of the
+  chapter. The possible values are:
+  - **fancy**: like any normal page
+  - **empty**: no header, no footer
+  - **footer**: only footer (if there is one)
+  - **forcenumber**: show page number at it normal place (header or footer)
+  - **dropfoliobeneath**: In this context, "folio" means page number. Write the
+    page number in the bottom margin
+  - **dropfolioinside**: In this context, "folio" means page number. Write the
+    page number above the bottom margin (for this it reduc e the number of lines
+    of the page)
+  See:
+  [Novel class - Exceptional pages style](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.5.1)
 
 Here are the possible class or attributes you can add to a level 3 or 4 heading
 inside a chapter div to control its rendering:

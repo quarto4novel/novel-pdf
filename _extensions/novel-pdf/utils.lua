@@ -112,6 +112,7 @@ function utils.ChapterBuilder:lines_before_title(v) self._lines_before_title = v
 function utils.ChapterBuilder:subtitle_inlines(v) self._subtitle_inlines = v; return self end
 function utils.ChapterBuilder:lines_before_subtitle(v) self._lines_before_subtitle = v; return self end
 function utils.ChapterBuilder:height(v) self._height = v; return self end
+function utils.ChapterBuilder:page_style(v) self._page_style = v; return self end
 function utils.ChapterBuilder:content_block(v) self._content_block = v; return self end
 
 function utils.ChapterBuilder:build()
@@ -125,6 +126,7 @@ function utils.ChapterBuilder:build()
         return pandoc.Para(self._title_inlines)
     end
 
+    local raw_latex_page_style = pandoc.RawBlock('latex', [[\thispagestyle{%(page_style)s}]] % {page_style=self._page_style})
     local raw_latex_clear = pandoc.RawBlock('latex', [[\clearpage %% next chapter may begin recto or verso]])
     local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=self._height})
 
@@ -204,7 +206,7 @@ function utils.PartBuilder:build()
     end
 
     -- BUG: the first part is preceded by 2 blank pages
-    local raw_latex_cleartorecto = pandoc.RawBlock('latex', [[\thispagestyle{empty}\null\cleartorecto %% part are always recto with empty verso]])
+    local raw_latex_cleartorecto = pandoc.RawBlock('latex', [[\thispagestyle{empty}\null\cleartorecto\thispagestyle{empty} %% part are always recto with empty verso]])
     local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=self._height})
 
     -- We add scaling to title
