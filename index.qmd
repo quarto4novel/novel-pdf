@@ -24,6 +24,8 @@ output-file: my_novel.pdf
 
 {{< include chapters/chap_06_header_and_footer.qmd >}}
 
+{{< include chapters/chap_07_unicode_and_emojis.qmd >}}
+
 # Back matter
 
 {{< include chapters/backmatter.qmd >}}

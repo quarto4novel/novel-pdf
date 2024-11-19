@@ -76,12 +76,10 @@ footnote for the moment⚠️
   - star sign `*`
   - slash `/`
   - backslash `\`
-- [ ] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
-  white dedicated font
-  - https://tex.stackexchange.com/questions/224584/define-fallback-font-for-specific-unicode-characters-in-lualatex
-  - [Substituting fonts for emojis in LuaLaTeX](https://tex.stackexchange.com/a/572220)
-    this is the best way
-  - [Define fallback font for missing glyphs in LuaLaTeX](https://tex.stackexchange.com/q/514940)
+- [x] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
+  white dedicated font (combined emoji are not supported)
+- [ ] direct greek support
+- [ ] direct berber. One can use the [Noto Sans Tifinagh font](https://fonts.google.com/noto/specimen/Noto+Sans+Tifinagh)
 - [ ] preselection of useful fonts:
   - [ ] cursive font
     - https://www.notebookandpenguin.com/cursive-google-fonts/

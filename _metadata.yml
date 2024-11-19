@@ -70,6 +70,8 @@ fonts:
     # for readability. Depending on whom you ask, each line of free-running text
     # should average 60 to 66 characters (including spaces).
     size: 11.4pt
+    # This is use as a fallback font when unicode emoji is found
+    emoji_fallback: Noto Emoji
   # Open Type font NovelDeco.otf is packaged with the novel class. It is a
   # special-purpose font that provides characters for the \decoglyph and \midcase commands.
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.3
@@ -78,12 +80,16 @@ fonts:
   # The default sans-serif font (almost never used anywhere)
   sans:
     name: Libertinus Sans
+    # This is use as a fallback font when unicode emoji is found
+    emoji_fallback: Noto Emoji
   # The font used by verbatim text and div/span with the .monospace class
   mono:
     name: DejaVu Sans Mono
     # Set the scale to have a monospace font size match closely regular font size
     # By default 0.8 works well for DejaVu Sans Mono font and all novel default font config
     scale: 0.8
+    # This is use as a fallback font when unicode emoji is found
+    emoji_fallback: Unifont Upper
   # There is basic math support in novel-pdf but don't expect to fine tune anything
   # it's just in case one of your character is a mathematician or you wan't to write
   # a math based enigma at any point in your story.
@@ -91,6 +97,7 @@ fonts:
   # Nevertheless, Libertinus Math is loaded if available; otherwise Latin Modern Math.
   math:
     name: Libertinus Math
+
 
 # Intrior page layout
 page_layout:
