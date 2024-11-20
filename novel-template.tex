@@ -66,10 +66,24 @@ RawFeature={fallback=emojiparentfallback} % This is to have emoji fallback
 RawFeature={fallback=emojisansfallback} % This is to have emoji fallback
 ]{$fonts.sans.name$}
 \setmonofont[%
+RawFeature={fallback=emojimonofallback}, % This is to have emoji fallback
 Scale=$fonts.mono.scale$, %
-RawFeature={fallback=emojimonofallback} % This is to have emoji fallback
 ]{$fonts.mono.name$}
 \setmathfont{$fonts.math.name$}
+\SetChapterFont[%
+RawFeature={fallback=emojisansfallback}, % This is to have emoji fallback
+Numbers=Lining, %
+Scale=$fonts.chaptertitle.scale$ %
+]{$fonts.chaptertitle.name$}
+\SetSubchFont[
+RawFeature={fallback=emojisansfallback}, % This is to have emoji fallback
+Numbers=Lining,
+Scale=$fonts.chaptersubtitle.scale$
+]{$fonts.chaptersubtitle.name$}
+
+% Custom fonts
+\NewFontFamily\booktitlefont{$fonts.custom.title.name$}
+\NewFontFamily\parttitlefont{$fonts.parttitle.name$}
 
 %%% PAGE LAYOUT
 \SetLinesPerPage{$page_layout.lines_per_page$}

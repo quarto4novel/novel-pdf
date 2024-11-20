@@ -2,12 +2,19 @@
 
 {{< emptylines 6 >}}
 
+```{=latex}
+{\booktitlefont
+```
+
 :::{align=right}
 <!-- TODO: Use first_words=??? and last_words=??? attributes here on title -->
 [**Live Long and**]{scale=1.8}
 {{< emptylines 1 >}}
 [**Die Hard**]{scale=2.4 color=gray5}
 :::
+```{=latex}
+}
+```
 
 ## Blank page
 
@@ -18,9 +25,17 @@
 :::{align=center vspace_before=5\nbs}
 
 <!-- TODO: Use first_words=??? and last_words=??? attributes here on title -->
-[**Live long and**]{scale=3.6}
+```{=latex}
+{\booktitlefont
+```
+
+[**Live Long and**]{scale=3.6}
 {{< emptylines 2 >}}
 [**Die Hard**]{scale=4.8 color=gray5}
+
+```{=latex}
+}
+```
 
 {{< emptylines 1.5 >}}
 

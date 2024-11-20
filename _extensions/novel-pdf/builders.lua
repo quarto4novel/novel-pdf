@@ -182,7 +182,7 @@ function builders.PartBuilder:build()
     }
 
     -- We encapsulate the title inlines to make them a title
-    table.insert(scaled_title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{]]))
+    table.insert(scaled_title_inlines, 1, pandoc.RawInline('latex', [[\ChapterTitle{\parttitlefont ]]))
     table.insert(scaled_title_inlines, pandoc.RawInline('latex', "}"))
 
     local title_div = pandoc.Div {scaled_title_inlines}
@@ -196,7 +196,7 @@ function builders.PartBuilder:build()
         }
 
         -- We encapsulate the subtitle inlines to make them a subtitle
-        table.insert(subtitle_inlines, 1, pandoc.RawInline('latex', [[\ChapterSubtitle{]]))
+        table.insert(subtitle_inlines, 1, pandoc.RawInline('latex', [[\ChapterSubtitle{\parttitlefont ]]))
         table.insert(subtitle_inlines, pandoc.RawInline('latex', "}"))
 
         subtitle_div = pandoc.Div {subtitle_inlines}

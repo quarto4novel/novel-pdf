@@ -313,7 +313,7 @@ where they are placed as specified in
 
   And here is how to use it in you document:
 
-  ```qml
+  ```qmd
   The young boy was afraid but he needed to communicate with his friend so he
   whispered in her ear. [« I think we are doomed. »]{.whisper} But Valerie was
   not the kind of person to hide when confronted to danger. [« Don't worry

@@ -101,6 +101,19 @@ fonts:
   math:
     # Choose one from https://www.tug.org/FontCatalogue/mathfonts.html
     name: stix math # Stix match well with Crimson parent font
+  # Used for chapter title
+  chaptertitle:
+    name: Crimson Pro Medium
+    scale: 1.6
+  # Used for chapter subtitle
+  chaptersubtitle:
+    name: Crimson Pro Medium
+    scale: 1.2
+  parttitle:
+    name: Libertinus Sans
+  custom:
+    title:
+      name: Libertinus Serif
 
 
 # Intrior page layout
