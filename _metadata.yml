@@ -54,7 +54,9 @@ fonts:
   #
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.1
   parent:
-    name: Libertinus Serif
+    # Choose from: https://www.tug.org/FontCatalogue/seriffonts.html
+    # Take inspiration from: https://writerwiki.com/20-most-readable-fonts-for-printing-books/
+    name: Crimson
     # Main text font automatically adds Numbers=OldStyle,Ligatures=Common
     # Percent at end of line is necessary, when writing font settings multi-line:
     features: |
@@ -84,7 +86,8 @@ fonts:
     emoji_fallback: Noto Emoji
   # The font used by verbatim text and div/span with the .monospace class
   mono:
-    name: DejaVu Sans Mono
+    # Choose from: https://www.tug.org/FontCatalogue/typewriterfonts.html
+    name: QT Pristine
     # Set the scale to have a monospace font size match closely regular font size
     # By default 0.8 works well for DejaVu Sans Mono font and all novel default font config
     scale: 0.8
@@ -96,7 +99,8 @@ fonts:
   # If you need a math advanced feature, then may I gently suggest that maybe novel is not the right document class for you?
   # Nevertheless, Libertinus Math is loaded if available; otherwise Latin Modern Math.
   math:
-    name: Libertinus Math
+    # Choose one from https://www.tug.org/FontCatalogue/mathfonts.html
+    name: stix math # Stix match well with Crimson parent font
 
 
 # Intrior page layout

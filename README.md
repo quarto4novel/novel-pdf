@@ -152,9 +152,7 @@ where they are placed as specified in
   ```qmd
   ### A wonderful quick chapter
   ```
-- [x] **novel specific font configuration**: multiple options are available in
-  the `_metadata.yml` file to configure fonts used in your novel and they are
-  all well documented directly in the file itself.
+- [x] **font configuration**: in `_metadata.yml`
 - [x] **page header** and **page footer** control
   - [x] classical header and footer config
   - [x] **thispageheaderfooter shortcode** to change the header/footer of the
@@ -238,6 +236,9 @@ where they are placed as specified in
     - [x] `.smallcaps`
     - [x] `.monospace` (with respect to multilign alignment by using right
       alignment instead of default justified one)
+    - [ ] `.sans`
+    - [ ] `.handwritting`
+    - [ ] `.sciencefiction`
     - [x] `.noparindent` to remove indentation of the first line of paragraphs
     - [x] `noparskip=value` to set the space between 2 consecutive paragraph
       (in LaTeX units)
@@ -267,6 +268,9 @@ where they are placed as specified in
     - [x] `.strikethrough`
     - [x] `.smallcaps`
     - [x] `.monospace`
+    - [ ] `.sans`
+    - [ ] `.handwritting`
+    - [ ] `.sciencefiction`
     - [x] `hfill=before/after/both`
     - [ ] `font=???`
     - [x] `scale=factor,hoffset,voffset` scale the text by a factor. Only the

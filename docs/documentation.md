@@ -1,5 +1,48 @@
 # novel-pdf documentation
 
+## LaTeX compilation and fonts
+
+The novel-pdf template is using LuaLaTeX (a nodern and flexible implementation
+of LaTeX) to compile the final PDF file. For this it use the texlive2024 and all
+it's dependancies.
+
+All font used in the template are part of the one provided by texlive2024. We
+only use otf (OpenTypeFont) fonts because we need modern fonts, more detail in
+[Novel class - Fonts, normal font size](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2).
+
+### Font adapted to each situation
+
+Multiple fonts are defined for you tu use and some are automaticaly used by the
+template:
+
+- **parent font**: the font on which all document font are derived (by changing size
+  or other font feature) except ones listed below. It is usually an easily
+  readable serif font
+- **sans font**: the font used for all sans serif text
+- **mono font**: the font used for verbatim text and for explicitly `.monospace`
+  divs and spans
+- **math font**: the font used when writing math
+- **deco font**: the font used to have some decorative glyphs
+
+TODO: implement this
+
+- **title font**
+- **chapter font**
+- **handwritting font**
+- **science-fiction font**
+- **lettrine font**
+
+### Fonts configuration
+
+Novel-pdf specific font configuration: multiple options are available in the
+`_metadata.yml` file to configure fonts used in your novel and they are all well
+documented directly in the file itself.
+
+You can see what LaTeX font are available on this page
+[The LaTeX Font Catalogue](https://www.tug.org/FontCatalogue/) and more
+specificaly on the
+[Fonts with OpenType or TrueType Support](https://www.tug.org/FontCatalogue/opentypefonts.html).
+
 ## Basic formating
 
 You can use the following native markdown formating:
