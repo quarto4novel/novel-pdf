@@ -241,7 +241,7 @@ where they are placed as specified in
     - [x] `.smallcaps`
     - [x] `.monospace` (with respect to multilign alignment by using right
       alignment instead of default justified one)
-    - [ ] `.sans`
+    - [x] `.sans`
     - [ ] `.handwritting`
     - [ ] `.sciencefiction`
     - [x] `.noparindent` to remove indentation of the first line of paragraphs
@@ -273,7 +273,7 @@ where they are placed as specified in
     - [x] `.strikethrough`
     - [x] `.smallcaps`
     - [x] `.monospace`
-    - [ ] `.sans`
+    - [x] `.sans`
     - [ ] `.handwritting`
     - [ ] `.sciencefiction`
     - [x] `hfill=before/after/both`

@@ -72,7 +72,20 @@ example:
 {{< lipsum 1 >}}
 :::
 
-### 7. Combined classes div
+### 7. Sans serif div
+
+Three next paragraphs are formated in sans serif font.
+
+:::{.sans}
+You can use **bold text**, *italic text* and ***bold italic text*** in the sans
+divs or spans just like in any other place.
+
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+### 8. Combined classes div
 
 Two next paragraphs are formated with combinations of previous formating
 classes.
@@ -83,7 +96,7 @@ classes.
 {{< lipsum 1 >}}
 :::
 
-### 8. Div without paragraph indentation
+### 9. Div without paragraph indentation
 
 Two next paragraphs have no paragraph indentation.
 
@@ -93,7 +106,7 @@ Two next paragraphs have no paragraph indentation.
 {{< lipsum 1 >}}
 :::
 
-### 9. Div with space between paragraphs
+### 10. Div with space between paragraphs
 
 Three next paragraphs space between them.
 
@@ -109,7 +122,7 @@ And some text after the last paragraph (there should be space before it).
 
 {{< clearpage >}}
 
-### 10. Vertival spaces
+### 11. Vertival spaces
 
 Next paragraph has filling space before and after and so should be vertically
 centered.
@@ -195,7 +208,7 @@ Next div has vertical space after (using shortcut in number of lines).
 
 Some text after.
 
-### 11. Margins
+### 13. Margins
 
 Next divs have different left margins.
 
@@ -271,7 +284,7 @@ And you can nest them:
 {{< lipsum 1 >}}
 :::
 
-### 13. Scaled divs
+### 14. Scaled divs
 
 :::{scale=0.6}
 {{< lipsum 1 >}}

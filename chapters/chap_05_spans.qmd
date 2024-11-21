@@ -11,7 +11,7 @@ Here a sentence with [a span in the middle]{} and some normal text.
 
 And the same thing with spans [this is bold]{.bold}, [this is italic]{.italic},
 [this is strikethrough]{.strikethrough}, [this is in small caps]{.smallcaps},
-[this is monospace]{.monospace} and
+[this is monospace]{.monospace}, [this is sans serif]{.sans} and
 [this is all together]{.bold .italic .strikethrough .smallcaps}, that's it.
 
 ### 3. Scaling and offset

@@ -33,6 +33,9 @@ if FORMAT:match 'latex' then
 			elseif name == "monospace" then
 				span.content:insert(1, pandoc.RawInline('latex', [[\texttt{]]))
 				span.content:insert(pandoc.RawInline('latex', [[}]]))
+			elseif name == "sans" then
+				span.content:insert(1, pandoc.RawInline('latex', [[\textsf{]]))
+				span.content:insert(pandoc.RawInline('latex', [[}]]))
 			elseif name == "scale" then
 				span.content:insert(1, pandoc.RawInline('latex', [[\charscale[%(params)s]{]] % {params=value}))
 				span.content:insert(pandoc.RawInline('latex', [[}]]))

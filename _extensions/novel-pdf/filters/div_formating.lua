@@ -98,6 +98,9 @@ if FORMAT:match 'latex' then
 				-- letters from line to line justified paragraph
 				div.content:insert(1, pandoc.RawBlock('latex', [[\begin{flushleft}]]))
 				div.content:insert(pandoc.RawBlock('latex', [[\end{flushleft}]]))
+			elseif name == "sans" then
+				div.content:insert(1, pandoc.RawBlock('latex', [[\begin{sffamily}]]))
+				div.content:insert(pandoc.RawBlock('latex', [[\end{sffamily}]]))
 			elseif name == "noparindent" then
 				-- Retreive value from meta
 				local parindent = pandoc.utils.stringify(from_meta.page_layout.parindent)

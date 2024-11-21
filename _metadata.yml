@@ -79,9 +79,12 @@ fonts:
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.3
   deco:
     name: NovelDeco.otf
-  # The default sans-serif font (almost never used anywhere)
+  # The default sans-serif font
   sans:
-    name: Libertinus Sans
+    # Choose from: https://www.tug.org/FontCatalogue/sansseriffonts.html
+    name: Iwona
+    # Set the scale to have a monospace font size match closely regular font size
+    scale: 0.9
     # This is use as a fallback font when unicode emoji is found
     emoji_fallback: Noto Emoji
   # The font used by verbatim text and div/span with the .monospace class
