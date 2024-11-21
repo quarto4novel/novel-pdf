@@ -7,11 +7,91 @@ if FORMAT:match 'latex' then
 	local from_meta = {}
 
 	function get_param_from_meta(meta)
-		from_meta.parindent = meta.page_layout.parindent
-		from_meta.parskip = meta.page_layout.parskip
+		from_meta.page_layout = meta.page_layout
+		from_meta.chapters = meta.chapters
 	end
 
-	-- Used localy inside epigraph div
+	-- Mark first paragraph for first line emphasis
+	local mark_first_paragraph = {
+		Blocks = function(blocks)
+			for i = 1, #blocks, 1 do
+				if blocks[i].t == "Para" then
+					blocks[i].content:insert(1, pandoc.RawInline('latex', [[\FirstLine{]]))
+					blocks[i].content:insert(pandoc.RawInline('latex', "}"))
+					break
+				end
+			end
+			return blocks
+		end
+	}
+
+
+	-- Mark first letter of first paragraph for first line emphasis with bigmaj
+	local mark_first_letter_for_bigmaj = {
+		Blocks = function(blocks)
+			-- Let's find the first para...
+			for i = 1, #blocks, 1 do
+				if blocks[i].t == "Para" then
+					blocks[i] = blocks[i]:walk {
+						Inlines = function(inlines)
+							-- ...and in this para, let's find the first word and modify it
+							for i = 1, #inlines, 1 do
+								if inlines[i].t == "Str" then
+									first_word = pandoc.utils.stringify(inlines[i])
+									first_letter = first_word:sub(1, 1)
+									rest = first_word:sub(2)
+
+									inlines:remove(i)
+									inlines:insert(i, rest)
+									inlines:insert(i, pandoc.Span(first_letter, {class="firstlettermaj"}))
+									break
+								end
+							end -- for inlines
+
+							return inlines
+						end
+					}
+					break
+				end
+			end -- for blocks
+			return blocks
+		end
+	}
+
+
+	-- Mark first letter of first paragraph for first line emphasiswith dropcap
+	local mark_first_letter_for_dropcap = {
+		Blocks = function(blocks)
+			-- Let's find the first para...
+			for i = 1, #blocks, 1 do
+				if blocks[i].t == "Para" then
+					blocks[i] = blocks[i]:walk {
+						Inlines = function(inlines)
+							-- ...and in this para, let's find the first word and modify it
+							for i = 1, #inlines, 1 do
+								if inlines[i].t == "Str" then
+									first_word = pandoc.utils.stringify(inlines[i])
+									first_letter = first_word:sub(1, 1)
+									rest = first_word:sub(2)
+
+									inlines:remove(i)
+									inlines:insert(i, rest)
+									inlines:insert(i, pandoc.Span(first_letter, {class="dropcap"}))
+									break
+								end
+							end -- for inlines
+
+							return inlines
+						end
+					}
+					break
+				end
+			end -- for blocks
+			return blocks
+		end
+	}
+
+	-- Make paragraphs small caps if needed
 	local make_changes_to_para = {
 		Para = function(para)
 			local before_para = {}
@@ -30,6 +110,7 @@ if FORMAT:match 'latex' then
 			}
 		end
 	}
+
 
 	-- filter for Div
 	function add_formating_to_div(div)
@@ -71,7 +152,7 @@ if FORMAT:match 'latex' then
 				table.insert(all_latex_after, 1, [[\end{flushleft}]])
 			elseif name == "noparindent" then
 				-- Retreive value from meta
-				local parindent = pandoc.utils.stringify(from_meta.parindent)
+				local parindent = pandoc.utils.stringify(from_meta.page_layout.parindent)
 
 				table.insert(all_latex_before, [[\setlength{\parindent}{0em}]])
 				table.insert(all_latex_after, 1, [[\setlength{\parindent}{]] .. parindent .. [[}]])
@@ -80,7 +161,7 @@ if FORMAT:match 'latex' then
 				local local_parskip = pandoc.utils.stringify(value)
 
 				-- Retreive value from meta
-				local global_parskip = pandoc.utils.stringify(from_meta.parskip)
+				local global_parskip = pandoc.utils.stringify(from_meta.page_layout.parskip)
 
 				table.insert(all_latex_before, [[\setlength{\parskip}{]] .. local_parskip .. [[}]])
 				-- Since we have a space before the first paragraphe we insert a \null after
@@ -143,24 +224,25 @@ if FORMAT:match 'latex' then
 				else
 					error("align attribute with value '%(attr_val)s' but the only possible values are left, right, center and justify." % {attr_val=value})
 				end
+			elseif name == "firstlinesc" then
+				div = div:walk(mark_first_paragraph)
+			elseif name == "firstlettermaj" then
+				div = div:walk(mark_first_letter_for_bigmaj)
+			elseif name == "dropcap" then
+				div = div:walk(mark_first_letter_for_dropcap)
 			end
 
 		end  -- for classes_and_attrs
 
-		-- if nothing was detected, change nothing
-		if utils.table_is_empty(all_latex_before)
-		and utils.table_is_empty(all_latex_after)
-		and not para_need_smallcaps then
-			return nil
-		end
-
+		-- TODO replace this by a local walk in the big for-if above
 		-- Some changes need to be done for each para
-		local content = div:walk(make_changes_to_para)
+		local div = div:walk(make_changes_to_para)
 		para_need_smallcaps = false
+
 
 		return {
 			pandoc.RawBlock('latex', table.concat(all_latex_before, "\n")),
-			content,
+			div,
 			pandoc.RawBlock('latex', table.concat(all_latex_after, "\n")),
 		}
 	end
@@ -226,11 +308,26 @@ if FORMAT:match 'latex' then
 				)
 				table.insert(all_latex_before, [[{\color{%(color)s}]] % {color=value})
 				table.insert(all_latex_after, 1, "}")
+			elseif name == "firstlettermaj" then
+				-- Retreive value from meta
+				local scale = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.scale)
+				local hspace_after = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.hspace_after)
+
+				table.insert(all_latex_before, [[\charscale[%(scale)s]{\firstletterfont ]] % {scale=scale})
+				table.insert(all_latex_after, 1, [[}\hspace{%(space)s}]] % {space=hspace_after})
+			elseif name == "dropcap" then
+				-- Retreive value from meta
+				local lines = pandoc.utils.stringify(from_meta.chapters.beginning.dropcap.lines)
+
+				table.insert(all_latex_before, [[\dropcap[lines=%(lines)s]{]] % {lines=lines})
+				table.insert(all_latex_after, 1, [[}]])
 			end
 		end
 
+		-- Get the content
 		local content = span:walk()
 
+		-- Encapsulate the content and return it
 		return {
 			pandoc.RawInline('latex', table.concat(all_latex_before, "")),
 			content,
@@ -246,7 +343,9 @@ if FORMAT:match 'latex' then
 		},
 		{
 			Div = add_formating_to_div,
-			Span = add_formating_to_span
+		},
+		{
+			Span = add_formating_to_span,
 		}
 	}
 end

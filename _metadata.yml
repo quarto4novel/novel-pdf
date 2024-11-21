@@ -111,6 +111,10 @@ fonts:
     scale: 1.2
   parttitle:
     name: Libertinus Sans
+  firstletter:
+    name: QT Linostroke
+  dropcap:
+    name: QT Story Time Caps
   custom:
     title:
       name: Libertinus Serif
@@ -162,6 +166,25 @@ chapters:
     lines_before: 3  # in number of lines
   subtitle:
     lines_before: 1  # in number of lines
+  beginning:
+    # How to mark the beginning of a chapter:
+    #
+    # - bigmaj -> big majuscule using firstletterfont (overflow over the current line)
+    # - dropcap -> huge majuscupe on multiple lines using dropcapfont (underflow under the current line)
+    # - scline -> first line of first para in small caps
+    # - bigmajscline -> bigmaj and scline
+    # - none -> nothing special, just regular line
+    style: bigmaj
+    # Bigmaj config
+    bigmaj:
+      scale: 1.6
+      # Depending on the font used you may need to add some space after the first letter
+      hspace_after: 0.0em  # in LaTeX units
+    # Dropcap config
+    dropcap:
+      # How many line the dropcap should take (1 means no dropcap)
+      lines: 3
+
 
 quickchapters:
   # Default length of the dash line after the title of the quick chapters

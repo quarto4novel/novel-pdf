@@ -61,29 +61,40 @@ RawFeature={fallback=emojiparentfallback} % This is to have emoji fallback
 \SetFontSize{$fonts.parent.size$}
 
 %%% SPECIFIC FONTS
+
+% Custom fonts
+\NewFontFamily\booktitlefont{$fonts.custom.title.name$}
+\NewFontFamily\parttitlefont{$fonts.parttitle.name$}
+\NewFontFamily\firstletterfont{$fonts.firstletter.name$}
+\NewFontFamily\dropcapfont{$fonts.dropcap.name$}
+
+% Standard fonts
 \SetDecoFont{$fonts.deco.name$}
+
+\SetDropCapFont{\dropcapfont}
+
 \setsansfont[%
 RawFeature={fallback=emojisansfallback} % This is to have emoji fallback
 ]{$fonts.sans.name$}
+
 \setmonofont[%
 RawFeature={fallback=emojimonofallback}, % This is to have emoji fallback
 Scale=$fonts.mono.scale$, %
 ]{$fonts.mono.name$}
+
 \setmathfont{$fonts.math.name$}
+
 \SetChapterFont[%
 RawFeature={fallback=emojisansfallback}, % This is to have emoji fallback
 Numbers=Lining, %
 Scale=$fonts.chaptertitle.scale$ %
 ]{$fonts.chaptertitle.name$}
+
 \SetSubchFont[
 RawFeature={fallback=emojisansfallback}, % This is to have emoji fallback
 Numbers=Lining,
 Scale=$fonts.chaptersubtitle.scale$
 ]{$fonts.chaptersubtitle.name$}
-
-% Custom fonts
-\NewFontFamily\booktitlefont{$fonts.custom.title.name$}
-\NewFontFamily\parttitlefont{$fonts.parttitle.name$}
 
 %%% PAGE LAYOUT
 \SetLinesPerPage{$page_layout.lines_per_page$}

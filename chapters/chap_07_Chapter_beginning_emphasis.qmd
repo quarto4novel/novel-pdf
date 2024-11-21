@@ -1,0 +1,96 @@
+## Chapter 7: Chapter beginning emphasis
+
+### 1. Manual SPAN with first letter majuscule
+
+[V]{.firstlettermaj}ery [F]{.firstlettermaj}irst second third fourth fifth sixth
+seventh eighth ninth tenth eleventh twelves thiteens
+
+[A]{.firstlettermaj}nother [B]{.firstlettermaj}argain [C]{.firstlettermaj}armina
+[D]{.firstlettermaj}omino [E]{.firstlettermaj}ther [F]{.firstlettermaj}urnace
+[G]{.firstlettermaj}aëlle [H]{.firstlettermaj}ercules
+[I]{.firstlettermaj}nitialisation [J]{.firstlettermaj}arjar
+[K]{.firstlettermaj}amino [L]{.firstlettermaj}amination
+[M]{.firstlettermaj}aurice [N]{.firstlettermaj}autical
+[O]{.firstlettermaj}rnitopter [P]{.firstlettermaj}aradigm
+[Q]{.firstlettermaj}uatum [R]{.firstlettermaj}estriction
+[S]{.firstlettermaj}alute [T]{.firstlettermaj}ortoise [U]{.firstlettermaj}rsula
+[V]{.firstlettermaj}alorian [W]{.firstlettermaj}ater
+[X]{.firstlettermaj}enomorph [Y]{.firstlettermaj}sabeau
+[Z]{.firstlettermaj}eugma
+
+### 2. Manual SPAN with drop cap
+
+[F]{.dropcap}ugiat sint nisi sed nostrud. Officia minim quis nisi proident.
+Ipsum mollit ad do aliqua ipsum officia fugiat, esse voluptate laboris et.
+Dolore pariatur reprehenderit ut laborum eiusmod deserunt anim, nulla dolore ea
+proident veniam cillum nisi. Dolore adipiscing et nisi dolore fugiat sunt. Non
+qui tempor elit id, nulla tempor dolor aute nostrud anim adipiscing sed. Do
+mollit aute ea. Ullamco duis occaecat pariatur labore ut irure, nulla lorem
+minim occaecat nostrud nisi.
+
+### 3. Manual DIV with first line small caps div
+
+:::{.firstlinesc}
+{{< lipsum 1 >}}
+
+{{< lipsum 1 >}}
+:::
+
+### 4. Manual DIV with first letter maj div
+
+:::{.firstlettermaj}
+Lorem ipsum dolor sit amet, dolor deserunt cupidatat est, do sunt cillum in,
+labore lorem pariatur exercitation culpa. Sunt ullamco non eu ipsum tempor
+commodo adipiscing. Velit sint velit nisi est. Eu dolor laborum ad. Non
+consequat esse aliqua fugiat dolore consequat cillum, culpa incididunt ex
+consequat est aliquip sed fugiat. Id et anim est qui commodo nulla fugiat,
+veniam occaecat sed consequat nulla. Duis veniam adipiscing anim commodo
+reprehenderit id tempor. Id elit nulla nostrud fugiat labore dolor. Cillum velit
+non ut non. Excepteur sint incididunt fugiat lorem sunt.
+
+Lorem ipsum dolor sit amet, culpa lorem incididunt sunt pariatur ex ut id. Aute
+nisi consequat magna. Labore ipsum laborum nisi. Non eu non duis aliquip aliqua
+duis voluptate. Veniam aute quis duis ex, labore ullamco excepteur sed. Proident
+ad ex ipsum et lorem ea aliquip. Officia nostrud sunt non id. Ipsum tempor
+labore veniam magna reprehenderit. Cillum minim lorem adipiscing anim in.
+Pariatur qui nulla velit culpa.
+:::
+
+### 5. Manual DIV with both
+
+:::{.firstlinesc .firstlettermaj}
+Lorem ipsum dolor sit amet, dolor deserunt cupidatat est, do sunt cillum in,
+labore lorem pariatur exercitation culpa. Sunt ullamco non eu ipsum tempor
+commodo adipiscing. Velit sint velit nisi est. Eu dolor laborum ad. Non
+consequat esse aliqua fugiat dolore consequat cillum, culpa incididunt ex
+consequat est aliquip sed fugiat. Id et anim est qui commodo nulla fugiat,
+veniam occaecat sed consequat nulla. Duis veniam adipiscing anim commodo
+reprehenderit id tempor. Id elit nulla nostrud fugiat labore dolor. Cillum velit
+non ut non. Excepteur sint incididunt fugiat lorem sunt.
+
+Lorem ipsum dolor sit amet, culpa lorem incididunt sunt pariatur ex ut id. Aute
+nisi consequat magna. Labore ipsum laborum nisi. Non eu non duis aliquip aliqua
+duis voluptate. Veniam aute quis duis ex, labore ullamco excepteur sed. Proident
+ad ex ipsum et lorem ea aliquip. Officia nostrud sunt non id. Ipsum tempor
+labore veniam magna reprehenderit. Cillum minim lorem adipiscing anim in.
+Pariatur qui nulla velit culpa.
+:::
+
+### 6. Manual DIV with dropcap
+
+:::{.dropcap}
+Duis ea aute nisi dolor. Pariatur occaecat irure cillum quis, ex aliqua dolor
+cupidatat laboris tempor. Consequat id ut ut. Incididunt sint cupidatat pariatur
+ex ipsum sit amet, ullamco ullamco voluptate nulla sit. Aliquip nisi nisi
+deserunt voluptate anim occaecat consequat. Labore exercitation proident aliquip
+tempor. Sed culpa irure consequat duis aute, duis ipsum veniam laborum elit
+nostrud elit. Enim id commodo sunt, incididunt in fugiat excepteur voluptate
+velit. Do magna esse labore, commodo quis veniam ipsum dolor enim esse quis.
+
+Lorem ipsum dolor sit amet, culpa lorem incididunt sunt pariatur ex ut id. Aute
+nisi consequat magna. Labore ipsum laborum nisi. Non eu non duis aliquip aliqua
+duis voluptate. Veniam aute quis duis ex, labore ullamco excepteur sed. Proident
+ad ex ipsum et lorem ea aliquip. Officia nostrud sunt non id. Ipsum tempor
+labore veniam magna reprehenderit. Cillum minim lorem adipiscing anim in.
+Pariatur qui nulla velit culpa.
+:::

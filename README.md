@@ -152,6 +152,11 @@ where they are placed as specified in
   ```qmd
   ### A wonderful quick chapter
   ```
+- [ ] **chapter beginning emphasis**
+  - [ ] **big maj first letter** with dedicated font
+  - [ ] **small caps first line**
+  - [ ] **both big maj first letter and small caps first line**
+  - [ ] **drop cap** with dedicated font
 - [x] **font configuration**: in `_metadata.yml`
 - [x] **page header** and **page footer** control
   - [x] classical header and footer config
