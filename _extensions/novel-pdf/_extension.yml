@@ -18,5 +18,6 @@ contributes:
     - filters/part_div.lua
     - filters/headings.lua
     - filters/div_formating.lua
+    - filters/span_formating.lua
     - filters/epigraph.lua
     - filters/header_footer.lua
