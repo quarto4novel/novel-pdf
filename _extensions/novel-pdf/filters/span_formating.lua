@@ -69,18 +69,30 @@ if FORMAT:match 'latex' then
 				span.content:insert(1, pandoc.RawInline('latex', [[{\color{%(color)s}]] % {color=value}))
 				span.content:insert(pandoc.RawInline('latex', [[}]]))
 			elseif name == "firstlettermaj" then
+				assert(utils.table_contains_only_key(classes_and_attrs, "firstlettermaj"),
+					"no other formating class is allowed on firstlettermaj span")
+
 				-- Retreive value from meta
 				local scale = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.scale)
 				local hspace_after = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.hspace_after)
 
 				span.content:insert(1, pandoc.RawInline('latex', [[\charscale[%(scale)s]{\firstletterfont ]] % {scale=scale}))
 				span.content:insert(pandoc.RawInline('latex', [[}\hspace{%(space)s}]] % {space=hspace_after}))
+
+				-- We return directly the SPAN content instead of the span itself to prevent a position bug
+				return span.content
 			elseif name == "dropcap" then
+				assert(utils.table_contains_only_key(classes_and_attrs, "dropcap"),
+					"no other formating class is allowed on dropcap span")
+
 				-- Retreive value from meta
 				local lines = pandoc.utils.stringify(from_meta.chapters.beginning.dropcap.lines)
 
 				span.content:insert(1, pandoc.RawInline('latex', [[\dropcap[lines=%(lines)s]{]] % {lines=lines}))
 				span.content:insert(pandoc.RawInline('latex', [[}]]))
+
+				-- We return directly the SPAN content instead of the span itself to prevent a position bug
+				return span.content
 			end
 		end
 

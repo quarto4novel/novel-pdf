@@ -9,6 +9,18 @@ function utils.table_contains(table, value)
 	return false
 end
 
+function utils.table_contains_only_key(table, key)
+	local found = false
+	for k, _ in pairs(table) do
+		if k == key then
+			found = true
+		else
+			return false
+		end
+	end
+	return found
+end
+
 function utils.table_is_empty(table)
 	if next(table) then
 		return false
