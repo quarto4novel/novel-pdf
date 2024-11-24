@@ -1,12 +1,11 @@
 local utils = require "../utils"
 
 -- global variables needed to communicate between different filters
-local para_need_smallcaps = false
+local g = {
+	from_meta = {},
+}
 
 if FORMAT:match 'latex' then
-	-- global var to retrieve the metadata via the Meta filter so that other filters can access it
-	local from_meta = {}
-
 	-- filter for Span
 	local function add_formating_to_span(span)
 		-- iterate over all the classes and attributes
@@ -73,8 +72,8 @@ if FORMAT:match 'latex' then
 					"no other formating class is allowed on firstlettermaj span")
 
 				-- Retreive value from meta
-				local scale = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.scale)
-				local hspace_after = pandoc.utils.stringify(from_meta.chapters.beginning.bigmaj.hspace_after)
+				local scale = pandoc.utils.stringify(g.from_meta.chapters.beginning.bigmaj.scale)
+				local hspace_after = pandoc.utils.stringify(g.from_meta.chapters.beginning.bigmaj.hspace_after)
 
 				span.content:insert(1, pandoc.RawInline('latex', [[\charscale[%(scale)s]{\firstletterfont ]] % {scale=scale}))
 				span.content:insert(pandoc.RawInline('latex', [[}\hspace{%(space)s}]] % {space=hspace_after}))
@@ -86,7 +85,7 @@ if FORMAT:match 'latex' then
 					"no other formating class is allowed on dropcap span")
 
 				-- Retreive value from meta
-				local lines = pandoc.utils.stringify(from_meta.chapters.beginning.dropcap.lines)
+				local lines = pandoc.utils.stringify(g.from_meta.chapters.beginning.dropcap.lines)
 
 				span.content:insert(1, pandoc.RawInline('latex', [[\dropcap[lines=%(lines)s]{]] % {lines=lines}))
 				span.content:insert(pandoc.RawInline('latex', [[}]]))
@@ -104,7 +103,7 @@ if FORMAT:match 'latex' then
 	-- See: https://pandoc.org/lua-filters.html#typewise-traversal
 	return {
 		{
-			Meta = function(meta) from_meta = meta end,
+			Meta = function(meta) g.from_meta = meta end,
 		},
 		{
 			Span = add_formating_to_span,

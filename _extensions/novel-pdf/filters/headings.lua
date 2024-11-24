@@ -8,8 +8,12 @@ local MATTER <const> = {
 	BACK = 3
 }
 
+-- global variables needed to communicate between different filters
+local g = {
+	from_meta = {},
+}
+
 if FORMAT:match 'latex' then
-	local from_meta = {}
 
 	--- return the LaTeX representation of a front/body/back matter that should
 	-- replace the header 1 element
@@ -42,8 +46,8 @@ if FORMAT:match 'latex' then
 		if utils.table_contains(header.classes, "chapterlike") then
 			-- TODO add specific default config for chapterlike
 			-- Retreive attributes or get default from meta
-			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.title.lines_before)
-			local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
+			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.chapters.title.lines_before)
+			local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.chapters.header_height)
 
 			-- build chapterlike
 			local chapter = builders.ChapterBuilder:new()
@@ -64,9 +68,9 @@ if FORMAT:match 'latex' then
 	local function _chapter_or_part_from_header_2(header)
 		if utils.table_contains(header.classes, "part") then
 			-- Retreive attributes or get default from meta
-			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.parts.title.lines_before)
-			local height = pandoc.utils.stringify(header.attributes.height or from_meta.parts.header_height)
-			local scale = pandoc.utils.stringify(header.attributes.scale or from_meta.parts.title.scale)
+			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.title.lines_before)
+			local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.parts.header_height)
+			local scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.title.scale)
 
 			-- Build the part
 			local part = builders.PartBuilder:new()
@@ -79,9 +83,9 @@ if FORMAT:match 'latex' then
 			return part
 		else
 			-- Retreive attributes or get default from meta
-			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or from_meta.chapters.title.lines_before)
-			local height = pandoc.utils.stringify(header.attributes.height or from_meta.chapters.header_height)
-			local page_style = pandoc.utils.stringify(header.attributes.page_style or from_meta.chapters.page_style)
+			local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.chapters.title.lines_before)
+			local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.chapters.header_height)
+			local page_style = pandoc.utils.stringify(header.attributes.page_style or g.from_meta.chapters.page_style)
 
 			local chap_builder = builders.ChapterBuilder:new()
 				:title_inlines(header.content)
@@ -97,7 +101,7 @@ if FORMAT:match 'latex' then
 	local function _quickchapter_from_header_3(header)
 		-- Retreive attributes or get default from meta
 		local name_inlines = header.content
-		local line = pandoc.utils.stringify(header.attributes.line or from_meta.quickchapters.line)
+		local line = pandoc.utils.stringify(header.attributes.line or g.from_meta.quickchapters.line)
 
 		return builders.build_quickchapter(name_inlines, line)
 	end
@@ -107,7 +111,7 @@ if FORMAT:match 'latex' then
 		local title = pandoc.utils.stringify(header.content)
 
 		-- Retreive attributes or get default from meta
-		local default_break = pandoc.utils.stringify(from_meta.scenebreaks.default)
+		local default_break = pandoc.utils.stringify(g.from_meta.scenebreaks.default)
 
 		return builders.build_scenebreak(title, default_break)
 	end
@@ -146,7 +150,7 @@ if FORMAT:match 'latex' then
 
 	return {
 		{
-			Meta = function(meta) from_meta = meta end
+			Meta = function(meta) g.from_meta = meta end
 		},
 		{
 			Blocks = structure_from_headers

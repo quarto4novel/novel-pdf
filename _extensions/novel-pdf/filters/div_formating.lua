@@ -1,11 +1,11 @@
 local utils = require "../utils"
 
 -- global variables needed to communicate between different filters
-local para_need_smallcaps = false
+local g = {
+	from_meta = {},
+}
 
 if FORMAT:match 'latex' then
-	-- global var to retrieve the metadata via the Meta filter so that other filters can access it
-	local from_meta = {}
 
 	-- Mark first paragraph for first line emphasis
 	local mark_first_paragraph = {
@@ -103,7 +103,7 @@ if FORMAT:match 'latex' then
 				div.content:insert(pandoc.RawBlock('latex', [[\end{sffamily}]]))
 			elseif name == "noparindent" then
 				-- Retreive value from meta
-				local parindent = pandoc.utils.stringify(from_meta.page_layout.parindent)
+				local parindent = pandoc.utils.stringify(g.from_meta.page_layout.parindent)
 
 				div.content:insert(1, pandoc.RawBlock('latex', [[\setlength{\parindent}{0em}]]))
 				div.content:insert(pandoc.RawBlock('latex', [[\setlength{\parindent}{%(indent)s}]] % {indent=parindent}))
@@ -112,7 +112,7 @@ if FORMAT:match 'latex' then
 				local local_parskip = pandoc.utils.stringify(value)
 
 				-- Retreive value from meta
-				local global_parskip = pandoc.utils.stringify(from_meta.page_layout.parskip)
+				local global_parskip = pandoc.utils.stringify(g.from_meta.page_layout.parskip)
 
 				div.content:insert(1, pandoc.RawBlock('latex', [[\setlength{\parskip}{%(skip)s}]] % {skip=local_parskip}))
 				-- Since we have a space before the first paragraphe we insert a \null after
@@ -193,7 +193,7 @@ if FORMAT:match 'latex' then
 	-- See: https://pandoc.org/lua-filters.html#typewise-traversal
 	return {
 		{
-			Meta = function(meta) from_meta = meta end,
+			Meta = function(meta) g.from_meta = meta end,
 		},
 		{
 			Div = add_formating_to_div,

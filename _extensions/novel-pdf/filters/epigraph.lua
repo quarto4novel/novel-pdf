@@ -12,21 +12,12 @@ local raw_latex_close_format <const> = [[
 \end{adjustwidth}
 \vspace*{%(lines_after)s\nbs}]]
 
+-- global variables needed to communicate between different filters
+local g = {
+	from_meta = {},
+}
+
 if FORMAT:match 'latex' then
-	local from_meta = {}
-
-	function get_param_from_meta(meta)
-		from_meta.lmargin = meta.epigraphs.lmargin
-		from_meta.rmargin = meta.epigraphs.rmargin
-		from_meta.lines_before = meta.epigraphs.lines_before
-		from_meta.lines_after = meta.epigraphs.lines_after
-		from_meta.keepindent = meta.epigraphs.keepindent
-		assert(
-			pandoc.utils.type(from_meta.keepindent) == 'boolean',
-			"invalid epigraphs.keepindent metadata: $(actual)s is not a boolean" % {actual=from_meta.keepindent}
-		)
-	end
-
 	-- Used localy inside epigraph div
 	local make_para_noindent = {
 		Para = function(para)
@@ -38,15 +29,15 @@ if FORMAT:match 'latex' then
 		if utils.table_contains(div.classes, "epigraph") then
 			-- Retreive the relevant attributes of the div if provided
 			-- Eventualy defaulting to value provided in meta
-			local lmargin = pandoc.utils.stringify(div.attributes.lmargin or from_meta.lmargin)
-			local rmargin = pandoc.utils.stringify(div.attributes.rmargin or from_meta.rmargin)
-			local lines_before = pandoc.utils.stringify(div.attributes.lines_before or from_meta.lines_before)
+			local lmargin = pandoc.utils.stringify(div.attributes.lmargin or g.from_meta.epigraphs.lmargin)
+			local rmargin = pandoc.utils.stringify(div.attributes.rmargin or g.from_meta.epigraphs.rmargin)
+			local lines_before = pandoc.utils.stringify(div.attributes.lines_before or g.from_meta.epigraphs.lines_before)
 			assert(tonumber(lines_before),
 				"invalid lines_before attribute or meta: %(actual) is not a number" % {actual=lines_before})
-			local lines_after = pandoc.utils.stringify(div.attributes.lines_after or from_meta.lines_after)
+			local lines_after = pandoc.utils.stringify(div.attributes.lines_after or g.from_meta.epigraphs.lines_after)
 			assert(tonumber(lines_after),
 				"invalid lines_after attribute or meta: %(actual) is not a number" % {actual=lines_after})
-			local keepindent = (div.attributes.keepindent ~= nil or from_meta.keepindent)
+			local keepindent = (div.attributes.keepindent ~= nil or g.from_meta.epigraphs.keepindent)
 			assert(pandoc.utils.type(keepindent) == 'boolean',
 				"invalid keepindent attribute or meta: $(actual)s is not a boolean" % {actual=keepindent})
 
@@ -81,7 +72,7 @@ if FORMAT:match 'latex' then
 	-- See: https://pandoc.org/lua-filters.html#typewise-traversal
 	return {
 		{
-			Meta = get_param_from_meta
+			Meta = function(meta) g.from_meta = meta end
 		},
 		{
 			Div = epigraph_from_div

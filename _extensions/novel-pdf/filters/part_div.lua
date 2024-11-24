@@ -2,28 +2,22 @@ local utils = require "../utils"
 local builders = require "../builders"
 
 -- global variables needed to communicate between different filters
-local from_meta = {}
-local builder = nil
+local g = {
+	from_meta = {},
+	builder = nil,
+}
 
 if FORMAT:match 'latex' then
-	function get_vspaces_from_meta(meta)
-		from_meta.lines_before_title = meta.parts.title.lines_before
-		from_meta.title_scale = meta.parts.title.scale
-		from_meta.lines_before_subtitle = meta.parts.subtitle.lines_before
-		from_meta.subtitle_scale = meta.parts.subtitle.scale
-		from_meta.height = meta.parts.header_height
-	end
-
 	-- Used localy inside chapter div
 	local part_titles_from_header = {
 		Header = function(header)
-			assert(builder)
+			assert(g.builder)
 
 			if header.level == 2 then
-				local before_title = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_title)
-				local title_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.title_scale)
+				local before_title = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.title.lines_before)
+				local title_scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.title.scale)
 
-				builder
+				g.builder
 					:lines_before_title(before_title)
 					:title_inlines(header.content)
 					:title_scale(title_scale)
@@ -33,10 +27,10 @@ if FORMAT:match 'latex' then
 				return {}
 
 			elseif header.level == 3 then
-				local before_subtitle = pandoc.utils.stringify(header.attributes.lines_before or from_meta.lines_before_subtitle)
-				local subtitle_scale = pandoc.utils.stringify(header.attributes.scale or from_meta.subtitle_scale)
+				local before_subtitle = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.subtitle.lines_before)
+				local subtitle_scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.subtitle.scale)
 
-				builder
+				g.builder
 					:lines_before_subtitle(before_subtitle)
 					:subtitle_inlines(header.content)
 					:subtitle_scale(subtitle_scale)
@@ -53,12 +47,12 @@ if FORMAT:match 'latex' then
 
 	function part_start_from_div(div)
 		if utils.table_contains(div.classes, "part") then
-			builder = builders.PartBuilder:new()
+			g.builder = builders.PartBuilder:new()
 
-			builder:height(pandoc.utils.stringify(div.attributes.height or from_meta.height))
-			builder:content_block(div:walk(part_titles_from_header))
+			g.builder:height(pandoc.utils.stringify(div.attributes.height or g.from_meta.parts.header_height))
+			g.builder:content_block(div:walk(part_titles_from_header))
 
-			return builder:build()
+			return g.builder:build()
 		end
 
 		-- if the div doesn't have the correct class we are not touching it
@@ -69,7 +63,7 @@ if FORMAT:match 'latex' then
 	-- See: https://pandoc.org/lua-filters.html#typewise-traversal
 	return {
 		{
-			Meta = get_vspaces_from_meta
+			Meta = function(meta) g.from_meta = meta end
 		},
 		{
 			Div = part_start_from_div
