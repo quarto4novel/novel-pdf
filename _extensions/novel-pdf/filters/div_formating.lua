@@ -185,8 +185,8 @@ if FORMAT:match 'latex' then
 
 		end  -- for classes_and_attrs
 
-		-- Return the content of the modified div (the div itself is not usefull in LaTeX)
-		return div.content
+		-- Return the modified DIV
+		return div
 	end
 
 	-- Set what function will be called on what kind of Pandoc element and in which order

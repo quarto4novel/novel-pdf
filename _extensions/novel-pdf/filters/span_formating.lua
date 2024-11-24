@@ -84,8 +84,8 @@ if FORMAT:match 'latex' then
 			end
 		end
 
-		-- Return the content of the modified SPAN (the DIV itself is not usefull in LaTeX)
-		return span.content
+		-- Return the modified SPAN
+		return span
 	end
 
 	-- Set what function will be called on what kind of Pandoc element and in which order
