@@ -348,33 +348,7 @@ where they are placed as specified in
 
 ## Deprecated features
 
-- **mainmatter shortcode**: mark the begining of your story `{{< mainmatter >}}`
-- **scenebreak shortcode**: mark a seperation in the text flow. Three
-  different kind of scene breake are possible `{{< scenebreak blank >}}`,
-  `{{< scenebreak line >}}` and `{{< scenebreak stars >}}` corresponding to the
-  [3 possible Scene Breaks of the novel class](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h5.3).
-
-  ```qmd
-  {{< scenebreak >}}
-
-  {{< scenebreak blank >}}
-
-  {{< scenebreak line >}}
-
-  {{< scenebreak stars >}}
-  ```
-
-  You can control if there is an indend in the text with the
-  `scenebreak.indent` metadata (false by default as it is a standard in
-  fiction). And you can set the default scene break type with the
-  `scenebreak.default` metadata (possible value are `blank`, `line` and
-  `stars`)
-
-  ```{.yaml filename=_metadata.yml}
-  scenebreaks:
-    indent: false
-    default: blank
-  ```
+None at the moment.
 
 ## Example
 
