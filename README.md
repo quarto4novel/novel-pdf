@@ -50,14 +50,12 @@ footnote for the moment⚠️
   - [x] level 2 (in body matter): **chapter**.
   - [x] level 2 (in body matter with `.part` class): a **part** that can regroup
     multiple chapters.
-- [ ] blockquotes
 - [x] line blocks
 - [x] raw content block
 - [x] raw content inline
 - [x] inline math
 - [x] display math
 - [ ] images `![Caption](elephant.png)`
-- [ ] callout blocks
 - [x] div attributes
 - [x] span attributes
 - [x] special characters support:
@@ -109,6 +107,7 @@ specified in the [novel class documentation about lists and tables](https://ctan
 - diagrams
 - videos (obviously !)
 - keyboard shortcuts
+- blockquotes
 
 ## Supported Quarto specific feature
 
@@ -124,6 +123,7 @@ specified in the [novel class documentation about lists and tables](https://ctan
 - `reference-location` metadata: Footnotes appear at the bottom of the page
 where they are placed as specified in
 [novel class documentation about footnotes](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h9.1).
+- callout blocks
 
 ## Novel specific features
 
