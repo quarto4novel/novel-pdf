@@ -183,6 +183,13 @@ local function add_formating_to_div(div)
 			div = div:walk(filter_to_enclose_first_letter_in_span("firstlettermaj"))
 		elseif name == "dropcap" then
 			div = div:walk(filter_to_enclose_first_letter_in_span("dropcap"))
+		elseif name == "tableof" then
+			-- Retreive value from attribute
+			local vsep = pandoc.utils.stringify(div.attributes.vsep or g.from_meta.tableof.vsep)
+			local margins = pandoc.utils.stringify(div.attributes.margins or g.from_meta.tableof.margins)
+
+			div.content:insert(1, pandoc.RawBlock('latex', [[\begin{toc}[%(vsep)s]{%(margins)s}]] % {vsep=vsep, margins=margins}))
+			div.content:insert(pandoc.RawBlock('latex', [[\end{toc}]]))
 		end
 
 	end  -- for classes_and_attrs

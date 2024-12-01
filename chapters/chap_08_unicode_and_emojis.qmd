@@ -1,4 +1,4 @@
-## Chapter 7: Unicode and 😁emojis🙃
+## Chapter 8: Unicode and 😁emojis🙃
 
 We want to be able to use emojis like 😍🐺 and ✈️. [This also works in an
 monospace text like this 👠, this 🙈🙉🙊 or this 🙂.]{.monospace}

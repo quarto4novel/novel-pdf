@@ -95,6 +95,51 @@ local function add_formating_to_span(span)
 
 			-- We return directly the SPAN content instead of the span itself to prevent a position bug
 			return span.content
+		elseif name == "toc_chap" then
+			assert(span.attributes.number ~= nil, "Table of content chapter must have a number")
+			assert(span.attributes.page ~= nil, "Table of content chapter must have a page")
+
+			-- Retreive value from param
+			local number = pandoc.utils.stringify(span.attributes.number)
+			local page = pandoc.utils.stringify(span.attributes.page)
+
+			-- Encapsulate the content to make it a tocitem element
+			span.content:insert(1, pandoc.RawInline('latex', [[\tocitem*[%(number)s]{]] % {number=number}))
+			span.content:insert(pandoc.RawInline('latex', [[}{%(page)s}]] % {page=page}))
+			span.content:insert(pandoc.RawInline('latex', "\n"))
+
+			-- We return directly the SPAN content instead of the span itself to prevent a position bug
+			return span.content
+		elseif name == "toc_part" then
+			assert(span.attributes.number == nil, "Table of content part can't have a number")
+			assert(span.attributes.page ~= nil, "Table of content part must have a page")
+
+			-- Retreive value from param or meta
+			local page = pandoc.utils.stringify(span.attributes.page)
+			local vspace_before = pandoc.utils.stringify(span.attributes.vspace_before or g.from_meta.tableof.parts.vspace_before)
+
+			-- Encapsulate the content to make it a tocitem element
+			span.content:insert(1, pandoc.RawInline('latex', [[\vspace*{%(vspace_before)s\nbs}]] % {vspace_before=vspace_before} ))
+			span.content:insert(1, pandoc.RawInline('latex', [[\tocitem*{]]))
+			span.content:insert(pandoc.RawInline('latex', [[}{%(page)s}]] % {page=page}))
+			span.content:insert(pandoc.RawInline('latex', "\n"))
+
+			-- We return directly the SPAN content instead of the span itself to prevent a position bug
+			return span.content
+		elseif name == "toc_blank" then
+			assert(span.attributes.number == nil, "Table of content blank can't have a number")
+			assert(span.attributes.page ~= nil, "Table of content blank must have a page")
+
+			-- Retreive value from param
+			local page = pandoc.utils.stringify(span.attributes.page)
+
+			-- Encapsulate the content to make it a tocitem element
+			span.content:insert(1, pandoc.RawInline('latex', [[\tocitem*[~]{]]))
+			span.content:insert(pandoc.RawInline('latex', [[}{%(page)s}]] % {page=page}))
+			span.content:insert(pandoc.RawInline('latex', "\n"))
+
+			-- We return directly the SPAN content instead of the span itself to prevent a position bug
+			return span.content
 		end
 	end
 

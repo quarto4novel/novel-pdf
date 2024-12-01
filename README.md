@@ -326,7 +326,10 @@ where they are placed as specified in
   week ! »]{.shout}.
   ```
 
-- [ ] **toc shortcode**
+- [x] **toc div and spans**: manual table of things (most of the time content
+  aka toc but this can be table of anything) with the `tableof` div class and
+  `toc_chap`, `toc_part` and `toc_blank` span classes. The page numbering is
+  manual for technical reason but also to allow multiple fictionous usage.
 - [x] **emptylines shortcode**: add vertical space by a number of lines
 - [ ] **foreignlanguage filter**
 - [x] Different **rendering mode** adapted to different stage of writing or

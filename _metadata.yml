@@ -218,3 +218,9 @@ epigraphs:
   lines_after: 1
   # Set to true if you want paragraphs inside the epigraph to have indent just like any other paragraphs in the document
   keepindent: false
+
+tableof:
+  vsep: 0  # in number of lines
+  margins: 2em  # in LaTeX units
+  parts:
+    vspace_before: 0.25  # in number of lines
