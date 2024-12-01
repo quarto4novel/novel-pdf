@@ -2,6 +2,8 @@
 
 ### 1. Manual SPAN with first letter majuscule
 
+It is possible to manually put the first letter of a SPAN in cursive maj.
+
 [V]{.firstlettermaj}ery [F]{.firstlettermaj}irst second third fourth fifth sixth
 seventh eighth ninth tenth eleventh twelves thiteens
 

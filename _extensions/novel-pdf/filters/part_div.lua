@@ -14,13 +14,13 @@ local g = {
 -- Used localy inside chapter div
 local part_titles_from_header = {
 	Header = function(header)
-		assert(g.builder)
+		assert(g.part_builder)
 
 		if header.level == 2 then
 			local before_title = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.title.lines_before)
 			local title_scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.title.scale)
 
-			g.builder
+			g.part_builder
 				:lines_before_title(before_title)
 				:title_inlines(header.content)
 				:title_scale(title_scale)
@@ -33,7 +33,7 @@ local part_titles_from_header = {
 			local before_subtitle = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.subtitle.lines_before)
 			local subtitle_scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.subtitle.scale)
 
-			g.builder
+			g.part_builder
 				:lines_before_subtitle(before_subtitle)
 				:subtitle_inlines(header.content)
 				:subtitle_scale(subtitle_scale)
@@ -48,18 +48,23 @@ local part_titles_from_header = {
 	end
 }
 
-function part_start_from_div(div)
-	if utils.table_contains(div.classes, "part") then
-		g.builder = builders.PartBuilder:new()
+function part_start_from_div(blocks)
+	for i, div in ipairs(blocks) do
+		-- Anything but div chapter, do nothing
+		if not (div.t == "Div" and utils.table_contains(div.classes, "part")) then goto continue end
 
-		g.builder:height(pandoc.utils.stringify(div.attributes.height or g.from_meta.parts.header_height))
-		g.builder:content_block(div:walk(part_titles_from_header))
+		g.part_builder = builders.PartBuilder:new()
 
-		return g.builder:build()
+		g.part_builder:height(pandoc.utils.stringify(div.attributes.height or g.from_meta.parts.header_height))
+		g.part_builder:content_block(div:walk(part_titles_from_header))
+
+		blocks[i] = g.part_builder:build()
+
+		::continue::
+		g.part_builder = nil
 	end
 
-	-- if the div doesn't have the correct class we are not touching it
-	return nil
+	return blocks
 end
 
 -- Set what function will be called on what kind of Pandoc element and in which order
@@ -69,6 +74,6 @@ return {
 		Meta = function(meta) g.from_meta = meta end
 	},
 	{
-		Div = part_start_from_div
+		Blocks = part_start_from_div
 	}
 }
