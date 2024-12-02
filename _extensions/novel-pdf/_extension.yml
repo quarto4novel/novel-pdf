@@ -12,9 +12,7 @@ contributes:
   # See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#more-precise-targeting-of-ast-processing-phases
   filters:
     - filters/novel_class_options.lua
-    - filters/chapter_div.lua
-    - filters/part_div.lua
-    - filters/headings.lua
+    - filters/heading_and_struct_div.lua
     - filters/div_formating.lua
     - filters/span_formating.lua
     - filters/epigraph.lua
