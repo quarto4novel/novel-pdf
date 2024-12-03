@@ -111,8 +111,6 @@ specified in the [novel class documentation about lists and tables](https://ctan
 
 ## Supported Quarto specific feature
 
-- [x] [**lipsum shortcode**](https://quarto.org/docs/authoring/lipsum.html)
-`{{< lipsum >}}`
 - [ ] `include-before-body` metadata
 - [ ] `include-after-body` metadata
 - [ ] `include-in-header` metadata
@@ -124,6 +122,8 @@ specified in the [novel class documentation about lists and tables](https://ctan
 where they are placed as specified in
 [novel class documentation about footnotes](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h9.1).
 - callout blocks
+- [**lipsum shortcode**](https://quarto.org/docs/authoring/lipsum.html)
+`{{< lipsum >}}`
 
 ## Novel specific features
 

@@ -113,7 +113,42 @@ See: https://style.mla.org/styling-epigraphs/
 
 ## Foreword {.chapterlike}
 
-{{< lipsum 5 >}}
+Sit commodo incididunt nulla. Quis veniam reprehenderit excepteur proident
+commodo non. Et eu tempor labore sunt nulla enim. Ea proident ex cillum, sit
+cillum fugiat fugiat do. Quis ullamco aliqua enim. Excepteur dolore aliqua non
+nostrud sed tempor. Commodo amet consectetur consequat laborum. Ipsum et irure
+laborum aute.
+
+Laborum sed in sint eu commodo do duis, aute proident eiusmod ad proident ut
+aute laborum. Minim deserunt id cillum officia, officia lorem sunt qui elit
+aliqua, qui veniam labore occaecat excepteur sint ullamco excepteur. Ullamco
+tempor aliqua labore. Qui et ea ad et deserunt, magna labore sit do
+exercitation aliqua, sint lorem consectetur aute duis. Sint cillum consectetur
+labore non eiusmod incididunt consectetur, mollit tempor nisi labore. Magna
+anim ullamco ex magna, voluptate laborum officia exercitation aliquip
+incididunt tempor culpa, ut aute irure amet do sunt. Adipiscing qui aute velit
+ex elit nulla. Anim excepteur adipiscing velit, ea anim fugiat laboris fugiat
+ex cupidatat.
+
+Aute consectetur quis irure duis enim. Occaecat anim commodo sit quis id
+nostrud. Magna in fugiat ipsum lorem in, in magna eu ex pariatur. Sunt fugiat
+laboris quis minim minim mollit ut, magna irure officia pariatur in duis
+fugiat, dolore nostrud sed reprehenderit labore sit ipsum. Ipsum reprehenderit
+id officia ipsum dolore. Ex adipiscing in mollit. Cupidatat nisi ut sed do ea,
+nisi veniam ex et. Ea qui officia sint ad deserunt. Commodo sunt et laborum
+irure non. Tempor et tempor aliqua nostrud officia duis lorem, tempor proident
+ad enim irure reprehenderit, laborum mollit elit consectetur.
+
+Lorem pariatur aute sint qui. Occaecat pariatur aute laboris. Dolor sint non
+consequat. Ut minim mollit quis sunt et est labore. Est pariatur velit ea quis
+adipiscing eu. Nulla reprehenderit dolor do consectetur. Cillum aliquip sed
+non.
+
+Voluptate laboris elit officia. Deserunt consectetur minim reprehenderit,
+adipiscing lorem id ut. Aute cupidatat exercitation veniam et aliquip magna.
+Excepteur cupidatat nulla reprehenderit qui ad, non laboris eu aliquip culpa,
+anim reprehenderit reprehenderit mollit quis proident. Culpa tempor proident
+occaecat, consectetur id nostrud velit ad velit ad fugiat.
 
 {{< cleartorecto >}}
 
@@ -127,10 +162,10 @@ See: https://style.mla.org/styling-epigraphs/
 [Second part]{.toc_part page=11}
 [Chapter 3: Basic]{.toc_chap number=3 page=12}
 [Chapter 4: DIVs]{.toc_chap number=4 page=24}
-[Chapter 5: SPANs]{.toc_chap number=5 page=46}
-[Chapter 6: Header and footer]{.toc_chap number=6 page=48}
-[_Take your breath this is log chapters_]{.toc_blank page=49}
-[Chapter 7: Chapter beginning emphasis]{.toc_chap number=7 page=56}
-[Chapter 8: Unicode and 😁emojis🙃]{.toc_chap number=8 page=59}
-[Afterword]{.toc_part page=168}
+[Chapter 5: SPANs]{.toc_chap number=5 page=42}
+[Chapter 6: Header and footer]{.toc_chap number=6 page=44}
+[_Take your breath this is log chapters_]{.toc_blank page=46}
+[Chapter 7: Chapter beginning emphasis]{.toc_chap number=7 page=52}
+[Chapter 8: Unicode and 😁emojis🙃]{.toc_chap number=8 page=56}
+[Afterword]{.toc_part page=164}
 :::

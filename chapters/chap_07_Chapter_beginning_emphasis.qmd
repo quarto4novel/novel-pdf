@@ -1,5 +1,11 @@
 ## Chapter 7: Chapter beginning emphasis
 
+Ea esse duis ad eu, ea do culpa nostrud labore ut sint fugiat. Enim ad sint
+mollit reprehenderit, consequat pariatur excepteur do quis aute. Reprehenderit
+quis sint ea in non deserunt. Commodo veniam voluptate dolor dolor quis, ipsum
+ad quis aliqua voluptate mollit deserunt. Tempor anim est eu eiusmod anim
+excepteur. Commodo quis adipiscing reprehenderit.
+
 ### 1. Manual SPAN with first letter majuscule
 
 It is possible to manually put the first letter of a SPAN in cursive maj.
@@ -33,9 +39,22 @@ minim occaecat nostrud nisi.
 ### 3. Manual DIV with first line small caps div
 
 :::{.firstlinesc}
-{{< lipsum 1 >}}
 
-{{< lipsum 1 >}}
+Occaecat nisi ut non officia reprehenderit. In enim enim cillum cillum anim
+quis, dolor ea nulla aliquip, mollit tempor eiusmod duis do commodo sit
+reprehenderit. Laboris anim fugiat lorem, sunt laborum occaecat sit dolore
+deserunt. Esse in voluptate mollit sunt sunt. Dolore irure nostrud ea, quis
+excepteur non enim. Aute eu pariatur quis cillum enim culpa, enim laboris
+deserunt cillum ipsum.
+
+Veniam qui eiusmod non sunt. Duis nulla tempor id aute ullamco. Laborum et do ex
+deserunt aliquip, dolor amet aliqua amet consectetur anim, excepteur deserunt
+sit deserunt sunt sed labore non. Ea deserunt irure id. Enim ea proident dolore
+do mollit consequat. Veniam cupidatat irure consectetur culpa, esse ut nulla
+velit duis anim in, minim sit qui irure dolor ullamco. In aliqua exercitation
+in eu sed. Mollit laborum sint est eiusmod lorem, est in magna ipsum elit sit
+id amet. Veniam ex consequat dolore. Dolore proident laboris sed proident est
+ad.
 :::
 
 ### 4. Manual DIV with first letter maj div
@@ -95,4 +114,25 @@ duis voluptate. Veniam aute quis duis ex, labore ullamco excepteur sed. Proident
 ad ex ipsum et lorem ea aliquip. Officia nostrud sunt non id. Ipsum tempor
 labore veniam magna reprehenderit. Cillum minim lorem adipiscing anim in.
 Pariatur qui nulla velit culpa.
+:::
+
+### 6. Manual DIV containing SPANs
+
+BUG: each SPAN behave like a first paragraph
+
+:::{.firstlinesc .firstlettermaj}
+Sint nisi aliquip cupidatat. Veniam do reprehenderit consectetur cupidatat.
+Cillum deserunt duis adipiscing occaecat. Fugiat nisi lorem veniam tempor
+magna. Sit aliqua amet voluptate quis ad fugiat duis. [Nisi proident fugiat
+aliqua]{} sit id, dolor deserunt dolor amet, nostrud elit cillum dolore sunt minim
+dolore. Eiusmod pariatur eiusmod adipiscing cupidatat. Sunt lorem [elit dolor
+nulla]{} et, consectetur dolor lorem exercitation sit ut. Dolore proident non do
+lorem sed velit. Duis esse non anim mollit proident cillum tempor.
+
+Duis adipiscing pariatur sed aute. [Id dolore ea ad sunt]{} aute duis. Esse cillum
+nulla consequat duis. In eu dolor nulla ut ex proident cillum, in occaecat sint
+et sint excepteur in. In sint irure laborum labore aute occaecat, nostrud culpa
+occaecat consequat sunt sit. Sit mollit ex cupidatat. Elit laboris enim sed
+laboris. Minim do duis ullamco nisi dolor eu sed, cupidatat sed occaecat
+veniam.
 :::

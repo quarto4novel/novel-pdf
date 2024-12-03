@@ -177,7 +177,7 @@ chapters:
     # - scline -> first line of first para in small caps
     # - bigmajscline -> bigmaj and scline
     # - none -> nothing special, just regular line
-    style: bigmaj
+    style: bigmajscline
     # Bigmaj config
     bigmaj:
       scale: 1.6

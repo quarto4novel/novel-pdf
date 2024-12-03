@@ -9,14 +9,24 @@ and the current quick chapter {{< thequickchapter >}}. This is the book
 The current page is {{< thepage >}}, the current chapter is {{< thechapter >}}
 and the current quick chapter is {{< thequickchapter >}}.
 
-{{< lipsum 1 >}}
+Magna labore ullamco aliqua eiusmod amet sed ipsum. Irure cillum reprehenderit
+consectetur. Non est occaecat amet labore, nisi aliquip amet magna enim
+pariatur. Mollit voluptate veniam laborum proident, ut in laborum consequat
+fugiat lorem non occaecat. Reprehenderit exercitation in occaecat commodo
+ullamco. Eiusmod cupidatat exercitation eiusmod sed.
 
 ### Another quick chapter
 
 The current page is {{< thepage >}}, the current chapter is {{< thechapter >}}
 and the current quick chapter is {{< thequickchapter >}}.
 
-{{< lipsum 1 >}}
+Esse eu officia sit laborum magna ut, sunt culpa aliquip labore in officia.
+Reprehenderit do sed duis est. Nulla sed tempor sed velit. Tempor eu esse
+occaecat anim quis sed. Officia cillum labore minim ullamco ea laboris ea,
+cillum aute proident occaecat sit consectetur nulla reprehenderit, dolor do ea
+qui. Ipsum sed enim aliquip laboris laborum ex. Reprehenderit voluptate
+consectetur reprehenderit dolore, non sunt amet ad nostrud occaecat. In eu ut
+ex irure anim est nisi. Sunt in incididunt nostrud.
 
 ### The real header footer tests
 

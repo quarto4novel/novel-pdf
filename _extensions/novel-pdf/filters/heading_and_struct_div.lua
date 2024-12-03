@@ -17,7 +17,8 @@ local g = {
 	from_meta = {},
 	chap_builder = nil,
 	part_builder = nil,
-	current_matter = MATTER.NOTHING
+	current_matter = MATTER.NOTHING,
+	first_para_found = false
 }
 
 -- Used localy inside chapter div
@@ -120,12 +121,14 @@ local function _chapter_or_part_from_header_2(header)
 		local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.chapters.header_height)
 		local page_style = pandoc.utils.stringify(header.attributes.page_style or g.from_meta.chapters.page_style)
 
+		-- Build the chapter
 		local chap_builder = builders.ChapterBuilder:new()
 			:title_inlines(header.content)
 			:lines_before_title(lines_before)
 			:height(height)
 			:page_style(page_style)
 
+		g.first_para_found = false
 		return chap_builder:build()
 	end
 end
@@ -236,6 +239,8 @@ function _chapter_start_from_div(div)
 	-- Deactivate the builder to prevent unintended side effects
 	g.chap_builder = nil
 
+	g.first_para_found = false
+
 	return new_block
 end
 
@@ -270,12 +275,37 @@ function structs_from_blocks(blocks)
 	local content
 
 	for i, block in ipairs(blocks) do
-		if block.t == "Div" and utils.table_contains(block.classes, "chapter") then
+		if block.t == "Div"
+		and utils.table_contains(block.classes, "chapter") then
 			blocks[i] = _chapter_start_from_div(block)
-		elseif block.t == "Div" and utils.table_contains(block.classes, "part") then
+		elseif block.t == "Div"
+		and utils.table_contains(block.classes, "part")
+		and g.current_matter == MATTER.BODY
+		then
 			blocks[i] = _part_start_from_div(block)
 		elseif block.t == "Header" then
 			blocks[i] = _structure_from_headers(block)
+		elseif block.t == "Para"
+		and g.current_matter == MATTER.BODY
+		and not g.first_para_found
+		then
+			-- Retreive attributes from meta
+			local beginning = pandoc.utils.stringify(g.from_meta.chapters.beginning.style)
+
+			local STYLE2CLASS <const> = {
+				bigmaj = "firstlettermaj",
+				dropcap = "dropcap",
+				scline = "firstlinesc",
+				bigmajscline = "firstlettermaj firstlinesc",
+			}
+
+			if beginning == "none" then
+				-- nothing to do
+			else
+				blocks[i] = pandoc.Div(block, {class=STYLE2CLASS[beginning]})
+			end
+
+			g.first_para_found = true
 		end
 	end
 
