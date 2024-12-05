@@ -26,36 +26,43 @@ local mark_first_paragraph = {
 
 -- returns a filter that enclose the first letter of the first paragraph in a SPAN with classes
 -- classes must be one string with space between each class (without the leading point)
-local function filter_to_enclose_first_letter_in_span(classes) return {
-	Blocks = function(blocks)
-		-- Let's find the first para...
-		for i = 1, #blocks, 1 do
-			if blocks[i].t == "Para" then
-				blocks[i] = blocks[i]:walk {
-					Inlines = function(inlines)
-						-- ...and in this para, let's find the first word and modify it
-						for i = 1, #inlines, 1 do
-							if inlines[i].t == "Str" then
-								first_word = pandoc.utils.stringify(inlines[i])
-								first_letter = first_word:sub(1, 1)
-								rest = first_word:sub(2)
+local function filter_to_enclose_first_letter_in_span(classes)
+	local first_letter_found = false
+	return {
+		traverse = "topdown",
+		Para = function(para)
+			-- We are only interested in first paragraph
+			if first_letter_found then return nil end
 
-								inlines:remove(i)
-								inlines:insert(i, rest)
-								inlines:insert(i, pandoc.Span(first_letter, {class=classes}))
-								break
-							end
-						end -- for inlines
+			-- ...and in this para, let's find the first word and modify it
+			para.content = para.content:walk {
+				traverse = "topdown",
+				Str = function(word)
+					-- we are only interested in the first word
+					if first_letter_found then return nil end
 
-						return inlines
-					end
-				}
-				break
-			end
-		end -- for blocks
-		return blocks
-	end
-}
+					-- Retrieve the lua string of the word
+					first_word = pandoc.utils.stringify(word)
+
+					-- Extract the first letter and the rest of the word
+					first_letter = first_word:sub(1, 1)
+					rest = first_word:sub(2)
+
+					local new_word = pandoc.Inlines {
+						pandoc.Span(first_letter, {class=classes}),
+						pandoc.Str(rest)
+					}
+
+					-- We processed the first letter, we can stop searching for it
+					first_letter_found = true
+
+					return new_word
+				end
+			} -- walk
+
+			return para, false
+		end
+	}
 end
 
 

@@ -6,9 +6,6 @@
 ### 1. Simple div
 
 :::{}
-BUG: this paragraph should be detected as the first. But is is not because it is
-in a DIV. We should fix this.
-
 Fugiat aute incididunt magna qui irure, non ullamco culpa nisi enim. Sit mollit
 qui sint. Eu cupidatat enim aliqua enim. Culpa quis ea voluptate magna nulla,
 irure tempor elit lorem. Eiusmod lorem nisi fugiat commodo eiusmod. Fugiat quis
@@ -409,7 +406,7 @@ pariatur elit laboris mollit excepteur sed. Ullamco veniam nisi qui anim sed.
 
 Some text after.
 
-### 13. Margins
+### 12. Margins
 
 Next divs have different left margins.
 
@@ -499,7 +496,7 @@ eiusmod non dolore est adipiscing. Dolor proident officia ipsum. Non nulla
 aliqua velit eiusmod, eiusmod cupidatat fugiat ex reprehenderit occaecat.
 :::
 
-### 11. Margins
+### 13. Margins
 
 Next divs have different left alignment.
 

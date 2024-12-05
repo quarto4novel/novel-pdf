@@ -50,8 +50,7 @@ local chapter_titles_from_header = {
 	end
 }
 
---- return the LaTeX representation of a front/body/back matter that should
--- replace the header 1 element
+--- Replace the header 1 element with front/body/back matter
 -- @param header the header from which to generate the matter from
 -- @return LaTeX Block to replace the header with
 local function _matter_from_header_1(header)
@@ -77,7 +76,7 @@ end
 local function _frontback_matter_subpart_from_header_2(header)
 	local title = pandoc.utils.stringify(header.content)
 
-	if utils.table_contains(header.classes, "chapterlike") then
+	if header.classes:find("chapterlike") then
 		-- TODO add specific default config for chapterlike
 		-- Retreive attributes or get default from meta
 		local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.chapters.title.lines_before)
@@ -100,7 +99,7 @@ local function _frontback_matter_subpart_from_header_2(header)
 end
 
 local function _chapter_or_part_from_header_2(header)
-	if utils.table_contains(header.classes, "part") then
+	if header.classes:find("part") then
 		-- Retreive attributes or get default from meta
 		local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.parts.title.lines_before)
 		local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.parts.header_height)
@@ -268,48 +267,27 @@ function _part_start_from_div(div)
 	return new_block
 end
 
+function _mark_first_paragraph(para)
+	-- Early exit if it we're not in the body matter or have already found 1st para
+	if g.current_matter ~= MATTER.BODY or g.first_para_found then return nil end
 
-function structs_from_blocks(blocks)
-	local height
-	local page_style
-	local content
+	-- Retreive attributes from meta
+	local beginning = pandoc.utils.stringify(g.from_meta.chapters.beginning.style)
 
-	for i, block in ipairs(blocks) do
-		if block.t == "Div"
-		and utils.table_contains(block.classes, "chapter") then
-			blocks[i] = _chapter_start_from_div(block)
-		elseif block.t == "Div"
-		and utils.table_contains(block.classes, "part")
-		and g.current_matter == MATTER.BODY
-		then
-			blocks[i] = _part_start_from_div(block)
-		elseif block.t == "Header" then
-			blocks[i] = _structure_from_headers(block)
-		elseif block.t == "Para"
-		and g.current_matter == MATTER.BODY
-		and not g.first_para_found
-		then
-			-- Retreive attributes from meta
-			local beginning = pandoc.utils.stringify(g.from_meta.chapters.beginning.style)
+	local STYLE2CLASS <const> = {
+		bigmaj = "firstlettermaj",
+		dropcap = "dropcap",
+		scline = "firstlinesc",
+		bigmajscline = "firstlettermaj firstlinesc",
+	}
 
-			local STYLE2CLASS <const> = {
-				bigmaj = "firstlettermaj",
-				dropcap = "dropcap",
-				scline = "firstlinesc",
-				bigmajscline = "firstlettermaj firstlinesc",
-			}
+	g.first_para_found = true
 
-			if beginning == "none" then
-				-- nothing to do
-			else
-				blocks[i] = pandoc.Div(block, {class=STYLE2CLASS[beginning]})
-			end
-
-			g.first_para_found = true
-		end
+	if beginning == "none" then
+		return nil
+	else
+		return pandoc.Div(para, {class=STYLE2CLASS[beginning]})
 	end
-
-	return blocks
 end
 
 
@@ -320,6 +298,21 @@ return {
 		Meta = function(meta) g.from_meta = meta end
 	},
 	{
-		Blocks = structs_from_blocks
+		traverse = "topdown",
+		Div = function(div)
+			if div.classes:find("chapter") then
+				-- Return the representation of the chapter and stop processing of child nodes
+				return _chapter_start_from_div(div), false
+			end
+
+			if div.classes:find("part")
+			and g.current_matter == MATTER.BODY
+			then
+				-- Return the representation of the part and stop processing of child nodes
+				return _part_start_from_div(div), false
+			end
+		end,
+		Header = function(header) return _structure_from_headers(header) end,
+		Para = function(para) return _mark_first_paragraph(para) end,
 	}
 }

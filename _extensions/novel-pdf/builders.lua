@@ -3,14 +3,13 @@ local utils = require "./utils"
 local builders = {}
 
 -- ****************************************************************************
--- To create quick chapters
+--- To create quick chapters
+-- @param title_inlines: pandoc.Inlines
+-- @param line: string with different possible values
+--     - "true": default line length
+--     - "false": no line
+--     - length of line in LaTeX unit
 function builders.build_quickchapter(title_inlines, line)
-    -- title_inlines: pandoc.Inlines
-    -- line: string with different possible values
-    --      - "true": default line length
-    --      - "false": no line
-    --      - length of line in LaTeX unit
-
     -- This is only for LaTeX
     -- In all other format just return the title as a paragraph
     if not FORMAT:match 'latex' then
@@ -42,7 +41,7 @@ end
 
 
 -- ****************************************************************************
--- To create the 3 kinds of scene break
+--- To create the 3 kinds of scene break
 function builders.build_scenebreak(title, default_break)
     if title == "Scene break blank"
     or (title == "Scene break" and default_break == "blank") then

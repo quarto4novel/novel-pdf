@@ -118,16 +118,15 @@ Pariatur qui nulla velit culpa.
 
 ### 6. Manual DIV containing SPANs
 
-BUG: each SPAN behave like a first paragraph
-
 :::{.firstlinesc .firstlettermaj}
 Sint nisi aliquip cupidatat. Veniam do reprehenderit consectetur cupidatat.
 Cillum deserunt duis adipiscing occaecat. Fugiat nisi lorem veniam tempor
-magna. Sit aliqua amet voluptate quis ad fugiat duis. [Nisi proident fugiat
-aliqua]{} sit id, dolor deserunt dolor amet, nostrud elit cillum dolore sunt minim
-dolore. Eiusmod pariatur eiusmod adipiscing cupidatat. Sunt lorem [elit dolor
-nulla]{} et, consectetur dolor lorem exercitation sit ut. Dolore proident non do
-lorem sed velit. Duis esse non anim mollit proident cillum tempor.
+magna. Sit aliqua amet voluptate quis ad fugiat duis. [This should not start
+with a big majuscule]{} Nisi proident fugiat aliqua sit id, dolor deserunt
+dolor amet, nostrud elit cillum dolore sunt minim dolore. Eiusmod pariatur
+eiusmod adipiscing cupidatat. Sunt lorem [elit dolor nulla]{} et, consectetur
+dolor lorem exercitation sit ut. Dolore proident non do lorem sed velit. Duis
+esse non anim mollit proident cillum tempor.
 
 Duis adipiscing pariatur sed aute. [Id dolore ea ad sunt]{} aute duis. Esse cillum
 nulla consequat duis. In eu dolor nulla ut ex proident cillum, in occaecat sint
