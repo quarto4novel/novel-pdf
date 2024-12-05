@@ -18,7 +18,8 @@ local g = {
 	chap_builder = nil,
 	part_builder = nil,
 	current_matter = MATTER.NOTHING,
-	first_para_found = false
+	first_para_found = false,
+	first_part_found = false,
 }
 
 -- Used localy inside chapter div
@@ -106,14 +107,19 @@ local function _chapter_or_part_from_header_2(header)
 		local scale = pandoc.utils.stringify(header.attributes.scale or g.from_meta.parts.title.scale)
 
 		-- Build the part
-		local part = builders.PartBuilder:new()
+		local part_builder = builders.PartBuilder:new()
 			:title_inlines(header.content)
 			:title_scale(scale)
 			:lines_before_title(lines_before)
 			:height(height)
-			:build()
 
-		return part
+		-- Adjust the blank page before
+		if not g.first_part_found then
+			part_builder:very_first_part(true)
+			g.first_part_found = true
+		end
+
+		return part_builder:build()
 	else
 		-- Retreive attributes or get default from meta
 		local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.chapters.title.lines_before)
@@ -250,6 +256,12 @@ function _part_start_from_div(div)
 
 	-- We need a global builder so that walk can access it
 	g.part_builder = builders.PartBuilder:new()
+
+	-- Adjust the blank page before
+	if not g.first_part_found then
+		g.part_builder:very_first_part(true)
+		g.first_part_found = true
+	end
 
 	-- Retreive the content of the part after some conversion
 	-- Warning: we need the global part_builder to already exist for this !
