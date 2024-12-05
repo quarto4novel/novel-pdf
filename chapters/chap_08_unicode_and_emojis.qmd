@@ -3,6 +3,11 @@
 We want to be able to use emojis like 😍🐺 and ✈️. [This also works in an
 monospace text like this 👠, this 🙈🙉🙊 or this 🙂.]{.monospace}
 
+But we also want to be able tu use ancient greek in the middle of any text. For
+example this sentence should compile and display without any problem: Όχι, στην
+πραγματικότητα, με λένε Κάσσανδρο. Το "Cash" είναι ένα ψευδώνυμο που μου έδωσε ο
+φίλος σου πριν από πολύ καιρό. And tex could be written just after.
+
 ### Smileys and poeple emojis
 
 | 😀 Grinning Face

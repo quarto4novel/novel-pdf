@@ -76,7 +76,7 @@ footnote for the moment⚠️
   - backslash `\`
 - [x] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
   white dedicated font (combined emoji are not supported)
-- [ ] direct greek support
+- [x] direct greek support
 - [ ] direct berber. One can use the [Noto Sans Tifinagh font](https://fonts.google.com/noto/specimen/Noto+Sans+Tifinagh)
 - [ ] preselection of useful fonts:
   - [ ] cursive font
