@@ -159,6 +159,7 @@ function builders.PartBuilder:subtitle_scale(v) self._subtitle_scale = v; return
 function builders.PartBuilder:lines_before_subtitle(v) self._lines_before_subtitle = v; return self end
 function builders.PartBuilder:height(v) self._height = v; return self end
 function builders.PartBuilder:content_block(v) self._content_block = v; return self end
+function builders.PartBuilder:very_first_part(v) self._very_first_part = v; return self end
 
 function builders.PartBuilder:build()
     assert(self._title_inlines)
@@ -171,8 +172,12 @@ function builders.PartBuilder:build()
         return pandoc.Para(self._title_inlines)
     end
 
-    -- BUG: the first part is preceded by 2 blank pages
-    local raw_latex_cleartorecto = pandoc.RawBlock('latex', [[\thispagestyle{empty}\null\cleartorecto\thispagestyle{empty} %% part are always recto with empty verso]])
+    -- Add blank blank page except for very first chapter
+    local raw_latex_blank_page = self._very_first_part
+        and pandoc.RawBlock('latex', [[%% first part does not need extra blank page]])
+        or pandoc.RawBlock('latex', [[\thispagestyle{empty}\null\cleartorecto %% part are always recto with empty verso]])
+
+    local raw_latex_cleartorecto = pandoc.RawBlock('latex', [[\thispagestyle{empty}]])
     local raw_latex_open = pandoc.RawBlock('latex', [[\begin{ChapterStart}[%(height)s] ]] % {height=self._height})
 
     -- We add scaling to title
@@ -216,6 +221,7 @@ function builders.PartBuilder:build()
 
     -- Build and return the resulting div
     return pandoc.Div {
+        raw_latex_blank_page,
         raw_latex_cleartorecto,
         raw_latex_open,
         title_div,
