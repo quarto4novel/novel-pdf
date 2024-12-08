@@ -1,5 +1,5 @@
 install:
-	sudo dnf install texlive-novel texlive-libertinus-fonts
+	sudo dnf install texlive-novel texlive-libertinus-fonts google-noto-sans-tifinagh-fonts
 
 install-texlive2024: install
 	# See: https://www.tug.org/texlive/quickinstall.html

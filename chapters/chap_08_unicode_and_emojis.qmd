@@ -8,6 +8,13 @@ example this sentence should compile and display without any problem: Όχι, σ
 πραγματικότητα, με λένε Κάσσανδρο. Το "Cash" είναι ένα ψευδώνυμο που μου έδωσε ο
 φίλος σου πριν από πολύ καιρό. And tex could be written just after.
 
+It's also possible to use berber also know as tamazight (tifinagh) in the exact
+same way. You just have to type it in the right alphabet (or more likely
+copy-paste it from ~~google translate~~ a reliable source). Juste like that:
+ⵏⴻⴽⴽ ⴷ ⵜⴰⵎⵓⵙⵏⵉ ⵜⴰⵇⴱⵓⵔⵜ ⵏ ⵓⵎⴷⴰⴽⴽⴻⵍⵉⴽ ⵏ ⵜⴻⵅⵅⴰⵎⵜ ⴷ ⵓⵎⴻⴷⴷⴰⴽⴻⵍⵉⵙ. ⵎⴰⵛⴰ, ⵜⴻⵥⵔⵉⴹ,
+ⵏⴻⵎⵍⴰⵍ ⵢⴰⴽⴰⵏ ⴷⴷⴰⵡ, ⵍⵍⵉⵖ ⵍⵙⴻⵖ ⵍⵇⴻⵛⵛ ⵖⴻⵣⵣⵉⴼⴻⵏ. And this should work like a
+charm.
+
 ### Smileys and poeple emojis
 
 | 😀 Grinning Face
