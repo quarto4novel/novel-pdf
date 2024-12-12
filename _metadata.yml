@@ -175,15 +175,15 @@ chapters:
     lines_before: 3  # in number of lines
   subtitle:
     lines_before: 1  # in number of lines
-  beginning:
-    # How to mark the beginning of a chapter:
+  fldeco:
+    # How the first line of a chapter should be decorated:
     #
     # - bigmaj -> big majuscule using firstletterfont (overflow over the current line)
     # - dropcap -> huge majuscupe on multiple lines using dropcapfont (underflow under the current line)
     # - scline -> first line of first para in small caps
     # - bigmajscline -> bigmaj and scline
     # - none -> nothing special, just regular line
-    style: bigmajscline
+    style: dropcap
     # Bigmaj config
     bigmaj:
       scale: 1.6
@@ -198,6 +198,9 @@ chapters:
 quickchapters:
   # Default length of the dash line after the title of the quick chapters
   line: 3em  # true/false/length in LaTeX units
+  fldeco:
+    # See: chapter fldeco for details
+    style: bigmajscline
 
 parts:
   header_height: 30  # in number of lines

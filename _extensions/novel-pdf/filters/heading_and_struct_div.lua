@@ -18,7 +18,8 @@ local g = {
 	chap_builder = nil,
 	part_builder = nil,
 	current_matter = MATTER.NOTHING,
-	first_para_found = false,
+	chap_first_para_found = true,
+	quickchap_first_para_found = true,
 	first_part_found = false,
 }
 
@@ -125,6 +126,7 @@ local function _chapter_or_part_from_header_2(header)
 		local lines_before = pandoc.utils.stringify(header.attributes.lines_before or g.from_meta.chapters.title.lines_before)
 		local height = pandoc.utils.stringify(header.attributes.height or g.from_meta.chapters.header_height)
 		local page_style = pandoc.utils.stringify(header.attributes.page_style or g.from_meta.chapters.page_style)
+		local nofldeco = header.classes:find("nofldeco") ~= nil
 
 		-- Build the chapter
 		local chap_builder = builders.ChapterBuilder:new()
@@ -133,7 +135,13 @@ local function _chapter_or_part_from_header_2(header)
 			:height(height)
 			:page_style(page_style)
 
-		g.first_para_found = false
+		-- If we don't need to mark first line of chapter then do as if it was already found
+		if nofldeco then
+			g.chap_first_para_found = true
+		else
+			g.chap_first_para_found = false
+		end
+
 		return chap_builder:build()
 	end
 end
@@ -143,6 +151,14 @@ local function _quickchapter_from_header_3(header)
 	-- Retreive attributes or get default from meta
 	local name_inlines = header.content
 	local line = pandoc.utils.stringify(header.attributes.line or g.from_meta.quickchapters.line)
+	local nofldeco = header.classes:find("nofldeco") ~= nil
+
+	-- If we don't need to mark first line of quickchapter then do as if it was already found
+	if nofldeco or not g.chap_first_para_found then
+		g.quickchap_first_para_found = true
+	else
+		g.quickchap_first_para_found = false
+	end
 
 	return builders.build_quickchapter(name_inlines, line)
 end
@@ -226,6 +242,7 @@ function _chapter_start_from_div(div)
 	-- Retreive attributes or get default from meta
 	local height = pandoc.utils.stringify(div.attributes.height or g.from_meta.chapters.header_height)
 	local page_style = pandoc.utils.stringify(div.attributes.page_style or g.from_meta.chapters.page_style)
+	local nofldeco = div.classes:find("nofldeco") ~= nil
 
 	-- We need a global builder so that walk can access it
 	g.chap_builder = builders.ChapterBuilder:new()
@@ -244,7 +261,12 @@ function _chapter_start_from_div(div)
 	-- Deactivate the builder to prevent unintended side effects
 	g.chap_builder = nil
 
-	g.first_para_found = false
+	-- If we don't need to mark first line of chapter then do as if it was already found
+	if nofldeco then
+		g.chap_first_para_found = true
+	else
+		g.chap_first_para_found = false
+	end
 
 	return new_block
 end
@@ -281,10 +303,12 @@ end
 
 function _mark_first_paragraph(para)
 	-- Early exit if it we're not in the body matter or have already found 1st para
-	if g.current_matter ~= MATTER.BODY or g.first_para_found then return nil end
+	if g.current_matter ~= MATTER.BODY then return nil end
+	if g.quickchap_first_para_found and g.chap_first_para_found then return nil end
 
 	-- Retreive attributes from meta
-	local beginning = pandoc.utils.stringify(g.from_meta.chapters.beginning.style)
+	local chap_fldeco = pandoc.utils.stringify(g.from_meta.chapters.fldeco.style)
+	local quickchap_fldeco = pandoc.utils.stringify(g.from_meta.quickchapters.fldeco.style)
 
 	local STYLE2CLASS <const> = {
 		bigmaj = "firstlettermaj",
@@ -293,12 +317,26 @@ function _mark_first_paragraph(para)
 		bigmajscline = "firstlettermaj firstlinesc",
 	}
 
-	g.first_para_found = true
+	-- Marking chapter first line deco
+	if not g.chap_first_para_found then
+		g.chap_first_para_found = true
 
-	if beginning == "none" then
-		return nil
-	else
-		return pandoc.Div(para, {class=STYLE2CLASS[beginning]})
+		if chap_fldeco == "none" then
+			return nil
+		else
+			return pandoc.Div(para, {class=STYLE2CLASS[chap_fldeco]})
+		end
+	end
+
+	-- Marking quickchapter first line deco
+	if not g.quickchap_first_para_found then
+		g.quickchap_first_para_found = true
+
+		if quickchap_fldeco == "none" then
+			return nil
+		else
+			return pandoc.Div(para, {class=STYLE2CLASS[quickchap_fldeco]})
+		end
 	end
 end
 

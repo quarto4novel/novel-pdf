@@ -1,4 +1,6 @@
-## Chapter 6: Header and footer
+## Chapter 6: Header and footer {.nofldeco}
+
+This chapter should not have a decoration for the first line.
 
 The current part is {{< thepart >}}, the current chapter is {{< thechapter >}}
 and the current quick chapter {{< thequickchapter >}}. This is the book
@@ -29,6 +31,9 @@ consectetur reprehenderit dolore, non sunt amet ad nostrud occaecat. In eu ut
 ex irure anim est nisi. Sunt in incididunt nostrud.
 
 ### The real header footer tests
+
+We will now test the different kind of header and footer style one by one on
+dedicated pages.
 
 {{< clearpage nextpagestyle=fancy >}}
 
