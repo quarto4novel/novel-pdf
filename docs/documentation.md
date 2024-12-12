@@ -266,6 +266,39 @@ inside a chapter div to control its rendering:
 - `lines_before=7` (in number of lines) attribute to set the position of the
   title/subtitle
 
+#### Chapter and quick chapter first line decoration
+
+Chapter and quick chapter can start with a decorated first line. This is purely
+decorative and can be configured using the `_metadata.yml` file using the
+`chapters.fldeco` and `quickchapters.fldeco` metadatas.
+
+The possible decorations for the first line are:
+
+- big majuscule using the `fonts.firstletter` font (overflow over the current
+  line)
+- huge majuscupe on multiple lines using `fonts.dropcap` font (underflow under
+  the current line)
+- first line of first para in small caps
+- both big majuscule and smallcaps first line
+- nothing special, just regular line
+
+It is possible to disable this effect for a specific chapter or quick chapter by
+using the `.nofldeco` class on the header or div used:
+
+```qmd
+:::{.chapter .nofldeco}
+## A chapter without decoration
+:::
+
+## Another chapter without decoration {.nofldeco}
+
+### A quick chapter without decoration {.nofldeco}
+```
+
+**One important thing: it is not possible tu use some advanced formating in an
+first paragraph with such decoration, especialy vertical space and
+multi-paragraph footnotes.**
+
 #### What about parts?
 
 To create a part use a **part div**:

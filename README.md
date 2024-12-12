@@ -154,7 +154,8 @@ where they are placed as specified in
   ```qmd
   ### A wonderful quick chapter
   ```
-- [x] **chapter beginning emphasis**
+
+- [x] **chapter first line decoration**
   - [x] **big maj first letter** with dedicated font
   - [x] **small caps first line**
   - [x] **both big maj first letter and small caps first line**

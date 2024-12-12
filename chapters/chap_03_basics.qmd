@@ -47,6 +47,10 @@ You can use special characters:
 
 ### 3. Footnotes
 
+Footnotes with multiple paragraphs can't be used on the first line of a chapter
+or quick chapter whose first line is marked to highlight the beginning of that
+chapter or quickchapter.
+
 You can also have footnote reference,[^1] and another.[^longnote]. Here is an
 inline note.^[Inlines notes are easier to write, since you don't have to pick an
 identifier and move down to

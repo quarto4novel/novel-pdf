@@ -75,8 +75,8 @@ local function add_formating_to_span(span)
 				"no other formating class is allowed on firstlettermaj span")
 
 			-- Retreive value from meta
-			local scale = pandoc.utils.stringify(g.from_meta.chapters.beginning.bigmaj.scale)
-			local hspace_after = pandoc.utils.stringify(g.from_meta.chapters.beginning.bigmaj.hspace_after)
+			local scale = pandoc.utils.stringify(g.from_meta.chapters.fldeco.bigmaj.scale)
+			local hspace_after = pandoc.utils.stringify(g.from_meta.chapters.fldeco.bigmaj.hspace_after)
 
 			span.content:insert(1, pandoc.RawInline('latex', [[\charscale[%(scale)s]{\firstletterfont ]] % {scale=scale}))
 			span.content:insert(pandoc.RawInline('latex', [[}\hspace{%(space)s}]] % {space=hspace_after}))
@@ -88,7 +88,7 @@ local function add_formating_to_span(span)
 				"no other formating class is allowed on dropcap span")
 
 			-- Retreive value from meta
-			local lines = pandoc.utils.stringify(g.from_meta.chapters.beginning.dropcap.lines)
+			local lines = pandoc.utils.stringify(g.from_meta.chapters.fldeco.dropcap.lines)
 
 			span.content:insert(1, pandoc.RawInline('latex', [[\dropcap[lines=%(lines)s]{]] % {lines=lines}))
 			span.content:insert(pandoc.RawInline('latex', [[}]]))

@@ -165,7 +165,7 @@ occaecat, consectetur id nostrud velit ad velit ad fugiat.
 [Chapter 5: SPANs]{.toc_chap number=5 page=40}
 [Chapter 6: Header and footer]{.toc_chap number=6 page=42}
 [_Take your breath this is log chapters_]{.toc_blank page=44}
-[Chapter 7: Chapter beginning emphasis]{.toc_chap number=7 page=50}
+[Chapter 7: Chapter first line decoration]{.toc_chap number=7 page=50}
 [Chapter 8: Unicode and 😁emojis🙃]{.toc_chap number=8 page=54}
 [Afterword]{.toc_part page=162}
 :::

@@ -1,6 +1,8 @@
-:::{.chapter}
+:::{.chapter .nofldeco}
 ## Chapter 5: SPANs
 ### Test of many combinations of formating classes
+
+This chapter should have no decoration on first line.
 :::
 
 Lorem qui duis reprehenderit quis aliqua occaecat occaecat. Qui proident ullamco
