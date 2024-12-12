@@ -47,7 +47,7 @@ local function add_formating_to_span(span)
 			span.content:insert(pandoc.RawInline('latex', [[\hspace*{%(space)s}]] % {space=value}))
 		elseif name == "hspace_both" then
 			span.content:insert(1, pandoc.RawInline('latex', [[\hspace*{%(space)s}]] % {space=value}))
-			span.content:insert(pandoc.RawInline('latex', [[\vspace*{%(space)s}]] % {space=value}))
+			span.content:insert(pandoc.RawInline('latex', [[\hspace*{%(space)s}]] % {space=value}))
 		elseif name == "phantom" then
 			span.content:insert(1, pandoc.RawInline('latex', [[\phantom{]]))
 			span.content:insert(pandoc.RawInline('latex', [[}]]))
