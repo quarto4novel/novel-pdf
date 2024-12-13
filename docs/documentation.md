@@ -138,6 +138,15 @@ See [novel class - tispagestyle](https://ctan.math.illinois.edu/macros/luatex/la
 
 ## Structure
 
+**chapter adapted to fiction**: fictional works have a very specific structure
+that do not correspond to academic structure used by classical LaTeX document.
+In particular the hierarchical `\part`, `\section`, `\chapter`, etc is not used
+in novels (see:
+[Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)).
+That's why we provide a headers and div classes that let you create advanced
+chapters, quickchapters, scene breaks, parts and even high level separation of
+the "matters" of a book.
+
 ### The 3 matters
 
 Fiction books have (for historical reason but that still have effect nowadays)

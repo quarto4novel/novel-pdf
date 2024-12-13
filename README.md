@@ -129,32 +129,6 @@ where they are placed as specified in
 
 ## Novel specific features
 
-- [x] **chapter adapted to fiction**: fictional works have a very
-    specific structure that do not correspond to academic structure used by
-    classical LaTeX document. In particular the hierarchical `\part`,
-    `\section`, `\chapter`, etc is not used in novels (see:
-    [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
-    ). That's why we provide a div class that let you create advanced chapters
-    header with title, subtitle using level 1 and 2 headers and other content.
-
-    See **headings level 2 in body matter** to know how to use chapters
-
-    ```qmd
-    :::{.chapter}
-    ## My Super Chapter Title
-    ### And a wonderful subtitle to go with it
-    :::
-    ```
-- [x] **quickchapter**: used by some books are designed with numerous
-  short chapters that run continously, so that chapters may start anywhere on a
-  page. They can also be used as subdivision of chapters.
-
-  See **headings level 3 in body matter** to know how to use chapters
-
-  ```qmd
-  ### A wonderful quick chapter
-  ```
-
 - [x] **chapter first line decoration**
   - [x] **big maj first letter** with dedicated font
   - [x] **small caps first line**
@@ -369,7 +343,8 @@ Here are the source code for a three sample chapters:
 
 - [chapters/chap_01.qmd](chapters/chap_01.qmd)
 - [chapters/chap_02.qmd](chapters/chap_02.qmd)
-- [chapters/chap_03.qmd](chapters/chap_03.qmd)
+- [chapters/chap_03.qmd](chapters/chap_03_basics.qmd)
+- and so on
 
 ## Inspiration
 
