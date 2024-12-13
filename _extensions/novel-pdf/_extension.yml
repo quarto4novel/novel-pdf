@@ -7,6 +7,7 @@ contributes:
     - shortcodes/pages.lua
     - shortcodes/spaces.lua
     - shortcodes/current_elements.lua
+    - shortcodes/setheader.lua
   # BUG: precise targeting of filters does not work in extension
   # This prevent filters to act after quarto processing of shortcodes which prevent us to reliably use lipsum shortcode
   # See: https://quarto.org/docs/prerelease/1.4/lua_changes.html#more-precise-targeting-of-ast-processing-phases
