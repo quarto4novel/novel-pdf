@@ -77,7 +77,8 @@ On the next page we change the header content for recto and verso.
 
 {{< clearpage >}}
 
-{{< setheader verso="New *verso* header" recto="New **recto** header" >}}
+[New *verso* header]{.setheaderverso}
+[New **recto** header]{.setheaderrecto}
 
 :::{vfill=both scale=3 align=center}
 Page with has a **custom verso header**.

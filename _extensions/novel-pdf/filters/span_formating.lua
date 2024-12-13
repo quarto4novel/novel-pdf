@@ -140,6 +140,18 @@ local function add_formating_to_span(span)
 
 			-- We return directly the SPAN content instead of the span itself to prevent a position bug
 			return span.content
+		elseif name == "setheaderverso" then
+			-- Enclose the content in the LaTeX command
+			span.content:insert(1, pandoc.RawInline('latex', [[\SetVersoHeadText{]]))
+			span.content:insert(pandoc.RawInline('latex', [[}]]))
+
+			return span.content
+		elseif name == "setheaderrecto" then
+			-- Enclose the content in the LaTeX command
+			span.content:insert(1, pandoc.RawInline('latex', [[\SetRectoHeadText{]]))
+			span.content:insert(pandoc.RawInline('latex', [[}]]))
+
+			return span.content
 		end
 	end
 
