@@ -240,14 +240,30 @@ local frontmatter_raw_latex <const> = [[
 % This command must be written immediately after \begin{document}
 \frontmatter]]
 
-function builders.build_frontmatter()
+function builders.build_frontmatter(meta)
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then
         return nil
     end
 
-    return pandoc.RawBlock('latex', frontmatter_raw_latex)
+    local result = pandoc.Div(pandoc.RawBlock('latex', frontmatter_raw_latex))
+
+    local setheaderverso_block = pandoc.Plain("")
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[\SetVersoHeadText{]]))
+    setheaderverso_block.content:extend(meta.headerfooter.frontmatter.headerverso)
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderverso_block)
+
+    local setheaderrecto_block = pandoc.Plain("")
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[\SetRectoHeadText{]]))
+    setheaderrecto_block.content:extend(meta.headerfooter.frontmatter.headerrecto)
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderrecto_block)
+
+    return result
 end
 
 
@@ -260,14 +276,30 @@ local mainmatter_raw_latex <const> = [[
 % Now to begin your story:
 \mainmatter]]
 
-function builders.build_mainmatter()
+function builders.build_mainmatter(meta)
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then
         return nil
     end
 
-    return pandoc.RawBlock('latex', mainmatter_raw_latex)
+    local result = pandoc.Div(pandoc.RawBlock('latex', mainmatter_raw_latex))
+
+    local setheaderverso_block = pandoc.Plain("")
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[\SetVersoHeadText{]]))
+    setheaderverso_block.content:extend(meta.headerfooter.mainmatter.headerverso)
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderverso_block)
+
+    local setheaderrecto_block = pandoc.Plain("")
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[\SetRectoHeadText{]]))
+    setheaderrecto_block.content:extend(meta.headerfooter.mainmatter.headerrecto)
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderrecto_block)
+
+    return result
 end
 
 
@@ -280,14 +312,30 @@ local backmatter_raw_latex <const> = [[
 \backmatter]]
 
 
-function builders.build_backmatter()
+function builders.build_backmatter(meta)
     -- This is only for LaTeX
     -- In all other format just return nothing
     if not FORMAT:match 'latex' then
         return nil
     end
 
-    return pandoc.RawBlock('latex', backmatter_raw_latex)
+    local result = pandoc.Div(pandoc.RawBlock('latex', backmatter_raw_latex))
+
+    local setheaderverso_block = pandoc.Plain("")
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[\SetVersoHeadText{]]))
+    setheaderverso_block.content:extend(meta.headerfooter.backmatter.headerverso)
+    setheaderverso_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderverso_block)
+
+    local setheaderrecto_block = pandoc.Plain("")
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[\SetRectoHeadText{]]))
+    setheaderrecto_block.content:extend(meta.headerfooter.backmatter.headerrecto)
+    setheaderrecto_block.content:insert(pandoc.RawInline('latex', [[}]]))
+
+    result.content:insert(setheaderrecto_block)
+
+    return result
 end
 
 -- ****************************************************************************

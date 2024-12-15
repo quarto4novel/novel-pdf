@@ -157,6 +157,15 @@ headerfooter:
   #
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
   style: onlyheadercentered
+  frontmatter:
+    headerverso: "{{< theauthor >}}"
+    headerrecto: "{{< thetitle >}}"
+  mainmatter:
+    headerverso: "{{< thepart >}}"
+    headerrecto: "{{< thechapter >}}"
+  backmatter:
+    headerverso: "{{< theauthor >}}"
+    headerrecto: "{{< thetitle >}}"
 
 chapters:
   # header/footer style for the first page of the chapter. Possible values are:
