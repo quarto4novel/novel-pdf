@@ -157,6 +157,16 @@ headerfooter:
   #
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
   style: onlyheadercentered
+  # What shoud be printed in the header of verso/recto page (only if the style has a header)
+  # You can use quarto markdown and especially the shortcodes refering to the current elements:
+  #
+  # - {{< thetitle >}} to insert the title of the novel
+  # - {{< theauthor >}} to insert the name of the author
+  # - {{< thepart >}} to insert the title of the current part (if any)
+  # - {{< thechapter >}} to insert the title of the current chapter (if any)
+  # - {{< thequickchapter >}} to insert the title of the current quick chapter (if any)
+  #
+  # But you can use any text you want (it is only limited by the length of the page header)
   frontmatter:
     headerverso: "{{< theauthor >}}"
     headerrecto: "{{< thetitle >}}"
