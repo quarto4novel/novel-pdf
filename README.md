@@ -143,13 +143,13 @@ where they are placed as specified in
     `nextpagestyle=???` attribute to change the header/footer of the next page
   - [x] **chapter div** and **chapter heading** attribute `page_style=???`
     attribute to change the header/footer of the first page of a chapter
-  - [ ] header recto and verso text setting via
+  - [x] header recto and verso text setting via
     `headerfooter.header_text.recto/verso` metadata
   - [ ] footer recto and verso text setting via
     `headerfooter.footer_text.recto/verso` metadata
   - [ ] emblems setting via `headerfooter.emblems.recto/verso` metadata
-  - [ ] header recto and verso text setting via **header shortcode**
-  - [ ] footer recto and verso text setting via **footer shortcode**
+  - [x] header recto and verso text setting via **header span**
+  - [ ] footer recto and verso text setting via **footer span**
   - [ ] **soundtrack shortcode**
 - [x] shortcodes (and LaTeX command of the same name) to [access current
   elements](docs/documentation.md#access-to-the-current-structural-elements)

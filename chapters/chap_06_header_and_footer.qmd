@@ -30,7 +30,7 @@ qui. Ipsum sed enim aliquip laboris laborum ex. Reprehenderit voluptate
 consectetur reprehenderit dolore, non sunt amet ad nostrud occaecat. In eu ut
 ex irure anim est nisi. Sunt in incididunt nostrud.
 
-### The real header footer tests
+### Changing the header/footer style
 
 We will now test the different kind of header and footer style one by one on
 dedicated pages.
@@ -69,4 +69,41 @@ Page with a **dropfoliobeneath** style
 
 :::{vfill=both scale=3 align=center scale=3 align=center}
 Page with a **dropfolioinside** style
+:::
+
+{{< clearpage >}}
+
+### Changing the header content
+
+Starting from this page we change the header content for recto and verso.
+
+[New *verso* header]{.setheaderverso}
+[New **recto** header]{.setheaderrecto}
+
+:::{vfill=both scale=3 align=center}
+Page with a **custom verso header**.
+:::
+
+{{< clearpage >}}
+
+:::{vfill=both scale=3 align=center}
+Page with a **custom recto header**.
+:::
+
+{{< clearpage >}}
+
+And now we change them to running values...
+
+[ {{< thechapter >}} ]{.setheaderverso}
+
+:::{vfill=both scale=3 align=center}
+Page with chapter title as verso heasder.
+:::
+
+{{< clearpage >}}
+
+[ {{< thetitle >}} ]{.setheaderrecto}
+
+:::{vfill=both scale=3 align=center}
+Page with book title as verso heasder.
 :::

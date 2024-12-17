@@ -60,15 +60,15 @@ local function _matter_from_header_1(header)
 
 	if title == "Front matter" then
 		g.current_matter = MATTER.FRONT
-		return builders.build_frontmatter()
+		return builders.build_frontmatter(g.from_meta)
 
 	elseif title == "Body matter" then
 		g.current_matter = MATTER.BODY
-		return builders.build_mainmatter()
+		return builders.build_mainmatter(g.from_meta)
 
 	elseif title == "Back matter" then
 		g.current_matter = MATTER.BACK
-		return builders.build_backmatter()
+		return builders.build_backmatter(g.from_meta)
 	else
 		error("Level 1 heading '# %(title)s' found but the only possible title are Front matter, Body matter and Back matter" % {title=title})
 	end

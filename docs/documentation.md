@@ -136,6 +136,38 @@ Possible values are:
 
 See [novel class - tispagestyle](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.5.1)
 
+### Setting content of the header for the whole novel
+
+What shoud be printed in the header of verso/recto page (only if the style has a
+header) is defined in the `headerfooter.frontmatter`, `headerfooter.bodymatter`
+and `headerfooter.backmatter` metadata. Each define the header content of a
+specific matter of the novel. For details see the `_metadata.yml` file.
+
+You can use quarto markdown and especially the shortcodes refering to the
+current elements or novel infos:
+
+- `{{< thetitle >}}` to insert the title of the novel
+- `{{< theauthor >}}` to insert the name of the author
+- `{{< thepart >}}` to insert the title of the current part (if any)
+- `{{< thechapter >}}` to insert the title of the current chapter (if any)
+- `{{< thequickchapter >}}` to insert the title of the current quick chapter (if
+  any)
+
+### Setting content of the header in the content of the novel
+
+To set the content of the verso/recto header you can use a span with the
+`setheaderverso` (or `setheaderrecto`) class. The content of the span won't be
+displayed in the text bu instead will appear in the header verso (or recto) of
+the **current page and all the following pages**.
+
+```qmd
+[My **cool** header]{.setheaderverso}
+```
+
+You can use formatting and even shortcodes.
+
+This will overload the settings defined in the metadata.
+
 ## Structure
 
 **chapter adapted to fiction**: fictional works have a very specific structure
