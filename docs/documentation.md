@@ -136,7 +136,48 @@ Possible values are:
 
 See [novel class - tispagestyle](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.5.1)
 
+### Setting content of the header for the whole novel
+
+What shoud be printed in the header of verso/recto page (only if the style has a
+header) is defined in the `headerfooter.frontmatter`, `headerfooter.bodymatter`
+and `headerfooter.backmatter` metadata. Each define the header content of a
+specific matter of the novel. For details see the `_metadata.yml` file.
+
+You can use quarto markdown and especially the shortcodes refering to the
+current elements or novel infos:
+
+- `{{< thetitle >}}` to insert the title of the novel
+- `{{< theauthor >}}` to insert the name of the author
+- `{{< thepart >}}` to insert the title of the current part (if any)
+- `{{< thechapter >}}` to insert the title of the current chapter (if any)
+- `{{< thequickchapter >}}` to insert the title of the current quick chapter (if
+  any)
+
+### Setting content of the header in the content of the novel
+
+To set the content of the verso/recto header you can use a span with the
+`setheaderverso` (or `setheaderrecto`) class. The content of the span won't be
+displayed in the text bu instead will appear in the header verso (or recto) of
+the **current page and all the following pages**.
+
+```qmd
+[My **cool** header]{.setheaderverso}
+```
+
+You can use formatting and even shortcodes.
+
+This will overload the settings defined in the metadata.
+
 ## Structure
+
+**chapter adapted to fiction**: fictional works have a very specific structure
+that do not correspond to academic structure used by classical LaTeX document.
+In particular the hierarchical `\part`, `\section`, `\chapter`, etc is not used
+in novels (see:
+[Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)).
+That's why we provide a headers and div classes that let you create advanced
+chapters, quickchapters, scene breaks, parts and even high level separation of
+the "matters" of a book.
 
 ### The 3 matters
 
@@ -265,6 +306,39 @@ inside a chapter div to control its rendering:
 
 - `lines_before=7` (in number of lines) attribute to set the position of the
   title/subtitle
+
+#### Chapter and quick chapter first line decoration
+
+Chapter and quick chapter can start with a decorated first line. This is purely
+decorative and can be configured using the `_metadata.yml` file using the
+`chapters.fldeco` and `quickchapters.fldeco` metadatas.
+
+The possible decorations for the first line are:
+
+- big majuscule using the `fonts.firstletter` font (overflow over the current
+  line)
+- huge majuscupe on multiple lines using `fonts.dropcap` font (underflow under
+  the current line)
+- first line of first para in small caps
+- both big majuscule and smallcaps first line
+- nothing special, just regular line
+
+It is possible to disable this effect for a specific chapter or quick chapter by
+using the `.nofldeco` class on the header or div used:
+
+```qmd
+:::{.chapter .nofldeco}
+## A chapter without decoration
+:::
+
+## Another chapter without decoration {.nofldeco}
+
+### A quick chapter without decoration {.nofldeco}
+```
+
+**One important thing: it is not possible tu use some advanced formating in an
+first paragraph with such decoration, especialy vertical space and
+multi-paragraph footnotes.**
 
 #### What about parts?
 

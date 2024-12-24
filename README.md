@@ -76,8 +76,10 @@ footnote for the moment⚠️
   - backslash `\`
 - [x] direct emoji support: 😍🐺✈️  should be rendered in a clean black and
   white dedicated font (combined emoji are not supported)
-- [ ] direct greek support
-- [ ] direct berber. One can use the [Noto Sans Tifinagh font](https://fonts.google.com/noto/specimen/Noto+Sans+Tifinagh)
+- [x] direct greek support (eventually using greek font like "gentium")
+- [x] direct berber. Google translate can help to get some text using the
+  "Tamazight (Tifinagh)" language. For the font one can use the
+  [Noto Sans Tifinagh font](https://fonts.google.com/noto/specimen/Noto+Sans+Tifinagh)
 - [ ] preselection of useful fonts:
   - [ ] cursive font
     - https://www.notebookandpenguin.com/cursive-google-fonts/
@@ -127,36 +129,11 @@ where they are placed as specified in
 
 ## Novel specific features
 
-- [x] **chapter adapted to fiction**: fictional works have a very
-    specific structure that do not correspond to academic structure used by
-    classical LaTeX document. In particular the hierarchical `\part`,
-    `\section`, `\chapter`, etc is not used in novels (see:
-    [Novel class novel-documentation : Avoid Academic Structures](https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h1.2.3)
-    ). That's why we provide a div class that let you create advanced chapters
-    header with title, subtitle using level 1 and 2 headers and other content.
-
-    See **headings level 2 in body matter** to know how to use chapters
-
-    ```qmd
-    :::{.chapter}
-    ## My Super Chapter Title
-    ### And a wonderful subtitle to go with it
-    :::
-    ```
-- [x] **quickchapter**: used by some books are designed with numerous
-  short chapters that run continously, so that chapters may start anywhere on a
-  page. They can also be used as subdivision of chapters.
-
-  See **headings level 3 in body matter** to know how to use chapters
-
-  ```qmd
-  ### A wonderful quick chapter
-  ```
-- [ ] **chapter beginning emphasis**
-  - [ ] **big maj first letter** with dedicated font
-  - [ ] **small caps first line**
-  - [ ] **both big maj first letter and small caps first line**
-  - [ ] **drop cap** with dedicated font
+- [x] **chapter first line decoration**
+  - [x] **big maj first letter** with dedicated font
+  - [x] **small caps first line**
+  - [x] **both big maj first letter and small caps first line**
+  - [x] **drop cap** with dedicated font
 - [x] **font configuration**: in `_metadata.yml`
 - [x] **page header** and **page footer** control
   - [x] classical header and footer config
@@ -166,13 +143,13 @@ where they are placed as specified in
     `nextpagestyle=???` attribute to change the header/footer of the next page
   - [x] **chapter div** and **chapter heading** attribute `page_style=???`
     attribute to change the header/footer of the first page of a chapter
-  - [ ] header recto and verso text setting via
+  - [x] header recto and verso text setting via
     `headerfooter.header_text.recto/verso` metadata
   - [ ] footer recto and verso text setting via
     `headerfooter.footer_text.recto/verso` metadata
   - [ ] emblems setting via `headerfooter.emblems.recto/verso` metadata
-  - [ ] header recto and verso text setting via **header shortcode**
-  - [ ] footer recto and verso text setting via **footer shortcode**
+  - [x] header recto and verso text setting via **header span**
+  - [ ] footer recto and verso text setting via **footer span**
   - [ ] **soundtrack shortcode**
 - [x] shortcodes (and LaTeX command of the same name) to [access current
   elements](docs/documentation.md#access-to-the-current-structural-elements)
@@ -366,7 +343,8 @@ Here are the source code for a three sample chapters:
 
 - [chapters/chap_01.qmd](chapters/chap_01.qmd)
 - [chapters/chap_02.qmd](chapters/chap_02.qmd)
-- [chapters/chap_03.qmd](chapters/chap_03.qmd)
+- [chapters/chap_03.qmd](chapters/chap_03_basics.qmd)
+- and so on
 
 ## Inspiration
 

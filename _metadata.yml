@@ -74,6 +74,8 @@ fonts:
     size: 11.4pt
     # This is use as a fallback font when unicode emoji is found
     emoji_fallback: Noto Emoji
+    # This is use as a fallback font when unicode berber/Tamazight/Tifinagh is found
+    berber_fallback: Noto Sans Tifinagh
   # Open Type font NovelDeco.otf is packaged with the novel class. It is a
   # special-purpose font that provides characters for the \decoglyph and \midcase commands.
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.2.3
@@ -87,6 +89,8 @@ fonts:
     scale: 0.9
     # This is use as a fallback font when unicode emoji is found
     emoji_fallback: Noto Emoji
+    # This is use as a fallback font when unicode berber/Tamazight/Tifinagh is found
+    berber_fallback: Noto Sans Tifinagh
   # The font used by verbatim text and div/span with the .monospace class
   mono:
     # Choose from: https://www.tug.org/FontCatalogue/typewriterfonts.html
@@ -96,6 +100,8 @@ fonts:
     scale: 0.8
     # This is use as a fallback font when unicode emoji is found
     emoji_fallback: Unifont Upper
+    # This is use as a fallback font when unicode berber/Tamazight/Tifinagh is found
+    berber_fallback: Noto Sans Tifinagh
   # There is basic math support in novel-pdf but don't expect to fine tune anything
   # it's just in case one of your character is a mathematician or you wan't to write
   # a math based enigma at any point in your story.
@@ -151,6 +157,25 @@ headerfooter:
   #
   # See: https://ctan.math.illinois.edu/macros/luatex/latex/novel/doc/novel-documentation.html#h4.3.3.1
   style: onlyheadercentered
+  # What shoud be printed in the header of verso/recto page (only if the style has a header)
+  # You can use quarto markdown and especially the shortcodes refering to the current elements:
+  #
+  # - {{< thetitle >}} to insert the title of the novel
+  # - {{< theauthor >}} to insert the name of the author
+  # - {{< thepart >}} to insert the title of the current part (if any)
+  # - {{< thechapter >}} to insert the title of the current chapter (if any)
+  # - {{< thequickchapter >}} to insert the title of the current quick chapter (if any)
+  #
+  # But you can use any text you want (it is only limited by the length of the page header)
+  frontmatter:
+    headerverso: "{{< theauthor >}}"
+    headerrecto: "{{< thetitle >}}"
+  mainmatter:
+    headerverso: "{{< thepart >}}"
+    headerrecto: "{{< thechapter >}}"
+  backmatter:
+    headerverso: "{{< theauthor >}}"
+    headerrecto: "{{< thetitle >}}"
 
 chapters:
   # header/footer style for the first page of the chapter. Possible values are:
@@ -169,15 +194,15 @@ chapters:
     lines_before: 3  # in number of lines
   subtitle:
     lines_before: 1  # in number of lines
-  beginning:
-    # How to mark the beginning of a chapter:
+  fldeco:
+    # How the first line of a chapter should be decorated:
     #
     # - bigmaj -> big majuscule using firstletterfont (overflow over the current line)
     # - dropcap -> huge majuscupe on multiple lines using dropcapfont (underflow under the current line)
     # - scline -> first line of first para in small caps
     # - bigmajscline -> bigmaj and scline
     # - none -> nothing special, just regular line
-    style: bigmajscline
+    style: dropcap
     # Bigmaj config
     bigmaj:
       scale: 1.6
@@ -192,6 +217,9 @@ chapters:
 quickchapters:
   # Default length of the dash line after the title of the quick chapters
   line: 3em  # true/false/length in LaTeX units
+  fldeco:
+    # See: chapter fldeco for details
+    style: bigmajscline
 
 parts:
   header_height: 30  # in number of lines
